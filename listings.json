@@ -1,0 +1,20 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/blog/2026-11-congestion-marmara/index.html",
+      "/blog/2026-11-subsidy/index.html"
+    ]
+  },
+  {
+    "listing": "/blog/index.html",
+    "items": [
+      "/blog/2026-11-congestion-marmara/index.html",
+      "/blog/2026-11-subsidy/index.html"
+    ]
+  },
+  {
+    "listing": "/reports/index.html",
+    "items": []
+  }
+]
