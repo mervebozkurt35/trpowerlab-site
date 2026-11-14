@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Method and sources – TR Power Lab</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-3463ae9b2174cc7775b88b49ea23799c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-4863b07d89b4f8933d6745f90135ffcc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">TR Power Lab</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data">    
+        <li>
+    <a class="dropdown-item" href="../data/turkiye/index.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data/turkiye/prices.html">
+ <span class="dropdown-text">Prices</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data/turkiye/generation.html">
+ <span class="dropdown-text">Generation and demand</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data/turkiye/volatility.html">
+ <span class="dropdown-text">Volatility</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data/turkiye/gas.html">
+ <span class="dropdown-text">Natural gas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data/turkiye/balancing.html">
+ <span class="dropdown-text">Balancing instructions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data/neighbouring-markets/index.html">
+ <span class="dropdown-text">Neighbouring markets</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-regulation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Regulation</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-regulation">    
+        <li>
+    <a class="dropdown-item" href="../regulation/index.html">
+ <span class="dropdown-text">Market timeline</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../regulation/institutions.html">
+ <span class="dropdown-text">Institutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../regulation/method.html">
+ <span class="dropdown-text">Method and sources</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../reports/index.html"> 
+<span class="menu-text">Reports</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../tools/index.html"> 
+<span class="menu-text">Tools</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../learn/index.html"> 
+<span class="menu-text">Learn</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../methodology.html"> 
+<span class="menu-text">Methodology</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-entries-were-chosen" id="toc-how-entries-were-chosen" class="nav-link active" data-scroll-target="#how-entries-were-chosen">How entries were chosen</a></li>
+  <li><a href="#how-an-entry-was-checked" id="toc-how-an-entry-was-checked" class="nav-link" data-scroll-target="#how-an-entry-was-checked">How an entry was checked</a></li>
+  <li><a href="#reading-the-source-labels-on-the-cards" id="toc-reading-the-source-labels-on-the-cards" class="nav-link" data-scroll-target="#reading-the-source-labels-on-the-cards">Reading the source labels on the cards</a></li>
+  <li><a href="#what-the-limits-are" id="toc-what-the-limits-are" class="nav-link" data-scroll-target="#what-the-limits-are">What the limits are</a></li>
+  <li><a href="#research-log" id="toc-research-log" class="nav-link" data-scroll-target="#research-log">Research log</a></li>
+  <li><a href="#still-to-read" id="toc-still-to-read" class="nav-link" data-scroll-target="#still-to-read">Still to read</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Method and sources</h1>
+<p class="subtitle lead">How the regulation timeline was researched, and what was not read</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="how-entries-were-chosen" class="level2">
+<h2 class="anchored" data-anchor-id="how-entries-were-chosen">How entries were chosen</h2>
+<p>An entry is in the list if it changed one of: how prices are formed or settled, who may operate in the market, how generation is supported or connected, or whether a new kind of business (storage, charging, aggregation, unlicensed generation) is allowed. The aim of the first version is the main milestones, not every amendment. Amendments that were found but not read are listed at the end of the log below.</p>
+</section>
+<section id="how-an-entry-was-checked" class="level2">
+<h2 class="anchored" data-anchor-id="how-an-entry-was-checked">How an entry was checked</h2>
+<ol type="1">
+<li><strong>Find it.</strong> Start from the EPİAŞ market handbook and from a search for the instrument’s title.</li>
+<li><strong>Read a page that reproduces the text.</strong> The Resmî Gazete and mevzuat.gov.tr could not be opened from the research environment. The pages used instead are Alomaliye’s reproductions of the gazette text, the Ministry’s consolidated text of the Electricity Market Law, EPİAŞ and TEİAŞ pages, and law-firm notes.</li>
+<li><strong>Mark it.</strong> <code>verified</code> means the title, number and date were read on one of those pages, and the effect column is limited to what was read. <code>draft</code> means the entry rests on the handbook, a news item or inference, or the text itself was not read.</li>
+<li><strong>Keep the doubt.</strong> Where a source disagreed with another, or a link between two instruments was inferred, the source note says so.</li>
+</ol>
+</section>
+<section id="reading-the-source-labels-on-the-cards" class="level2">
+<h2 class="anchored" data-anchor-id="reading-the-source-labels-on-the-cards">Reading the source labels on the cards</h2>
+<p>Each card ends with the kind of source it was written from, linked where a page was read.</p>
+<ul>
+<li><strong>Law text, regulation text, consolidated text, decision text:</strong> read in a reproduction of the official text, or in a consolidated text supplied for this project.</li>
+<li><strong>EPİAŞ market handbook:</strong> the handbook built from the EPİAŞ training series. Dates and descriptions that come only from it were not checked against the gazette.</li>
+<li><strong>News report, law-firm note, trade press, legal commentary:</strong> secondary sources. Where a number comes only from these, the card says “press reports” or “according to”.</li>
+<li><strong>Strategy paper, Ministry copy:</strong> the paper is linked but was not opened here; its content is as summarised in a TEPAV note.</li>
+<li>The cards before 2001 rest on one law-firm sector report and should be checked against a history of the state electricity authority.</li>
+</ul>
+</section>
+<section id="what-the-limits-are" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-limits-are">What the limits are</h2>
+<ul>
+<li>Most dates are publication dates in the Resmî Gazete as shown on the reproduction; where only the adoption date was read, the date column says so.</li>
+<li>A reproduction is not the official text. Dates and numbers should be checked against the gazette before they are cited.</li>
+<li>Press reports are used for tariff steps and support prices that no reproduced text was found for; these are marked.</li>
+<li>The “rests on” lines on the cards come from the <code>parent</code> column. Some links were inferred from dates and titles and are labelled as such.</li>
+</ul>
+</section>
+<section id="research-log" class="level2">
+<h2 class="anchored" data-anchor-id="research-log">Research log</h2>
+<p>Every source opened for an entry, and the attempts that failed or turned up a discrepancy.</p>
+<div id="cell-log" class="cell" data-execution_count="2">
+<div id="log" class="cell-output cell-output-display" data-execution_count="2">
+<div class="table-responsive">
+<table class="table table-sm caption-top table-striped small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Entry</th>
+<th data-quarto-table-cell-role="th">Source</th>
+<th data-quarto-table-cell-role="th">Outcome</th>
+<th data-quarto-table-cell-role="th">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="text-nowrap">law-4628</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2001/03/03/enerji-piyasasi-4628-sayili-kanun/amp/">https://www.alomaliye.com/2001/03/03/enerji-piyasasi-4628-sayili-kanun/amp/</a></td>
+<td>read</td>
+<td class="small">Header read (number, adoption date, gazette date). Effects: handbook section 2. The rename of the law's title was not traced to its own instrument.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">strategy-2004</td>
+<td class="small" style="word-break: break-all"><a href="https://files.tepav.org.tr/upload/files/haber/1281428569-3.Elektrik_Sektorunde_Reform.pdf">https://files.tepav.org.tr/upload/files/haber/1281428569-3.Elektrik_Sektorunde_Reform.pdf</a></td>
+<td>read</td>
+<td class="small">Read through a critical TEPAV note (2006), not the paper itself; the issuing body and exact date were not read.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">duy-2004</td>
+<td class="small" style="word-break: break-all"></td>
+<td>not read</td>
+<td class="small">EPİAŞ market handbook (project document), section 2 and appendices. Not yet read in an official text.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">law-5346</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2005/05/18/5346-sayili-kanun-yenilenebilir-enerji-kaynaklarinin/amp/">https://www.alomaliye.com/2005/05/18/5346-sayili-kanun-yenilenebilir-enerji-kaynaklarinin/amp/</a></td>
+<td>read</td>
+<td class="small">Header and Article 6 read in the consolidated text; the schedules were not reproduced there.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">duy-2006</td>
+<td class="small" style="word-break: break-all"></td>
+<td>not read</td>
+<td class="small">EPİAŞ market handbook (project document), section 2 and appendices. Not yet read in an official text.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">law-5710</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2007/11/21/nukleer-guc-santrallarinin-kurulmasi-ve-isletilmesi-ile-enerji-satisina-iliskin-kanun-5710-sayili-kanun/amp/">https://www.alomaliye.com/2007/11/21/nukleer-guc-santrallarinin-kurulmasi-ve-isletilmesi-ile-enerji-satisina-iliskin-kanun-5710-sayili-kanun/amp/</a></td>
+<td>read</td>
+<td class="small">Header and Articles 3 and 4 read. The page does not use the word 'guarantee'; it describes a purchase contract.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">yan-2008</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2008/12/27/elektrik-piyasasi-yan-hizmetler-yonetmeligi/amp/">https://www.alomaliye.com/2008/12/27/elektrik-piyasasi-yan-hizmetler-yonetmeligi/amp/</a></td>
+<td>read</td>
+<td class="small">Header read (title, gazette number and date, issuing body).</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">duy-2009</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2009/04/14/elektrik-piyasasi-dengeleme-ve-uzlastirma-yonetmeligi/amp/">https://www.alomaliye.com/2009/04/14/elektrik-piyasasi-dengeleme-ve-uzlastirma-yonetmeligi/amp/</a></td>
+<td>read</td>
+<td class="small">Gazette number and date read here and in the EPİAŞ organisation regulation page. Whether it replaced the 2004 text was not read.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">dgp-2009</td>
+<td class="small" style="word-break: break-all"></td>
+<td>not read</td>
+<td class="small">EPİAŞ market handbook (project document), section 2 and appendices. The EPİAŞ day-ahead brochure gives no date for this step.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">sync-2010</td>
+<td class="small" style="word-break: break-all"><a href="https://www.renewableenergyworld.com/power-grid/turkish-power-system-connected-with-european-grid/">https://www.renewableenergyworld.com/power-grid/turkish-power-system-connected-with-european-grid/</a></td>
+<td>read</td>
+<td class="small">Trade press, 2010.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">law-6094</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2005/05/18/5346-sayili-kanun-yenilenebilir-enerji-kaynaklarinin/amp/">https://www.alomaliye.com/2005/05/18/5346-sayili-kanun-yenilenebilir-enerji-kaynaklarinin/amp/</a></td>
+<td>read</td>
+<td class="small">Adoption date read from the amendment notation '29/12/2010-6094/1' in the 5346 text. Gazette date not read.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">gop-2011</td>
+<td class="small" style="word-break: break-all"><a href="https://www.epias.com.tr/wp-content/uploads/2022/04/EPIAS_GOP_BROSUR.pdf">https://www.epias.com.tr/wp-content/uploads/2022/04/EPIAS_GOP_BROSUR.pdf</a></td>
+<td>read</td>
+<td class="small">EPİAŞ day-ahead brochure: 'established on 1 December 2011'.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">law-6446</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2013/03/30/elektrik-piyasasi-kanunu-6446-sayili-kanun/amp/">https://www.alomaliye.com/2013/03/30/elektrik-piyasasi-kanunu-6446-sayili-kanun/amp/</a></td>
+<td>read</td>
+<td class="small">Header and Articles 1 to 3 read; the repeal article was not on the page, so which parts of 4628 it repealed is not confirmed here.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">priv-2013</td>
+<td class="small" style="word-break: break-all"><a href="https://www.bloomberght.com/simsek-elektrigin-ozel-sektore-devri-tamamlandi-1434679">https://www.bloomberght.com/simsek-elektrigin-ozel-sektore-devri-tamamlandi-1434679</a></td>
+<td>read, not confirmed in the gazette</td>
+<td class="small">Single news item; the privatising body is not named on the page (ÖİB assumed).</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">reg-yek-2013</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2022/02/10/yenilenebilir-enerji-kaynaklarinin-belgelendirilmesi-10-02-2022/amp/">https://www.alomaliye.com/2022/02/10/yenilenebilir-enerji-kaynaklarinin-belgelendirilmesi-10-02-2022/amp/</a></td>
+<td>read</td>
+<td class="small">Base date and number read from the 2022 amendment page.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">reg-lisans-2013</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2013/11/02/elektrik-piyasasi-lisans-yonetmeligi/amp/">https://www.alomaliye.com/2013/11/02/elektrik-piyasasi-lisans-yonetmeligi/amp/</a></td>
+<td>read</td>
+<td class="small">Header read; the licence types and terms were not on the page.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">reg-ithalat-2014</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2021/04/24/elektrik-piyasasi-ithalat-ve-ihracat-degisiklik-24-04-2021/amp/">https://www.alomaliye.com/2021/04/24/elektrik-piyasasi-ithalat-ve-ihracat-degisiklik-24-04-2021/amp/</a></td>
+<td>read</td>
+<td class="small">Base date and number read from the 2021 amendment page.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">reg-sebeke-2014</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2014/05/28/elektrik-sebeke-yonetmeligi/amp/">https://www.alomaliye.com/2014/05/28/elektrik-sebeke-yonetmeligi/amp/</a></td>
+<td>read</td>
+<td class="small">Header read.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">epias-reg-2015</td>
+<td class="small" style="word-break: break-all"><a href="https://www.epias.com.tr/wp-content/uploads/2016/01/epias-teskilat-mevzuat-govtr.pdf">https://www.epias.com.tr/wp-content/uploads/2016/01/epias-teskilat-mevzuat-govtr.pdf</a></td>
+<td>read</td>
+<td class="small">EPİAŞ page; lists gazette numbers and dates.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">gip-2015</td>
+<td class="small" style="word-break: break-all"></td>
+<td>not read</td>
+<td class="small">EPİAŞ market handbook (project document), section 2 and appendices.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">epias-2015-09</td>
+<td class="small" style="word-break: break-all"><a href="https://www.bloomberght.com/elektrik-piyasasinda-epias-donemi-basladi-1825018">https://www.bloomberght.com/elektrik-piyasasinda-epias-donemi-basladi-1825018</a></td>
+<td>read</td>
+<td class="small">News item and EPİAŞ transition announcement agree on 1 Sep 2015.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">entsoe-2016</td>
+<td class="small" style="word-break: break-all"><a href="https://www.teias.gov.tr/en-US/international-organizations">https://www.teias.gov.tr/en-US/international-organizations</a></td>
+<td>read</td>
+<td class="small">TEİAŞ page.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">transparency-2016</td>
+<td class="small" style="word-break: break-all"></td>
+<td>not read</td>
+<td class="small">EPİAŞ market handbook (project document), section 2 and appendices. The handbook also gives an 18 March date for EPİAŞ's own founding.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">talep-2016</td>
+<td class="small" style="word-break: break-all"><a href="https://www.epdk.gov.tr/Detay/Icerik/3-0-0-49/yonetmelikler">https://www.epdk.gov.tr/Detay/Icerik/3-0-0-49/yonetmelikler</a></td>
+<td>read</td>
+<td class="small">Date and gazette number from EPDK's regulation list (screenshot supplied by the project owner). Content read in a text supplied by the user, which has no amendment marks and no gazette header, so it is taken to be the first version without confirming that.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">law-6719</td>
+<td class="small" style="word-break: break-all"><a href="https://enerji.gov.tr//Media/Dizin/EIGM/en/Elektrik/40022-elektrik-piyasasi-kanunu.pdf">https://enerji.gov.tr//Media/Dizin/EIGM/en/Elektrik/40022-elektrik-piyasasi-kanunu.pdf</a></td>
+<td>read</td>
+<td class="small">Ministry-hosted consolidated text, footnotes. Dates are as printed there (adoption dates); gazette dates were not read.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">reg-yeka-2016</td>
+<td class="small" style="word-break: break-all"><a href="https://www.erdem-erdem.av.tr/bilgi-bankasi/yenilenebilir-enerji-kaynak-alanlari-yonetmeligi">https://www.erdem-erdem.av.tr/bilgi-bankasi/yenilenebilir-enerji-kaynak-alanlari-yonetmeligi</a></td>
+<td>read</td>
+<td class="small">Law firm note.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">yarisma-2017</td>
+<td class="small" style="word-break: break-all"></td>
+<td>not read</td>
+<td class="small">Read in a consolidated text supplied by the user; the amendment table lists RG 30065, 30867 and 31441. What the two amendments changed was not read.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">yeka-2017</td>
+<td class="small" style="word-break: break-all"><a href="https://www.enerdata.net/publications/daily-energy-news/siemens-won-1-gw-wind-tender-under-yekas-framework-turkey.html">https://www.enerdata.net/publications/daily-energy-news/siemens-won-1-gw-wind-tender-under-yekas-framework-turkey.html</a></td>
+<td>read, not confirmed in the gazette</td>
+<td class="small">Date from the Alomaliye news item URL; the Enerdata page's own text dates the proposals to 27 Jul 2017 and the article to 4 Aug 2017.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">yan-2017</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2017/11/26/elektrik-piyasasi-yan-hizmetler-yonetmeligi-2017/">https://www.alomaliye.com/2017/11/26/elektrik-piyasasi-yan-hizmetler-yonetmeligi-2017/</a></td>
+<td>read</td>
+<td class="small">Header read.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">kapasite-2018</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2018/01/20/elektrik-piyasasi-kapasite-mekanizmasi-yonetmeligi/amp/">https://www.alomaliye.com/2018/01/20/elektrik-piyasasi-kapasite-mekanizmasi-yonetmeligi/amp/</a></td>
+<td>read</td>
+<td class="small">Read in full. EPDK's regulation page (screenshot supplied by the project owner, cut off at the bottom) lists later versions: RG 31487 (21 May 2021), 31693 (18 Dec 2021, marked old version), 32416 5th mükerrer (31 Dec 2023), 32612 (25 Jul 2024) and 32771 (3 Jan 2025). Their content was not read. The 2021 regulation (see below), supplied as a consolidated text, repeals this one in its Art. 13.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">law-7103</td>
+<td class="small" style="word-break: break-all"><a href="https://enerji.gov.tr//Media/Dizin/EIGM/en/Elektrik/40022-elektrik-piyasasi-kanunu.pdf">https://enerji.gov.tr//Media/Dizin/EIGM/en/Elektrik/40022-elektrik-piyasasi-kanunu.pdf</a></td>
+<td>read</td>
+<td class="small">Ministry-hosted consolidated text, footnotes. Gazette date not read.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">tuketici-2018</td>
+<td class="small" style="word-break: break-all"></td>
+<td>not read</td>
+<td class="small">Read in a consolidated text supplied by the user (amendment table: 30436, 31401, 31803, 32782). The 100,000 kWh wording comes from the Jan 2025 amendment mark; the earlier wording was not read.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">law-7162</td>
+<td class="small" style="word-break: break-all"><a href="https://enerji.gov.tr//Media/Dizin/EIGM/en/Elektrik/40022-elektrik-piyasasi-kanunu.pdf">https://enerji.gov.tr//Media/Dizin/EIGM/en/Elektrik/40022-elektrik-piyasasi-kanunu.pdf</a></td>
+<td>read</td>
+<td class="small">Ministry-hosted consolidated text, footnotes.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">law-7164</td>
+<td class="small" style="word-break: break-all"><a href="https://enerji.gov.tr//Media/Dizin/EIGM/en/Elektrik/40022-elektrik-piyasasi-kanunu.pdf">https://enerji.gov.tr//Media/Dizin/EIGM/en/Elektrik/40022-elektrik-piyasasi-kanunu.pdf</a></td>
+<td>read</td>
+<td class="small">Ministry-hosted consolidated text, footnotes.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">reg-lisanssiz-2019</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2019/05/12/elektrik-piyasasi-lisanssiz-elektrik-uretim/amp/">https://www.alomaliye.com/2019/05/12/elektrik-piyasasi-lisanssiz-elektrik-uretim/amp/</a></td>
+<td>read</td>
+<td class="small">Consolidated text read; the 1 MW figure is as written there, the current presidential limit was not looked up.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">vep-decision-2019</td>
+<td class="small" style="word-break: break-all"><a href="https://www.lexpera.com.tr/mevzuat/kurul-kararlari/enerji-piyasasi-duzenleme-kurulunun-05-12-2019-tarihli-ve-8965-2-sayili-karari-8965-2-2/4">https://www.lexpera.com.tr/mevzuat/kurul-kararlari/enerji-piyasasi-duzenleme-kurulunun-05-12-2019-tarihli-ve-8965-2-sayili-karari-8965-2-2/4</a></td>
+<td>read</td>
+<td class="small">Title, date and gazette number read on the page.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">reg-tarifeler-2020</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2020/06/19/elektrik-piyasasi-tarifeler-yonetmeligi-2/">https://www.alomaliye.com/2020/06/19/elektrik-piyasasi-tarifeler-yonetmeligi-2/</a></td>
+<td>read</td>
+<td class="small">Header and Article 5 read; the page was cut off, so whether it replaces an earlier text was not read.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">cb-2020-09</td>
+<td class="small" style="word-break: break-all"><a href="https://www.gonen.com.tr/?p=11014">https://www.gonen.com.tr/?p=11014</a></td>
+<td>read</td>
+<td class="small">Law firm note; decision number not stated.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">reg-yekg-2020</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2020/11/14/enerji-kaynak-garanti-belgesi-yonetmeligi/">https://www.alomaliye.com/2020/11/14/enerji-kaynak-garanti-belgesi-yonetmeligi/</a></td>
+<td>read</td>
+<td class="small">Header and Article 5 read.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">law-7257</td>
+<td class="small" style="word-break: break-all"><a href="https://www.erdem-erdem.av.tr/bilgi-bankasi/dogalgaz-elektrik-yenilenebilir-enerji-ve-maden-alaninda-duzenlemeler-iceren-kanun-degisikligi-yururluge-girdi">https://www.erdem-erdem.av.tr/bilgi-bankasi/dogalgaz-elektrik-yenilenebilir-enerji-ve-maden-alaninda-duzenlemeler-iceren-kanun-degisikligi-yururluge-girdi</a></td>
+<td>read</td>
+<td class="small">Law firm note.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">free-2021</td>
+<td class="small" style="word-break: break-all"><a href="https://www.erdem-erdem.av.tr/bilgi-bankasi/elektrikte-serbest-tuketici-limiti-dusuruldu">https://www.erdem-erdem.av.tr/bilgi-bankasi/elektrikte-serbest-tuketici-limiti-dusuruldu</a></td>
+<td>read</td>
+<td class="small">Law firm note, which contains a typo in the effective year.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">cb-3453</td>
+<td class="small" style="word-break: break-all"><a href="https://www.sozcu.com.tr/yenilenebilir-enerjide-destek-fiyatlari-dolardan-tlye-cevrildi-wp6235744">https://www.sozcu.com.tr/yenilenebilir-enerjide-destek-fiyatlari-dolardan-tlye-cevrildi-wp6235744</a></td>
+<td>read</td>
+<td class="small">Decision number and date read in the Feb 2022 regulation text; lira prices from a press report (Sözcü, 30 Jan 2021), gazette date not read.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">duy-2021</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2021/02/20/elektrik-piyasasi-dengeleme-ve-uzlastirma-degisiklik-20-02-2021/amp/">https://www.alomaliye.com/2021/02/20/elektrik-piyasasi-dengeleme-ve-uzlastirma-degisiklik-20-02-2021/amp/</a></td>
+<td>read</td>
+<td class="small">Read in full.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">reg-ithalat-2021</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2021/04/24/elektrik-piyasasi-ithalat-ve-ihracat-degisiklik-24-04-2021/amp/">https://www.alomaliye.com/2021/04/24/elektrik-piyasasi-ithalat-ve-ihracat-degisiklik-24-04-2021/amp/</a></td>
+<td>read</td>
+<td class="small">Read in full.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">reg-depolama-2021</td>
+<td class="small" style="word-break: break-all"><a href="https://www.erdem-erdem.av.tr/bilgi-bankasi/elektrik-depolama-faaliyetine-iliskin-guncel-duzenlemeler">https://www.erdem-erdem.av.tr/bilgi-bankasi/elektrik-depolama-faaliyetine-iliskin-guncel-duzenlemeler</a></td>
+<td>read</td>
+<td class="small">Law firm note; number and date also match the Alomaliye page.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">vep-2021</td>
+<td class="small" style="word-break: break-all"><a href="https://www.ekonomist.com.tr/ekonomist/vadeli-elektrik-piyasasi-isleme-acildi.html">https://www.ekonomist.com.tr/ekonomist/vadeli-elektrik-piyasasi-isleme-acildi.html</a></td>
+<td>read</td>
+<td class="small">News item; the clearing role of Takasbank is from the handbook.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">kapasite-2021</td>
+<td class="small" style="word-break: break-all"></td>
+<td>not read</td>
+<td class="small">Read in the consolidated text supplied by the user (Art. 13 repeals the 2018 regulation). What the Dec 2023 and 2025 amendments replaced, and what the two repealed exclusion criteria were, is not in the text.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">reg-yek-2022</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2022/02/10/yenilenebilir-enerji-kaynaklarinin-belgelendirilmesi-10-02-2022/amp/">https://www.alomaliye.com/2022/02/10/yenilenebilir-enerji-kaynaklarinin-belgelendirilmesi-10-02-2022/amp/</a></td>
+<td>read</td>
+<td class="small">Read in full.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">price-caps</td>
+<td class="small" style="word-break: break-all"><a href="https://tskb.com.tr/uploads/file/enerji-bulteni-mart-2022.pdf">https://tskb.com.tr/uploads/file/enerji-bulteni-mart-2022.pdf</a></td>
+<td>read</td>
+<td class="small">Internal table; each row has its own source and status. Procedure name from EPDK's regulation page (https://www.epdk.gov.tr/Detay/Icerik/3-0-159-3/yonetmelikler); its date was not shown.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">reg-sarj-2022</td>
+<td class="small" style="word-break: break-all"><a href="https://www.erdem-erdem.av.tr/bilgi-bankasi/sarj-hizmeti-yonetmeligi-yayimlandi">https://www.erdem-erdem.av.tr/bilgi-bankasi/sarj-hizmeti-yonetmeligi-yayimlandi</a></td>
+<td>read</td>
+<td class="small">Law firm note; number and date from this note.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">law-7417</td>
+<td class="small" style="word-break: break-all"><a href="https://www.gsghukuk.com/tr/bultenler-yayinlar/duyurular/6446-sayili-elektrik-piyasasi-kanununda-onemli-degisiklik-green-ppa-modeli.html">https://www.gsghukuk.com/tr/bultenler-yayinlar/duyurular/6446-sayili-elektrik-piyasasi-kanununda-onemli-degisiklik-green-ppa-modeli.html</a></td>
+<td>read</td>
+<td class="small">Law firm note.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">law-7429</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2022/12/28/28-aralik-2022-tarihli-resmi-gazetede-yayimlanan-mevzuat/amp/">https://www.alomaliye.com/2022/12/28/28-aralik-2022-tarihli-resmi-gazetede-yayimlanan-mevzuat/amp/</a></td>
+<td>read</td>
+<td class="small">Number and gazette read; aggregation link inferred.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">reg-lisanssiz-2023</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2023/03/02/elektrik-piyasasinda-lisanssiz-elektrik-uretim-yonetmeliginde-degisiklik-02-03-2023/amp/">https://www.alomaliye.com/2023/03/02/elektrik-piyasasinda-lisanssiz-elektrik-uretim-yonetmeliginde-degisiklik-02-03-2023/amp/</a></td>
+<td>read</td>
+<td class="small">Read in full.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">gip-2024</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2023/12/19/elektrik-piyasasi-dengeleme-ve-uzlastirma-yonetmeliginde-degisiklik-19-12-2023/amp/">https://www.alomaliye.com/2023/12/19/elektrik-piyasasi-dengeleme-ve-uzlastirma-yonetmeliginde-degisiklik-19-12-2023/amp/</a></td>
+<td>read</td>
+<td class="small">Read in full; the text does not use the term 'block orders'.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">olcum-2023</td>
+<td class="small" style="word-break: break-all"></td>
+<td>not read</td>
+<td class="small">Read in a consolidated text supplied by the user (amendment table: 32413, 32569, 32673, 32759, 33144).</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">reg-toplayici-2024</td>
+<td class="small" style="word-break: break-all"><a href="https://www.erdem-erdem.av.tr/bilgi-bankasi/elektrik-piyasasinda-toplayicilik-faaliyeti-yonetmeligi">https://www.erdem-erdem.av.tr/bilgi-bankasi/elektrik-piyasasinda-toplayicilik-faaliyeti-yonetmeligi</a></td>
+<td>read</td>
+<td class="small">Law firm note for number, date and effective date; capacity limits from the handbook.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">free-2025</td>
+<td class="small" style="word-break: break-all"><a href="https://www.ekonomigazetesi.com/sektor-haberleri/enerji/serbest-tuketici-limiti-750-kilovatsaate-dusuruldu-44898">https://www.ekonomigazetesi.com/sektor-haberleri/enerji/serbest-tuketici-limiti-750-kilovatsaate-dusuruldu-44898</a></td>
+<td>read, not confirmed in the gazette</td>
+<td class="small">Article dated 17 Dec 2024; the decision date is not stated there.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">reg-depolama-2025</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2025/01/21/elektrik-piyasasinda-depolama-faaliyetleri-degisiklik-21-01-2025/amp/">https://www.alomaliye.com/2025/01/21/elektrik-piyasasinda-depolama-faaliyetleri-degisiklik-21-01-2025/amp/</a></td>
+<td>read</td>
+<td class="small">Gazette text for the storage amendment; the rest from a news report (Ekonomi Gazetesi), not read in the gazette.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">duy-2025-01</td>
+<td class="small" style="word-break: break-all"></td>
+<td>not read</td>
+<td class="small">Read in the consolidated DUY text supplied by the user (amendment marks RG-21/1/2025-32789 and the amendment table). The gazette issue itself was not opened.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">climate-2025</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2025/07/09/7552-sayili-iklim-kanunu/amp/">https://www.alomaliye.com/2025/07/09/7552-sayili-iklim-kanunu/amp/</a></td>
+<td>read</td>
+<td class="small">Read.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">law-7554</td>
+<td class="small" style="word-break: break-all"></td>
+<td>not read</td>
+<td class="small">Date and number as printed in a footnote of the consolidated Law 6446 supplied by the user; the gazette number of Law 7554 was not shown. The Presidential decision 10707 (RG 33112, 19 Dec 2025) cited in the same text extends a period in another article, which was not identified.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">free-2026</td>
+<td class="small" style="word-break: break-all"><a href="https://www.cnbce.com/enerji/elektrikte-2026-icin-serbest-tuketici-limiti-belirlendi-h21699">https://www.cnbce.com/enerji/elektrikte-2026-icin-serbest-tuketici-limiti-belirlendi-h21699</a></td>
+<td>read</td>
+<td class="small">News item with decision number and gazette number.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">reg-yek-2026</td>
+<td class="small" style="word-break: break-all"><a href="https://www.ekonomigazetesi.com/sektor-haberleri/yekdemden-yararlanma-kosullarinda-degisiklik-68498">https://www.ekonomigazetesi.com/sektor-haberleri/yekdemden-yararlanma-kosullarinda-degisiklik-68498</a></td>
+<td>read, not confirmed in the gazette</td>
+<td class="small">News item only; not yet read in the gazette.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">reg-depolama-2025-12</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2025/12/29/elektrik-piyasasinda-depolama-faaliyetleri-yonetmeliginde-degisiklik-29-12-2025/">https://www.alomaliye.com/2025/12/29/elektrik-piyasasinda-depolama-faaliyetleri-yonetmeliginde-degisiklik-29-12-2025/</a></td>
+<td>read</td>
+<td class="small">Read; the annexes were not available on the page.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">yan-2025-12</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2025/12/29/elektrik-piyasasi-yan-hizmetler-yonetmeliginde-degisiklik-29-12-2025/">https://www.alomaliye.com/2025/12/29/elektrik-piyasasi-yan-hizmetler-yonetmeliginde-degisiklik-29-12-2025/</a></td>
+<td>read</td>
+<td class="small">Read.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">duy-2025-12</td>
+<td class="small" style="word-break: break-all"></td>
+<td>not read</td>
+<td class="small">Structure read in the consolidated DUY text supplied by the user (marks RG-29/12/2025-33122, effective date footnote 1/1/2026). Coefficient values from the handbook, section 21; decision 14030 not read.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">tariff-2026</td>
+<td class="small" style="word-break: break-all"><a href="https://medyascope.tv/2026/04/03/dogalgaz-ve-elektrige-yuzde-25-zam-geldi/">https://medyascope.tv/2026/04/03/dogalgaz-ve-elektrige-yuzde-25-zam-geldi/</a></td>
+<td>read, not confirmed in the gazette</td>
+<td class="small">News item.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">lisanssiz-mahsup-2026</td>
+<td class="small" style="word-break: break-all"></td>
+<td>not read</td>
+<td class="small">Read in a scanned copy of the gazette page supplied by the user (OCR; only the first pages were checked closely, so scope details beyond Art. 1 to 5 are not relied on).</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">duy-2026-10</td>
+<td class="small" style="word-break: break-all"><a href="https://www.enerjigunlugu.net/dengeleme-yonetmeliginde-28-maddelik-degisiklik-70257h.htm">https://www.enerjigunlugu.net/dengeleme-yonetmeliginde-28-maddelik-degisiklik-70257h.htm</a></td>
+<td>read</td>
+<td class="small">Amendment text (28 articles) and consolidated DUY text, both supplied by the user. The gazette issue itself was not opened. Press reports (Enerji Günlüğü, Foreks) gave the first summary.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">lisanssiz-2026-10</td>
+<td class="small" style="word-break: break-all"><a href="https://www.haberler.com/ekonomi/epdk-acil-durumda-lisanssiz-uretime-uzaktan-20343465-haberi/">https://www.haberler.com/ekonomi/epdk-acil-durumda-lisanssiz-uretime-uzaktan-20343465-haberi/</a></td>
+<td>read</td>
+<td class="small">Gazette text of Resmî Gazete 33405 supplied by the user (PDF of the gazette page, read in full).</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">depolama-2026-10</td>
+<td class="small" style="word-break: break-all"><a href="https://www.birgun.net/haber/elektrik-piyasalarina-yonelik-yeni-duzenleme-lisans-depolama-ve-teminat-kosullari-degisti-741126">https://www.birgun.net/haber/elektrik-piyasalarina-yonelik-yeni-duzenleme-lisans-depolama-ve-teminat-kosullari-degisti-741126</a></td>
+<td>read</td>
+<td class="small">Gazette text of Resmî Gazete 33405 supplied by the user (PDF of the gazette page, read in full). The text does not use MWe or MWh.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">yek-2026-10</td>
+<td class="small" style="word-break: break-all"><a href="https://www.enerjigunlugu.net/yekdem-formulleri-revize-edildisahte-belgeye-yeni-yaptirim-geldi-70240h.htm">https://www.enerjigunlugu.net/yekdem-formulleri-revize-edildisahte-belgeye-yeni-yaptirim-geldi-70240h.htm</a></td>
+<td>read</td>
+<td class="small">Gazette text of Resmî Gazete 33405 supplied by the user (PDF of the gazette page, scanned; text read by OCR, so formula details and wording may carry errors).</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">board-2026-09</td>
+<td class="small" style="word-break: break-all"><a href="https://www.urfadabugun.com/haber/262316/epdkden-elektrik-piyasasina-iliskin-7-kurul-karari-resmi-gazetede-yayinlandi.html">https://www.urfadabugun.com/haber/262316/epdkden-elektrik-piyasasina-iliskin-7-kurul-karari-resmi-gazetede-yayinlandi.html</a></td>
+<td>read</td>
+<td class="small">Title, date and gazette number read on Alomaliye's listing of the 19 Oct 2026 gazette; the content is from press reports, since the gazette text could not be opened from here. Reports: urfadabugun, Yeşil Haber.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">lisans-2026-10</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2026/10/19/19-ekim-2026-tarihli-resmi-gazetede-yayimlanan-yonetmelikler/">https://www.alomaliye.com/2026/10/19/19-ekim-2026-tarihli-resmi-gazetede-yayimlanan-yonetmelikler/</a></td>
+<td>read</td>
+<td class="small">Gazette text of Resmî Gazete 33405 supplied by the user (PDF of the gazette page, read in full). The text says power (güç) but names no unit such as MWe.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">ancillary-2026-10</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2026/10/19/19-ekim-2026-tarihli-resmi-gazetede-yayimlanan-yonetmelikler/">https://www.alomaliye.com/2026/10/19/19-ekim-2026-tarihli-resmi-gazetede-yayimlanan-yonetmelikler/</a></td>
+<td>read</td>
+<td class="small">Gazette text of Resmî Gazete 33405 supplied by the user (PDF of the gazette page, read in full).</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">baglanti-2026-10</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2026/10/19/19-ekim-2026-tarihli-resmi-gazetede-yayimlanan-yonetmelikler/">https://www.alomaliye.com/2026/10/19/19-ekim-2026-tarihli-resmi-gazetede-yayimlanan-yonetmelikler/</a></td>
+<td>read</td>
+<td class="small">Gazette text of Resmî Gazete 33405 supplied by the user (PDF of the gazette page, read in full).</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">osb-2026-10</td>
+<td class="small" style="word-break: break-all"><a href="https://www.alomaliye.com/2026/10/19/19-ekim-2026-tarihli-resmi-gazetede-yayimlanan-yonetmelikler/">https://www.alomaliye.com/2026/10/19/19-ekim-2026-tarihli-resmi-gazetede-yayimlanan-yonetmelikler/</a></td>
+<td>read</td>
+<td class="small">Gazette text of Resmî Gazete 33405 supplied by the user (PDF of the gazette page, read in full).</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">duy-2026-10</td>
+<td class="small" style="word-break: break-all">resmigazete.gov.tr issue 33405 (eight regulation texts)</td>
+<td>supplied</td>
+<td class="small">The fetch tool would not open the gazette pages, but the user supplied all eight regulation texts (DUY as a Word file and a garbled PDF, the other seven as gazette-page PDFs; the YEK text only as a scan, read by OCR). The seven board decisions 14907 to 14913 were not supplied and rest on press reports.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">duy-2026-10</td>
+<td class="small" style="word-break: break-all">Settlement period length and the word hourly</td>
+<td>checked</td>
+<td class="small">The DUY text keeps one hour (Art. 91) and sets fifteen minutes for the balancing power market only (Art. 91(2), temporary Art. 40, not before 1 Jan 2027). The hourly wording was changed in specific provisions, not everywhere.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">duy-2026-10</td>
+<td class="small" style="word-break: break-all">Consumption-side deviation from the start of 2027</td>
+<td>not found</td>
+<td class="small">No such date in the eight regulation texts; the 2027 dates there concern the 15-minute period (temporary Art. 40), the balancing group imbalance ratio (temporary Art. 39) and thermal load-change curves (temporary Art. 41). One report puts it in board decision 14907, not read.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">board-2026-09</td>
+<td class="small" style="word-break: break-all">KÜPSM and KÜPST in the 19 Oct 2026 package</td>
+<td>partly found</td>
+<td class="small">Both terms are in the DUY (deviation from expected production or consumption, Art. 110). The October amendment changes how KÜPST is worked out for aggregator portfolio plants and leaves tolerance coefficients to the board; the coefficient values are in decision 14907, not read.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">lisanssiz-2026-10</td>
+<td class="small" style="word-break: break-all">SCADA requirement in the unlicensed generation amendment</td>
+<td>not in text</td>
+<td class="small">The word SCADA appears in none of the eight regulation texts. They provide remote control by the distribution company or industrial zone, remote control mechanisms by aggregators (DUY Art. 75(4)(e)), unpaid output on missed instructions, and sanctions of Art. 16 of Law 6446 for industrial zones that fail to carry out instructions. Penalty clauses of the unlicensed connection agreement wait until 30 Apr 2027.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">depolama-2026-10</td>
+<td class="small" style="word-break: break-all">Units (MWe or MWh) for storage guarantees, capital and certificates</td>
+<td>not in text</td>
+<td class="small">The Licence and Storage amendments say power (güç) instead of capacity and name no unit.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">law-6094</td>
+<td class="small" style="word-break: break-all">mevzuat.gov.tr (law text)</td>
+<td>blocked</td>
+<td class="small">The fetch tool refuses mevzuat.gov.tr, so the date came from an amendment note in another text.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">law-6094</td>
+<td class="small" style="word-break: break-all">Law 6094 header on a reproduction</td>
+<td>not found</td>
+<td class="small">Gazette date of Law 6094 not read; only the adoption date is shown.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">tetas-2018</td>
+<td class="small" style="word-break: break-all">Milliyet page on the TETAŞ and EÜAŞ merger</td>
+<td>failed</td>
+<td class="small">Page could not be opened; the merger stays a handbook item (draft).</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">law-4283</td>
+<td class="small" style="word-break: break-all">Law 3096 and Law 4283 (build-operate model) PDFs</td>
+<td>failed</td>
+<td class="small">Not opened; the BOT, BO and transfer of operating rights laws are not in the table.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">resmigazete</td>
+<td class="small" style="word-break: break-all">resmigazete.gov.tr issues</td>
+<td>blocked</td>
+<td class="small">Most issues refused by the fetch tool; Alomaliye /amp/ pages, which reproduce the gazette text, were used instead.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">free-2021</td>
+<td class="small" style="word-break: break-all">erdem-erdem page on the 2021 free consumer limit</td>
+<td>discrepancy</td>
+<td class="small">The page gives the effective year as 2020; the decision of 17 Dec 2020 applies from 2021. Kept the decision date.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">law-5346</td>
+<td class="small" style="word-break: break-all">Schedule I prices of Law 5346</td>
+<td>not found</td>
+<td class="small">The consolidated text on the page does not reproduce the schedules, so no price is quoted for it.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">law-6446</td>
+<td class="small" style="word-break: break-all">Repeal article of Law 6446</td>
+<td>not found</td>
+<td class="small">Not on the page; the link to Law 4628 is shown as succession, not as repeal.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">reg-yek-2026</td>
+<td class="small" style="word-break: break-all">Gazette text of the Dec 2025 YEK amendment</td>
+<td>not read</td>
+<td class="small">Only a news item; marked draft.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">duy-2025-12</td>
+<td class="small" style="word-break: break-all">Coefficient values of the Dec 2025 imbalance change</td>
+<td>not read</td>
+<td class="small">Structure confirmed in the consolidated DUY; the numbers (0.06 and 0.03) come from the handbook and decision 14030, not read.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">duy-2025-01</td>
+<td class="small" style="word-break: break-all">Handbook claim that the Jan 2025 amendment lets the board set k and l</td>
+<td>not confirmed</td>
+<td class="small">Not found in the consolidated DUY; k and l already appear in temporary Art. 21 (2011). The entry now describes what the text shows.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">reg-lisanssiz-2019</td>
+<td class="small" style="word-break: break-all">Unlicensed generation amendments of 2024, Nov 2025 and Apr 2026</td>
+<td>dates confirmed</td>
+<td class="small">The consolidated text supplied by the user lists 14 May 2024 (32546), 17 Dec 2024, 25 Nov 2025 (33088), 2 Apr 2026 (33212) and 19 Oct 2026; what they changed was not read.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">reg-lisanssiz-2023</td>
+<td class="small" style="word-break: break-all">Amendment table of the Unlicensed Generation Regulation</td>
+<td>discrepancy</td>
+<td class="small">The 2 Mar 2023 amendment (RG 32120) is marked throughout the consolidated text but missing from its amendment table, which also lacks the Oct 2022 amendment found elsewhere.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">tedbirler</td>
+<td class="small" style="word-break: break-all">Gazette date of the Distribution and Supply Licence Measures Regulation</td>
+<td>not found</td>
+<td class="small">The text supplied by the user has no gazette header or amendment table; it rests on Art. 16 of Law 6446. Not placed on the timeline.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">reg-sebeke-2014</td>
+<td class="small" style="word-break: break-all">Grid Regulation amendments of Dec 2024, Jan 2025 and Dec 2025</td>
+<td>dates confirmed</td>
+<td class="small">The consolidated Grid Regulation supplied by the user lists amendments of 17 Dec 2024 (32755), 21 Jan 2025 (32789) and 29 Dec 2025 (33122); what they changed was not read.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">strategy-2004</td>
+<td class="small" style="word-break: break-all">Ministry copy of the 2004 strategy paper (enerji.gov.tr)</td>
+<td>not opened</td>
+<td class="small">The fetch tool refused the address; the content on the card is as summarised by TEPAV, and a Competition Authority report quotes the 7.8 GWh freeze and the 2011 target.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">priv-2013</td>
+<td class="small" style="word-break: break-all">Number of distribution regions and buyers</td>
+<td>discrepancy</td>
+<td class="small">A news analysis lists 21 regions, 20 of them privatised and Kayseri not; the finance ministry report counts 20 companies with 18 sold through the privatisation programme and 2 handled under Law 3096. No exact count of distinct buyers was found; the card says about ten large groups.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">history-1994</td>
+<td class="small" style="word-break: break-all">Date of the TEK split</td>
+<td>discrepancy</td>
+<td class="small">A law-firm sector report dates the TEAŞ and TEDAŞ split to 1994; earlier notes said 1993. The card uses 1994. Laws 3096 (1984) and 3996 (1994) were not read.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">free-limit-2025</td>
+<td class="small" style="word-break: break-all">Free consumer limit for 2025</td>
+<td>discrepancy</td>
+<td class="small">A law-firm page says 1,100 kWh for 2025; a news item says 750 kWh. The timeline card names only the steps that were confirmed (3,600 in 2016, 1,200 in 2021, 500 in 2026).</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">capacity-series</td>
+<td class="small" style="word-break: break-all">Installed capacity by technology for 2005, 2011, 2019 and 2023</td>
+<td>left out</td>
+<td class="small">Partial figures were found (2005 and 2011 by source, end-2023 and Mar 2026 totals) but no consistent series, and none for unlicensed capacity. Left out until they can be matched with the data on this site.</td>
+</tr>
+<tr class="even">
+<td class="text-nowrap">unlicensed-saturation</td>
+<td class="small" style="word-break: break-all">Closure of unlicensed applications for grid saturation in 2023 to 2025</td>
+<td>not found</td>
+<td class="small">No source found for the closures; the card for 2026 describes only the transformer centre tables and the press report of their size.</td>
+</tr>
+<tr class="odd">
+<td class="text-nowrap">epias-reason</td>
+<td class="small" style="word-break: break-all">Reason for separating market operation from TEİAŞ in 2015</td>
+<td>not found</td>
+<td class="small">The card says what moved to EPİAŞ and what TEİAŞ kept, without a reason.</td>
+</tr>
+</tbody>
+</table>
+</div><a class="btn btn-sm btn-outline-secondary me-2 mb-2" download="tr_power_lab_regulation_research_log.csv" href="data:text/csv;charset=utf-8;base64,77u/ZW50cnksc291cmNlLG91dGNvbWUsbm90ZQpsYXctNDYyOCxodHRwczovL3d3dy5hbG9tYWxpeWUuY29tLzIwMDEvMDMvMDMvZW5lcmppLXBpeWFzYXNpLTQ2Mjgtc2F5aWxpLWthbnVuL2FtcC8scmVhZCwiSGVhZGVyIHJlYWQgKG51bWJlciwgYWRvcHRpb24gZGF0ZSwgZ2F6ZXR0ZSBkYXRlKS4gRWZmZWN0czogaGFuZGJvb2sgc2VjdGlvbiAyLiBUaGUgcmVuYW1lIG9mIHRoZSBsYXcncyB0aXRsZSB3YXMgbm90IHRyYWNlZCB0byBpdHMgb3duIGluc3RydW1lbnQuIgpzdHJhdGVneS0yMDA0LGh0dHBzOi8vZmlsZXMudGVwYXYub3JnLnRyL3VwbG9hZC9maWxlcy9oYWJlci8xMjgxNDI4NTY5LTMuRWxla3RyaWtfU2VrdG9ydW5kZV9SZWZvcm0ucGRmLHJlYWQsIlJlYWQgdGhyb3VnaCBhIGNyaXRpY2FsIFRFUEFWIG5vdGUgKDIwMDYpLCBub3QgdGhlIHBhcGVyIGl0c2VsZjsgdGhlIGlzc3VpbmcgYm9keSBhbmQgZXhhY3QgZGF0ZSB3ZXJlIG5vdCByZWFkLiIKZHV5LTIwMDQsLG5vdCByZWFkLCJFUMSwQcWeIG1hcmtldCBoYW5kYm9vayAocHJvamVjdCBkb2N1bWVudCksIHNlY3Rpb24gMiBhbmQgYXBwZW5kaWNlcy4gTm90IHlldCByZWFkIGluIGFuIG9mZmljaWFsIHRleHQuIgpsYXctNTM0NixodHRwczovL3d3dy5hbG9tYWxpeWUuY29tLzIwMDUvMDUvMTgvNTM0Ni1zYXlpbGkta2FudW4teWVuaWxlbmViaWxpci1lbmVyamkta2F5bmFrbGFyaW5pbi9hbXAvLHJlYWQsSGVhZGVyIGFuZCBBcnRpY2xlIDYgcmVhZCBpbiB0aGUgY29uc29saWRhdGVkIHRleHQ7IHRoZSBzY2hlZHVsZXMgd2VyZSBub3QgcmVwcm9kdWNlZCB0aGVyZS4KZHV5LTIwMDYsLG5vdCByZWFkLCJFUMSwQcWeIG1hcmtldCBoYW5kYm9vayAocHJvamVjdCBkb2N1bWVudCksIHNlY3Rpb24gMiBhbmQgYXBwZW5kaWNlcy4gTm90IHlldCByZWFkIGluIGFuIG9mZmljaWFsIHRleHQuIgpsYXctNTcxMCxodHRwczovL3d3dy5hbG9tYWxpeWUuY29tLzIwMDcvMTEvMjEvbnVrbGVlci1ndWMtc2FudHJhbGxhcmluaW4ta3VydWxtYXNpLXZlLWlzbGV0aWxtZXNpLWlsZS1lbmVyamktc2F0aXNpbmEtaWxpc2tpbi1rYW51bi01NzEwLXNheWlsaS1rYW51bi9hbXAvLHJlYWQsSGVhZGVyIGFuZCBBcnRpY2xlcyAzIGFuZCA0IHJlYWQuIFRoZSBwYWdlIGRvZXMgbm90IHVzZSB0aGUgd29yZCAnZ3VhcmFudGVlJzsgaXQgZGVzY3JpYmVzIGEgcHVyY2hhc2UgY29udHJhY3QuCnlhbi0yMDA4LGh0dHBzOi8vd3d3LmFsb21hbGl5ZS5jb20vMjAwOC8xMi8yNy9lbGVrdHJpay1waXlhc2FzaS15YW4taGl6bWV0bGVyLXlvbmV0bWVsaWdpL2FtcC8scmVhZCwiSGVhZGVyIHJlYWQgKHRpdGxlLCBnYXpldHRlIG51bWJlciBhbmQgZGF0ZSwgaXNzdWluZyBib2R5KS4iCmR1eS0yMDA5LGh0dHBzOi8vd3d3LmFsb21hbGl5ZS5jb20vMjAwOS8wNC8xNC9lbGVrdHJpay1waXlhc2FzaS1kZW5nZWxlbWUtdmUtdXpsYXN0aXJtYS15b25ldG1lbGlnaS9hbXAvLHJlYWQsR2F6ZXR0ZSBudW1iZXIgYW5kIGRhdGUgcmVhZCBoZXJlIGFuZCBpbiB0aGUgRVDEsEHFniBvcmdhbmlzYXRpb24gcmVndWxhdGlvbiBwYWdlLiBXaGV0aGVyIGl0IHJlcGxhY2VkIHRoZSAyMDA0IHRleHQgd2FzIG5vdCByZWFkLgpkZ3AtMjAwOSwsbm90IHJlYWQsIkVQxLBBxZ4gbWFya2V0IGhhbmRib29rIChwcm9qZWN0IGRvY3VtZW50KSwgc2VjdGlvbiAyIGFuZCBhcHBlbmRpY2VzLiBUaGUgRVDEsEHFniBkYXktYWhlYWQgYnJvY2h1cmUgZ2l2ZXMgbm8gZGF0ZSBmb3IgdGhpcyBzdGVwLiIKc3luYy0yMDEwLGh0dHBzOi8vd3d3LnJlbmV3YWJsZWVuZXJneXdvcmxkLmNvbS9wb3dlci1ncmlkL3R1cmtpc2gtcG93ZXItc3lzdGVtLWNvbm5lY3RlZC13aXRoLWV1cm9wZWFuLWdyaWQvLHJlYWQsIlRyYWRlIHByZXNzLCAyMDEwLiIKbGF3LTYwOTQsaHR0cHM6Ly93d3cuYWxvbWFsaXllLmNvbS8yMDA1LzA1LzE4LzUzNDYtc2F5aWxpLWthbnVuLXllbmlsZW5lYmlsaXItZW5lcmppLWtheW5ha2xhcmluaW4vYW1wLyxyZWFkLEFkb3B0aW9uIGRhdGUgcmVhZCBmcm9tIHRoZSBhbWVuZG1lbnQgbm90YXRpb24gJzI5LzEyLzIwMTAtNjA5NC8xJyBpbiB0aGUgNTM0NiB0ZXh0LiBHYXpldHRlIGRhdGUgbm90IHJlYWQuCmdvcC0yMDExLGh0dHBzOi8vd3d3LmVwaWFzLmNvbS50ci93cC1jb250ZW50L3VwbG9hZHMvMjAyMi8wNC9FUElBU19HT1BfQlJPU1VSLnBkZixyZWFkLEVQxLBBxZ4gZGF5LWFoZWFkIGJyb2NodXJlOiAnZXN0YWJsaXNoZWQgb24gMSBEZWNlbWJlciAyMDExJy4KbGF3LTY0NDYsaHR0cHM6Ly93d3cuYWxvbWFsaXllLmNvbS8yMDEzLzAzLzMwL2VsZWt0cmlrLXBpeWFzYXNpLWthbnVudS02NDQ2LXNheWlsaS1rYW51bi9hbXAvLHJlYWQsIkhlYWRlciBhbmQgQXJ0aWNsZXMgMSB0byAzIHJlYWQ7IHRoZSByZXBlYWwgYXJ0aWNsZSB3YXMgbm90IG9uIHRoZSBwYWdlLCBzbyB3aGljaCBwYXJ0cyBvZiA0NjI4IGl0IHJlcGVhbGVkIGlzIG5vdCBjb25maXJtZWQgaGVyZS4iCnByaXYtMjAxMyxodHRwczovL3d3dy5ibG9vbWJlcmdodC5jb20vc2ltc2VrLWVsZWt0cmlnaW4tb3plbC1zZWt0b3JlLWRldnJpLXRhbWFtbGFuZGktMTQzNDY3OSwicmVhZCwgbm90IGNvbmZpcm1lZCBpbiB0aGUgZ2F6ZXR0ZSIsU2luZ2xlIG5ld3MgaXRlbTsgdGhlIHByaXZhdGlzaW5nIGJvZHkgaXMgbm90IG5hbWVkIG9uIHRoZSBwYWdlICjDlsSwQiBhc3N1bWVkKS4KcmVnLXllay0yMDEzLGh0dHBzOi8vd3d3LmFsb21hbGl5ZS5jb20vMjAyMi8wMi8xMC95ZW5pbGVuZWJpbGlyLWVuZXJqaS1rYXluYWtsYXJpbmluLWJlbGdlbGVuZGlyaWxtZXNpLTEwLTAyLTIwMjIvYW1wLyxyZWFkLEJhc2UgZGF0ZSBhbmQgbnVtYmVyIHJlYWQgZnJvbSB0aGUgMjAyMiBhbWVuZG1lbnQgcGFnZS4KcmVnLWxpc2Fucy0yMDEzLGh0dHBzOi8vd3d3LmFsb21hbGl5ZS5jb20vMjAxMy8xMS8wMi9lbGVrdHJpay1waXlhc2FzaS1saXNhbnMteW9uZXRtZWxpZ2kvYW1wLyxyZWFkLEhlYWRlciByZWFkOyB0aGUgbGljZW5jZSB0eXBlcyBhbmQgdGVybXMgd2VyZSBub3Qgb24gdGhlIHBhZ2UuCnJlZy1pdGhhbGF0LTIwMTQsaHR0cHM6Ly93d3cuYWxvbWFsaXllLmNvbS8yMDIxLzA0LzI0L2VsZWt0cmlrLXBpeWFzYXNpLWl0aGFsYXQtdmUtaWhyYWNhdC1kZWdpc2lrbGlrLTI0LTA0LTIwMjEvYW1wLyxyZWFkLEJhc2UgZGF0ZSBhbmQgbnVtYmVyIHJlYWQgZnJvbSB0aGUgMjAyMSBhbWVuZG1lbnQgcGFnZS4KcmVnLXNlYmVrZS0yMDE0LGh0dHBzOi8vd3d3LmFsb21hbGl5ZS5jb20vMjAxNC8wNS8yOC9lbGVrdHJpay1zZWJla2UteW9uZXRtZWxpZ2kvYW1wLyxyZWFkLEhlYWRlciByZWFkLgplcGlhcy1yZWctMjAxNSxodHRwczovL3d3dy5lcGlhcy5jb20udHIvd3AtY29udGVudC91cGxvYWRzLzIwMTYvMDEvZXBpYXMtdGVza2lsYXQtbWV2enVhdC1nb3Z0ci5wZGYscmVhZCxFUMSwQcWeIHBhZ2U7IGxpc3RzIGdhemV0dGUgbnVtYmVycyBhbmQgZGF0ZXMuCmdpcC0yMDE1LCxub3QgcmVhZCwiRVDEsEHFniBtYXJrZXQgaGFuZGJvb2sgKHByb2plY3QgZG9jdW1lbnQpLCBzZWN0aW9uIDIgYW5kIGFwcGVuZGljZXMuIgplcGlhcy0yMDE1LTA5LGh0dHBzOi8vd3d3LmJsb29tYmVyZ2h0LmNvbS9lbGVrdHJpay1waXlhc2FzaW5kYS1lcGlhcy1kb25lbWktYmFzbGFkaS0xODI1MDE4LHJlYWQsTmV3cyBpdGVtIGFuZCBFUMSwQcWeIHRyYW5zaXRpb24gYW5ub3VuY2VtZW50IGFncmVlIG9uIDEgU2VwIDIwMTUuCmVudHNvZS0yMDE2LGh0dHBzOi8vd3d3LnRlaWFzLmdvdi50ci9lbi1VUy9pbnRlcm5hdGlvbmFsLW9yZ2FuaXphdGlvbnMscmVhZCxURcSwQcWeIHBhZ2UuCnRyYW5zcGFyZW5jeS0yMDE2LCxub3QgcmVhZCwiRVDEsEHFniBtYXJrZXQgaGFuZGJvb2sgKHByb2plY3QgZG9jdW1lbnQpLCBzZWN0aW9uIDIgYW5kIGFwcGVuZGljZXMuIFRoZSBoYW5kYm9vayBhbHNvIGdpdmVzIGFuIDE4IE1hcmNoIGRhdGUgZm9yIEVQxLBBxZ4ncyBvd24gZm91bmRpbmcuIgp0YWxlcC0yMDE2LGh0dHBzOi8vd3d3LmVwZGsuZ292LnRyL0RldGF5L0ljZXJpay8zLTAtMC00OS95b25ldG1lbGlrbGVyLHJlYWQsIkRhdGUgYW5kIGdhemV0dGUgbnVtYmVyIGZyb20gRVBESydzIHJlZ3VsYXRpb24gbGlzdCAoc2NyZWVuc2hvdCBzdXBwbGllZCBieSB0aGUgcHJvamVjdCBvd25lcikuIENvbnRlbnQgcmVhZCBpbiBhIHRleHQgc3VwcGxpZWQgYnkgdGhlIHVzZXIsIHdoaWNoIGhhcyBubyBhbWVuZG1lbnQgbWFya3MgYW5kIG5vIGdhemV0dGUgaGVhZGVyLCBzbyBpdCBpcyB0YWtlbiB0byBiZSB0aGUgZmlyc3QgdmVyc2lvbiB3aXRob3V0IGNvbmZpcm1pbmcgdGhhdC4iCmxhdy02NzE5LGh0dHBzOi8vZW5lcmppLmdvdi50ci8vTWVkaWEvRGl6aW4vRUlHTS9lbi9FbGVrdHJpay80MDAyMi1lbGVrdHJpay1waXlhc2FzaS1rYW51bnUucGRmLHJlYWQsIk1pbmlzdHJ5LWhvc3RlZCBjb25zb2xpZGF0ZWQgdGV4dCwgZm9vdG5vdGVzLiBEYXRlcyBhcmUgYXMgcHJpbnRlZCB0aGVyZSAoYWRvcHRpb24gZGF0ZXMpOyBnYXpldHRlIGRhdGVzIHdlcmUgbm90IHJlYWQuIgpyZWcteWVrYS0yMDE2LGh0dHBzOi8vd3d3LmVyZGVtLWVyZGVtLmF2LnRyL2JpbGdpLWJhbmthc2kveWVuaWxlbmViaWxpci1lbmVyamkta2F5bmFrLWFsYW5sYXJpLXlvbmV0bWVsaWdpLHJlYWQsTGF3IGZpcm0gbm90ZS4KeWFyaXNtYS0yMDE3LCxub3QgcmVhZCwiUmVhZCBpbiBhIGNvbnNvbGlkYXRlZCB0ZXh0IHN1cHBsaWVkIGJ5IHRoZSB1c2VyOyB0aGUgYW1lbmRtZW50IHRhYmxlIGxpc3RzIFJHIDMwMDY1LCAzMDg2NyBhbmQgMzE0NDEuIFdoYXQgdGhlIHR3byBhbWVuZG1lbnRzIGNoYW5nZWQgd2FzIG5vdCByZWFkLiIKeWVrYS0yMDE3LGh0dHBzOi8vd3d3LmVuZXJkYXRhLm5ldC9wdWJsaWNhdGlvbnMvZGFpbHktZW5lcmd5LW5ld3Mvc2llbWVucy13b24tMS1ndy13aW5kLXRlbmRlci11bmRlci15ZWthcy1mcmFtZXdvcmstdHVya2V5Lmh0bWwsInJlYWQsIG5vdCBjb25maXJtZWQgaW4gdGhlIGdhemV0dGUiLERhdGUgZnJvbSB0aGUgQWxvbWFsaXllIG5ld3MgaXRlbSBVUkw7IHRoZSBFbmVyZGF0YSBwYWdlJ3Mgb3duIHRleHQgZGF0ZXMgdGhlIHByb3Bvc2FscyB0byAyNyBKdWwgMjAxNyBhbmQgdGhlIGFydGljbGUgdG8gNCBBdWcgMjAxNy4KeWFuLTIwMTcsaHR0cHM6Ly93d3cuYWxvbWFsaXllLmNvbS8yMDE3LzExLzI2L2VsZWt0cmlrLXBpeWFzYXNpLXlhbi1oaXptZXRsZXIteW9uZXRtZWxpZ2ktMjAxNy8scmVhZCxIZWFkZXIgcmVhZC4Ka2FwYXNpdGUtMjAxOCxodHRwczovL3d3dy5hbG9tYWxpeWUuY29tLzIwMTgvMDEvMjAvZWxla3RyaWstcGl5YXNhc2kta2FwYXNpdGUtbWVrYW5pem1hc2kteW9uZXRtZWxpZ2kvYW1wLyxyZWFkLCJSZWFkIGluIGZ1bGwuIEVQREsncyByZWd1bGF0aW9uIHBhZ2UgKHNjcmVlbnNob3Qgc3VwcGxpZWQgYnkgdGhlIHByb2plY3Qgb3duZXIsIGN1dCBvZmYgYXQgdGhlIGJvdHRvbSkgbGlzdHMgbGF0ZXIgdmVyc2lvbnM6IFJHIDMxNDg3ICgyMSBNYXkgMjAyMSksIDMxNjkzICgxOCBEZWMgMjAyMSwgbWFya2VkIG9sZCB2ZXJzaW9uKSwgMzI0MTYgNXRoIG3DvGtlcnJlciAoMzEgRGVjIDIwMjMpLCAzMjYxMiAoMjUgSnVsIDIwMjQpIGFuZCAzMjc3MSAoMyBKYW4gMjAyNSkuIFRoZWlyIGNvbnRlbnQgd2FzIG5vdCByZWFkLiBUaGUgMjAyMSByZWd1bGF0aW9uIChzZWUgYmVsb3cpLCBzdXBwbGllZCBhcyBhIGNvbnNvbGlkYXRlZCB0ZXh0LCByZXBlYWxzIHRoaXMgb25lIGluIGl0cyBBcnQuIDEzLiIKbGF3LTcxMDMsaHR0cHM6Ly9lbmVyamkuZ292LnRyLy9NZWRpYS9EaXppbi9FSUdNL2VuL0VsZWt0cmlrLzQwMDIyLWVsZWt0cmlrLXBpeWFzYXNpLWthbnVudS5wZGYscmVhZCwiTWluaXN0cnktaG9zdGVkIGNvbnNvbGlkYXRlZCB0ZXh0LCBmb290bm90ZXMuIEdhemV0dGUgZGF0ZSBub3QgcmVhZC4iCnR1a2V0aWNpLTIwMTgsLG5vdCByZWFkLCJSZWFkIGluIGEgY29uc29saWRhdGVkIHRleHQgc3VwcGxpZWQgYnkgdGhlIHVzZXIgKGFtZW5kbWVudCB0YWJsZTogMzA0MzYsIDMxNDAxLCAzMTgwMywgMzI3ODIpLiBUaGUgMTAwLDAwMCBrV2ggd29yZGluZyBjb21lcyBmcm9tIHRoZSBKYW4gMjAyNSBhbWVuZG1lbnQgbWFyazsgdGhlIGVhcmxpZXIgd29yZGluZyB3YXMgbm90IHJlYWQuIgpsYXctNzE2MixodHRwczovL2VuZXJqaS5nb3YudHIvL01lZGlhL0RpemluL0VJR00vZW4vRWxla3RyaWsvNDAwMjItZWxla3RyaWstcGl5YXNhc2kta2FudW51LnBkZixyZWFkLCJNaW5pc3RyeS1ob3N0ZWQgY29uc29saWRhdGVkIHRleHQsIGZvb3Rub3Rlcy4iCmxhdy03MTY0LGh0dHBzOi8vZW5lcmppLmdvdi50ci8vTWVkaWEvRGl6aW4vRUlHTS9lbi9FbGVrdHJpay80MDAyMi1lbGVrdHJpay1waXlhc2FzaS1rYW51bnUucGRmLHJlYWQsIk1pbmlzdHJ5LWhvc3RlZCBjb25zb2xpZGF0ZWQgdGV4dCwgZm9vdG5vdGVzLiIKcmVnLWxpc2Fuc3Npei0yMDE5LGh0dHBzOi8vd3d3LmFsb21hbGl5ZS5jb20vMjAxOS8wNS8xMi9lbGVrdHJpay1waXlhc2FzaS1saXNhbnNzaXotZWxla3RyaWstdXJldGltL2FtcC8scmVhZCwiQ29uc29saWRhdGVkIHRleHQgcmVhZDsgdGhlIDEgTVcgZmlndXJlIGlzIGFzIHdyaXR0ZW4gdGhlcmUsIHRoZSBjdXJyZW50IHByZXNpZGVudGlhbCBsaW1pdCB3YXMgbm90IGxvb2tlZCB1cC4iCnZlcC1kZWNpc2lvbi0yMDE5LGh0dHBzOi8vd3d3LmxleHBlcmEuY29tLnRyL21ldnp1YXQva3VydWwta2FyYXJsYXJpL2VuZXJqaS1waXlhc2FzaS1kdXplbmxlbWUta3VydWx1bnVuLTA1LTEyLTIwMTktdGFyaWhsaS12ZS04OTY1LTItc2F5aWxpLWthcmFyaS04OTY1LTItMi80LHJlYWQsIlRpdGxlLCBkYXRlIGFuZCBnYXpldHRlIG51bWJlciByZWFkIG9uIHRoZSBwYWdlLiIKcmVnLXRhcmlmZWxlci0yMDIwLGh0dHBzOi8vd3d3LmFsb21hbGl5ZS5jb20vMjAyMC8wNi8xOS9lbGVrdHJpay1waXlhc2FzaS10YXJpZmVsZXIteW9uZXRtZWxpZ2ktMi8scmVhZCwiSGVhZGVyIGFuZCBBcnRpY2xlIDUgcmVhZDsgdGhlIHBhZ2Ugd2FzIGN1dCBvZmYsIHNvIHdoZXRoZXIgaXQgcmVwbGFjZXMgYW4gZWFybGllciB0ZXh0IHdhcyBub3QgcmVhZC4iCmNiLTIwMjAtMDksaHR0cHM6Ly93d3cuZ29uZW4uY29tLnRyLz9wPTExMDE0LHJlYWQsTGF3IGZpcm0gbm90ZTsgZGVjaXNpb24gbnVtYmVyIG5vdCBzdGF0ZWQuCnJlZy15ZWtnLTIwMjAsaHR0cHM6Ly93d3cuYWxvbWFsaXllLmNvbS8yMDIwLzExLzE0L2VuZXJqaS1rYXluYWstZ2FyYW50aS1iZWxnZXNpLXlvbmV0bWVsaWdpLyxyZWFkLEhlYWRlciBhbmQgQXJ0aWNsZSA1IHJlYWQuCmxhdy03MjU3LGh0dHBzOi8vd3d3LmVyZGVtLWVyZGVtLmF2LnRyL2JpbGdpLWJhbmthc2kvZG9nYWxnYXotZWxla3RyaWsteWVuaWxlbmViaWxpci1lbmVyamktdmUtbWFkZW4tYWxhbmluZGEtZHV6ZW5sZW1lbGVyLWljZXJlbi1rYW51bi1kZWdpc2lrbGlnaS15dXJ1cmx1Z2UtZ2lyZGkscmVhZCxMYXcgZmlybSBub3RlLgpmcmVlLTIwMjEsaHR0cHM6Ly93d3cuZXJkZW0tZXJkZW0uYXYudHIvYmlsZ2ktYmFua2FzaS9lbGVrdHJpa3RlLXNlcmJlc3QtdHVrZXRpY2ktbGltaXRpLWR1c3VydWxkdSxyZWFkLCJMYXcgZmlybSBub3RlLCB3aGljaCBjb250YWlucyBhIHR5cG8gaW4gdGhlIGVmZmVjdGl2ZSB5ZWFyLiIKY2ItMzQ1MyxodHRwczovL3d3dy5zb3pjdS5jb20udHIveWVuaWxlbmViaWxpci1lbmVyamlkZS1kZXN0ZWstZml5YXRsYXJpLWRvbGFyZGFuLXRseWUtY2V2cmlsZGktd3A2MjM1NzQ0LHJlYWQsIkRlY2lzaW9uIG51bWJlciBhbmQgZGF0ZSByZWFkIGluIHRoZSBGZWIgMjAyMiByZWd1bGF0aW9uIHRleHQ7IGxpcmEgcHJpY2VzIGZyb20gYSBwcmVzcyByZXBvcnQgKFPDtnpjw7wsIDMwIEphbiAyMDIxKSwgZ2F6ZXR0ZSBkYXRlIG5vdCByZWFkLiIKZHV5LTIwMjEsaHR0cHM6Ly93d3cuYWxvbWFsaXllLmNvbS8yMDIxLzAyLzIwL2VsZWt0cmlrLXBpeWFzYXNpLWRlbmdlbGVtZS12ZS11emxhc3Rpcm1hLWRlZ2lzaWtsaWstMjAtMDItMjAyMS9hbXAvLHJlYWQsUmVhZCBpbiBmdWxsLgpyZWctaXRoYWxhdC0yMDIxLGh0dHBzOi8vd3d3LmFsb21hbGl5ZS5jb20vMjAyMS8wNC8yNC9lbGVrdHJpay1waXlhc2FzaS1pdGhhbGF0LXZlLWlocmFjYXQtZGVnaXNpa2xpay0yNC0wNC0yMDIxL2FtcC8scmVhZCxSZWFkIGluIGZ1bGwuCnJlZy1kZXBvbGFtYS0yMDIxLGh0dHBzOi8vd3d3LmVyZGVtLWVyZGVtLmF2LnRyL2JpbGdpLWJhbmthc2kvZWxla3RyaWstZGVwb2xhbWEtZmFhbGl5ZXRpbmUtaWxpc2tpbi1ndW5jZWwtZHV6ZW5sZW1lbGVyLHJlYWQsTGF3IGZpcm0gbm90ZTsgbnVtYmVyIGFuZCBkYXRlIGFsc28gbWF0Y2ggdGhlIEFsb21hbGl5ZSBwYWdlLgp2ZXAtMjAyMSxodHRwczovL3d3dy5la29ub21pc3QuY29tLnRyL2Vrb25vbWlzdC92YWRlbGktZWxla3RyaWstcGl5YXNhc2ktaXNsZW1lLWFjaWxkaS5odG1sLHJlYWQsTmV3cyBpdGVtOyB0aGUgY2xlYXJpbmcgcm9sZSBvZiBUYWthc2JhbmsgaXMgZnJvbSB0aGUgaGFuZGJvb2suCmthcGFzaXRlLTIwMjEsLG5vdCByZWFkLCJSZWFkIGluIHRoZSBjb25zb2xpZGF0ZWQgdGV4dCBzdXBwbGllZCBieSB0aGUgdXNlciAoQXJ0LiAxMyByZXBlYWxzIHRoZSAyMDE4IHJlZ3VsYXRpb24pLiBXaGF0IHRoZSBEZWMgMjAyMyBhbmQgMjAyNSBhbWVuZG1lbnRzIHJlcGxhY2VkLCBhbmQgd2hhdCB0aGUgdHdvIHJlcGVhbGVkIGV4Y2x1c2lvbiBjcml0ZXJpYSB3ZXJlLCBpcyBub3QgaW4gdGhlIHRleHQuIgpyZWcteWVrLTIwMjIsaHR0cHM6Ly93d3cuYWxvbWFsaXllLmNvbS8yMDIyLzAyLzEwL3llbmlsZW5lYmlsaXItZW5lcmppLWtheW5ha2xhcmluaW4tYmVsZ2VsZW5kaXJpbG1lc2ktMTAtMDItMjAyMi9hbXAvLHJlYWQsUmVhZCBpbiBmdWxsLgpwcmljZS1jYXBzLGh0dHBzOi8vdHNrYi5jb20udHIvdXBsb2Fkcy9maWxlL2VuZXJqaS1idWx0ZW5pLW1hcnQtMjAyMi5wZGYscmVhZCxJbnRlcm5hbCB0YWJsZTsgZWFjaCByb3cgaGFzIGl0cyBvd24gc291cmNlIGFuZCBzdGF0dXMuIFByb2NlZHVyZSBuYW1lIGZyb20gRVBESydzIHJlZ3VsYXRpb24gcGFnZSAoaHR0cHM6Ly93d3cuZXBkay5nb3YudHIvRGV0YXkvSWNlcmlrLzMtMC0xNTktMy95b25ldG1lbGlrbGVyKTsgaXRzIGRhdGUgd2FzIG5vdCBzaG93bi4KcmVnLXNhcmotMjAyMixodHRwczovL3d3dy5lcmRlbS1lcmRlbS5hdi50ci9iaWxnaS1iYW5rYXNpL3NhcmotaGl6bWV0aS15b25ldG1lbGlnaS15YXlpbWxhbmRpLHJlYWQsTGF3IGZpcm0gbm90ZTsgbnVtYmVyIGFuZCBkYXRlIGZyb20gdGhpcyBub3RlLgpsYXctNzQxNyxodHRwczovL3d3dy5nc2dodWt1ay5jb20vdHIvYnVsdGVubGVyLXlheWlubGFyL2R1eXVydWxhci82NDQ2LXNheWlsaS1lbGVrdHJpay1waXlhc2FzaS1rYW51bnVuZGEtb25lbWxpLWRlZ2lzaWtsaWstZ3JlZW4tcHBhLW1vZGVsaS5odG1sLHJlYWQsTGF3IGZpcm0gbm90ZS4KbGF3LTc0MjksaHR0cHM6Ly93d3cuYWxvbWFsaXllLmNvbS8yMDIyLzEyLzI4LzI4LWFyYWxpay0yMDIyLXRhcmlobGktcmVzbWktZ2F6ZXRlZGUteWF5aW1sYW5hbi1tZXZ6dWF0L2FtcC8scmVhZCxOdW1iZXIgYW5kIGdhemV0dGUgcmVhZDsgYWdncmVnYXRpb24gbGluayBpbmZlcnJlZC4KcmVnLWxpc2Fuc3Npei0yMDIzLGh0dHBzOi8vd3d3LmFsb21hbGl5ZS5jb20vMjAyMy8wMy8wMi9lbGVrdHJpay1waXlhc2FzaW5kYS1saXNhbnNzaXotZWxla3RyaWstdXJldGltLXlvbmV0bWVsaWdpbmRlLWRlZ2lzaWtsaWstMDItMDMtMjAyMy9hbXAvLHJlYWQsUmVhZCBpbiBmdWxsLgpnaXAtMjAyNCxodHRwczovL3d3dy5hbG9tYWxpeWUuY29tLzIwMjMvMTIvMTkvZWxla3RyaWstcGl5YXNhc2ktZGVuZ2VsZW1lLXZlLXV6bGFzdGlybWEteW9uZXRtZWxpZ2luZGUtZGVnaXNpa2xpay0xOS0xMi0yMDIzL2FtcC8scmVhZCxSZWFkIGluIGZ1bGw7IHRoZSB0ZXh0IGRvZXMgbm90IHVzZSB0aGUgdGVybSAnYmxvY2sgb3JkZXJzJy4Kb2xjdW0tMjAyMywsbm90IHJlYWQsIlJlYWQgaW4gYSBjb25zb2xpZGF0ZWQgdGV4dCBzdXBwbGllZCBieSB0aGUgdXNlciAoYW1lbmRtZW50IHRhYmxlOiAzMjQxMywgMzI1NjksIDMyNjczLCAzMjc1OSwgMzMxNDQpLiIKcmVnLXRvcGxheWljaS0yMDI0LGh0dHBzOi8vd3d3LmVyZGVtLWVyZGVtLmF2LnRyL2JpbGdpLWJhbmthc2kvZWxla3RyaWstcGl5YXNhc2luZGEtdG9wbGF5aWNpbGlrLWZhYWxpeWV0aS15b25ldG1lbGlnaSxyZWFkLCJMYXcgZmlybSBub3RlIGZvciBudW1iZXIsIGRhdGUgYW5kIGVmZmVjdGl2ZSBkYXRlOyBjYXBhY2l0eSBsaW1pdHMgZnJvbSB0aGUgaGFuZGJvb2suIgpmcmVlLTIwMjUsaHR0cHM6Ly93d3cuZWtvbm9taWdhemV0ZXNpLmNvbS9zZWt0b3ItaGFiZXJsZXJpL2VuZXJqaS9zZXJiZXN0LXR1a2V0aWNpLWxpbWl0aS03NTAta2lsb3ZhdHNhYXRlLWR1c3VydWxkdS00NDg5OCwicmVhZCwgbm90IGNvbmZpcm1lZCBpbiB0aGUgZ2F6ZXR0ZSIsQXJ0aWNsZSBkYXRlZCAxNyBEZWMgMjAyNDsgdGhlIGRlY2lzaW9uIGRhdGUgaXMgbm90IHN0YXRlZCB0aGVyZS4KcmVnLWRlcG9sYW1hLTIwMjUsaHR0cHM6Ly93d3cuYWxvbWFsaXllLmNvbS8yMDI1LzAxLzIxL2VsZWt0cmlrLXBpeWFzYXNpbmRhLWRlcG9sYW1hLWZhYWxpeWV0bGVyaS1kZWdpc2lrbGlrLTIxLTAxLTIwMjUvYW1wLyxyZWFkLCJHYXpldHRlIHRleHQgZm9yIHRoZSBzdG9yYWdlIGFtZW5kbWVudDsgdGhlIHJlc3QgZnJvbSBhIG5ld3MgcmVwb3J0IChFa29ub21pIEdhemV0ZXNpKSwgbm90IHJlYWQgaW4gdGhlIGdhemV0dGUuIgpkdXktMjAyNS0wMSwsbm90IHJlYWQsUmVhZCBpbiB0aGUgY29uc29saWRhdGVkIERVWSB0ZXh0IHN1cHBsaWVkIGJ5IHRoZSB1c2VyIChhbWVuZG1lbnQgbWFya3MgUkctMjEvMS8yMDI1LTMyNzg5IGFuZCB0aGUgYW1lbmRtZW50IHRhYmxlKS4gVGhlIGdhemV0dGUgaXNzdWUgaXRzZWxmIHdhcyBub3Qgb3BlbmVkLgpjbGltYXRlLTIwMjUsaHR0cHM6Ly93d3cuYWxvbWFsaXllLmNvbS8yMDI1LzA3LzA5Lzc1NTItc2F5aWxpLWlrbGltLWthbnVudS9hbXAvLHJlYWQsUmVhZC4KbGF3LTc1NTQsLG5vdCByZWFkLCJEYXRlIGFuZCBudW1iZXIgYXMgcHJpbnRlZCBpbiBhIGZvb3Rub3RlIG9mIHRoZSBjb25zb2xpZGF0ZWQgTGF3IDY0NDYgc3VwcGxpZWQgYnkgdGhlIHVzZXI7IHRoZSBnYXpldHRlIG51bWJlciBvZiBMYXcgNzU1NCB3YXMgbm90IHNob3duLiBUaGUgUHJlc2lkZW50aWFsIGRlY2lzaW9uIDEwNzA3IChSRyAzMzExMiwgMTkgRGVjIDIwMjUpIGNpdGVkIGluIHRoZSBzYW1lIHRleHQgZXh0ZW5kcyBhIHBlcmlvZCBpbiBhbm90aGVyIGFydGljbGUsIHdoaWNoIHdhcyBub3QgaWRlbnRpZmllZC4iCmZyZWUtMjAyNixodHRwczovL3d3dy5jbmJjZS5jb20vZW5lcmppL2VsZWt0cmlrdGUtMjAyNi1pY2luLXNlcmJlc3QtdHVrZXRpY2ktbGltaXRpLWJlbGlybGVuZGktaDIxNjk5LHJlYWQsTmV3cyBpdGVtIHdpdGggZGVjaXNpb24gbnVtYmVyIGFuZCBnYXpldHRlIG51bWJlci4KcmVnLXllay0yMDI2LGh0dHBzOi8vd3d3LmVrb25vbWlnYXpldGVzaS5jb20vc2VrdG9yLWhhYmVybGVyaS95ZWtkZW1kZW4teWFyYXJsYW5tYS1rb3N1bGxhcmluZGEtZGVnaXNpa2xpay02ODQ5OCwicmVhZCwgbm90IGNvbmZpcm1lZCBpbiB0aGUgZ2F6ZXR0ZSIsTmV3cyBpdGVtIG9ubHk7IG5vdCB5ZXQgcmVhZCBpbiB0aGUgZ2F6ZXR0ZS4KcmVnLWRlcG9sYW1hLTIwMjUtMTIsaHR0cHM6Ly93d3cuYWxvbWFsaXllLmNvbS8yMDI1LzEyLzI5L2VsZWt0cmlrLXBpeWFzYXNpbmRhLWRlcG9sYW1hLWZhYWxpeWV0bGVyaS15b25ldG1lbGlnaW5kZS1kZWdpc2lrbGlrLTI5LTEyLTIwMjUvLHJlYWQsUmVhZDsgdGhlIGFubmV4ZXMgd2VyZSBub3QgYXZhaWxhYmxlIG9uIHRoZSBwYWdlLgp5YW4tMjAyNS0xMixodHRwczovL3d3dy5hbG9tYWxpeWUuY29tLzIwMjUvMTIvMjkvZWxla3RyaWstcGl5YXNhc2kteWFuLWhpem1ldGxlci15b25ldG1lbGlnaW5kZS1kZWdpc2lrbGlrLTI5LTEyLTIwMjUvLHJlYWQsUmVhZC4KZHV5LTIwMjUtMTIsLG5vdCByZWFkLCJTdHJ1Y3R1cmUgcmVhZCBpbiB0aGUgY29uc29saWRhdGVkIERVWSB0ZXh0IHN1cHBsaWVkIGJ5IHRoZSB1c2VyIChtYXJrcyBSRy0yOS8xMi8yMDI1LTMzMTIyLCBlZmZlY3RpdmUgZGF0ZSBmb290bm90ZSAxLzEvMjAyNikuIENvZWZmaWNpZW50IHZhbHVlcyBmcm9tIHRoZSBoYW5kYm9vaywgc2VjdGlvbiAyMTsgZGVjaXNpb24gMTQwMzAgbm90IHJlYWQuIgp0YXJpZmYtMjAyNixodHRwczovL21lZHlhc2NvcGUudHYvMjAyNi8wNC8wMy9kb2dhbGdhei12ZS1lbGVrdHJpZ2UteXV6ZGUtMjUtemFtLWdlbGRpLywicmVhZCwgbm90IGNvbmZpcm1lZCBpbiB0aGUgZ2F6ZXR0ZSIsTmV3cyBpdGVtLgpsaXNhbnNzaXotbWFoc3VwLTIwMjYsLG5vdCByZWFkLCJSZWFkIGluIGEgc2Nhbm5lZCBjb3B5IG9mIHRoZSBnYXpldHRlIHBhZ2Ugc3VwcGxpZWQgYnkgdGhlIHVzZXIgKE9DUjsgb25seSB0aGUgZmlyc3QgcGFnZXMgd2VyZSBjaGVja2VkIGNsb3NlbHksIHNvIHNjb3BlIGRldGFpbHMgYmV5b25kIEFydC4gMSB0byA1IGFyZSBub3QgcmVsaWVkIG9uKS4iCmR1eS0yMDI2LTEwLGh0dHBzOi8vd3d3LmVuZXJqaWd1bmx1Z3UubmV0L2RlbmdlbGVtZS15b25ldG1lbGlnaW5kZS0yOC1tYWRkZWxpay1kZWdpc2lrbGlrLTcwMjU3aC5odG0scmVhZCwiQW1lbmRtZW50IHRleHQgKDI4IGFydGljbGVzKSBhbmQgY29uc29saWRhdGVkIERVWSB0ZXh0LCBib3RoIHN1cHBsaWVkIGJ5IHRoZSB1c2VyLiBUaGUgZ2F6ZXR0ZSBpc3N1ZSBpdHNlbGYgd2FzIG5vdCBvcGVuZWQuIFByZXNzIHJlcG9ydHMgKEVuZXJqaSBHw7xubMO8xJ/DvCwgRm9yZWtzKSBnYXZlIHRoZSBmaXJzdCBzdW1tYXJ5LiIKbGlzYW5zc2l6LTIwMjYtMTAsaHR0cHM6Ly93d3cuaGFiZXJsZXIuY29tL2Vrb25vbWkvZXBkay1hY2lsLWR1cnVtZGEtbGlzYW5zc2l6LXVyZXRpbWUtdXpha3Rhbi0yMDM0MzQ2NS1oYWJlcmkvLHJlYWQsIkdhemV0dGUgdGV4dCBvZiBSZXNtw64gR2F6ZXRlIDMzNDA1IHN1cHBsaWVkIGJ5IHRoZSB1c2VyIChQREYgb2YgdGhlIGdhemV0dGUgcGFnZSwgcmVhZCBpbiBmdWxsKS4iCmRlcG9sYW1hLTIwMjYtMTAsaHR0cHM6Ly93d3cuYmlyZ3VuLm5ldC9oYWJlci9lbGVrdHJpay1waXlhc2FsYXJpbmEteW9uZWxpay15ZW5pLWR1emVubGVtZS1saXNhbnMtZGVwb2xhbWEtdmUtdGVtaW5hdC1rb3N1bGxhcmktZGVnaXN0aS03NDExMjYscmVhZCwiR2F6ZXR0ZSB0ZXh0IG9mIFJlc23DriBHYXpldGUgMzM0MDUgc3VwcGxpZWQgYnkgdGhlIHVzZXIgKFBERiBvZiB0aGUgZ2F6ZXR0ZSBwYWdlLCByZWFkIGluIGZ1bGwpLiBUaGUgdGV4dCBkb2VzIG5vdCB1c2UgTVdlIG9yIE1XaC4iCnllay0yMDI2LTEwLGh0dHBzOi8vd3d3LmVuZXJqaWd1bmx1Z3UubmV0L3lla2RlbS1mb3JtdWxsZXJpLXJldml6ZS1lZGlsZGlzYWh0ZS1iZWxnZXllLXllbmkteWFwdGlyaW0tZ2VsZGktNzAyNDBoLmh0bSxyZWFkLCJHYXpldHRlIHRleHQgb2YgUmVzbcOuIEdhemV0ZSAzMzQwNSBzdXBwbGllZCBieSB0aGUgdXNlciAoUERGIG9mIHRoZSBnYXpldHRlIHBhZ2UsIHNjYW5uZWQ7IHRleHQgcmVhZCBieSBPQ1IsIHNvIGZvcm11bGEgZGV0YWlscyBhbmQgd29yZGluZyBtYXkgY2FycnkgZXJyb3JzKS4iCmJvYXJkLTIwMjYtMDksaHR0cHM6Ly93d3cudXJmYWRhYnVndW4uY29tL2hhYmVyLzI2MjMxNi9lcGRrZGVuLWVsZWt0cmlrLXBpeWFzYXNpbmEtaWxpc2tpbi03LWt1cnVsLWthcmFyaS1yZXNtaS1nYXpldGVkZS15YXlpbmxhbmRpLmh0bWwscmVhZCwiVGl0bGUsIGRhdGUgYW5kIGdhemV0dGUgbnVtYmVyIHJlYWQgb24gQWxvbWFsaXllJ3MgbGlzdGluZyBvZiB0aGUgMTkgT2N0IDIwMjYgZ2F6ZXR0ZTsgdGhlIGNvbnRlbnQgaXMgZnJvbSBwcmVzcyByZXBvcnRzLCBzaW5jZSB0aGUgZ2F6ZXR0ZSB0ZXh0IGNvdWxkIG5vdCBiZSBvcGVuZWQgZnJvbSBoZXJlLiBSZXBvcnRzOiB1cmZhZGFidWd1biwgWWXFn2lsIEhhYmVyLiIKbGlzYW5zLTIwMjYtMTAsaHR0cHM6Ly93d3cuYWxvbWFsaXllLmNvbS8yMDI2LzEwLzE5LzE5LWVraW0tMjAyNi10YXJpaGxpLXJlc21pLWdhemV0ZWRlLXlheWltbGFuYW4teW9uZXRtZWxpa2xlci8scmVhZCwiR2F6ZXR0ZSB0ZXh0IG9mIFJlc23DriBHYXpldGUgMzM0MDUgc3VwcGxpZWQgYnkgdGhlIHVzZXIgKFBERiBvZiB0aGUgZ2F6ZXR0ZSBwYWdlLCByZWFkIGluIGZ1bGwpLiBUaGUgdGV4dCBzYXlzIHBvd2VyIChnw7zDpykgYnV0IG5hbWVzIG5vIHVuaXQgc3VjaCBhcyBNV2UuIgphbmNpbGxhcnktMjAyNi0xMCxodHRwczovL3d3dy5hbG9tYWxpeWUuY29tLzIwMjYvMTAvMTkvMTktZWtpbS0yMDI2LXRhcmlobGktcmVzbWktZ2F6ZXRlZGUteWF5aW1sYW5hbi15b25ldG1lbGlrbGVyLyxyZWFkLCJHYXpldHRlIHRleHQgb2YgUmVzbcOuIEdhemV0ZSAzMzQwNSBzdXBwbGllZCBieSB0aGUgdXNlciAoUERGIG9mIHRoZSBnYXpldHRlIHBhZ2UsIHJlYWQgaW4gZnVsbCkuIgpiYWdsYW50aS0yMDI2LTEwLGh0dHBzOi8vd3d3LmFsb21hbGl5ZS5jb20vMjAyNi8xMC8xOS8xOS1la2ltLTIwMjYtdGFyaWhsaS1yZXNtaS1nYXpldGVkZS15YXlpbWxhbmFuLXlvbmV0bWVsaWtsZXIvLHJlYWQsIkdhemV0dGUgdGV4dCBvZiBSZXNtw64gR2F6ZXRlIDMzNDA1IHN1cHBsaWVkIGJ5IHRoZSB1c2VyIChQREYgb2YgdGhlIGdhemV0dGUgcGFnZSwgcmVhZCBpbiBmdWxsKS4iCm9zYi0yMDI2LTEwLGh0dHBzOi8vd3d3LmFsb21hbGl5ZS5jb20vMjAyNi8xMC8xOS8xOS1la2ltLTIwMjYtdGFyaWhsaS1yZXNtaS1nYXpldGVkZS15YXlpbWxhbmFuLXlvbmV0bWVsaWtsZXIvLHJlYWQsIkdhemV0dGUgdGV4dCBvZiBSZXNtw64gR2F6ZXRlIDMzNDA1IHN1cHBsaWVkIGJ5IHRoZSB1c2VyIChQREYgb2YgdGhlIGdhemV0dGUgcGFnZSwgcmVhZCBpbiBmdWxsKS4iCmR1eS0yMDI2LTEwLHJlc21pZ2F6ZXRlLmdvdi50ciBpc3N1ZSAzMzQwNSAoZWlnaHQgcmVndWxhdGlvbiB0ZXh0cyksc3VwcGxpZWQsIlRoZSBmZXRjaCB0b29sIHdvdWxkIG5vdCBvcGVuIHRoZSBnYXpldHRlIHBhZ2VzLCBidXQgdGhlIHVzZXIgc3VwcGxpZWQgYWxsIGVpZ2h0IHJlZ3VsYXRpb24gdGV4dHMgKERVWSBhcyBhIFdvcmQgZmlsZSBhbmQgYSBnYXJibGVkIFBERiwgdGhlIG90aGVyIHNldmVuIGFzIGdhemV0dGUtcGFnZSBQREZzOyB0aGUgWUVLIHRleHQgb25seSBhcyBhIHNjYW4sIHJlYWQgYnkgT0NSKS4gVGhlIHNldmVuIGJvYXJkIGRlY2lzaW9ucyAxNDkwNyB0byAxNDkxMyB3ZXJlIG5vdCBzdXBwbGllZCBhbmQgcmVzdCBvbiBwcmVzcyByZXBvcnRzLiIKZHV5LTIwMjYtMTAsU2V0dGxlbWVudCBwZXJpb2QgbGVuZ3RoIGFuZCB0aGUgd29yZCBob3VybHksY2hlY2tlZCwiVGhlIERVWSB0ZXh0IGtlZXBzIG9uZSBob3VyIChBcnQuIDkxKSBhbmQgc2V0cyBmaWZ0ZWVuIG1pbnV0ZXMgZm9yIHRoZSBiYWxhbmNpbmcgcG93ZXIgbWFya2V0IG9ubHkgKEFydC4gOTEoMiksIHRlbXBvcmFyeSBBcnQuIDQwLCBub3QgYmVmb3JlIDEgSmFuIDIwMjcpLiBUaGUgaG91cmx5IHdvcmRpbmcgd2FzIGNoYW5nZWQgaW4gc3BlY2lmaWMgcHJvdmlzaW9ucywgbm90IGV2ZXJ5d2hlcmUuIgpkdXktMjAyNi0xMCxDb25zdW1wdGlvbi1zaWRlIGRldmlhdGlvbiBmcm9tIHRoZSBzdGFydCBvZiAyMDI3LG5vdCBmb3VuZCwiTm8gc3VjaCBkYXRlIGluIHRoZSBlaWdodCByZWd1bGF0aW9uIHRleHRzOyB0aGUgMjAyNyBkYXRlcyB0aGVyZSBjb25jZXJuIHRoZSAxNS1taW51dGUgcGVyaW9kICh0ZW1wb3JhcnkgQXJ0LiA0MCksIHRoZSBiYWxhbmNpbmcgZ3JvdXAgaW1iYWxhbmNlIHJhdGlvICh0ZW1wb3JhcnkgQXJ0LiAzOSkgYW5kIHRoZXJtYWwgbG9hZC1jaGFuZ2UgY3VydmVzICh0ZW1wb3JhcnkgQXJ0LiA0MSkuIE9uZSByZXBvcnQgcHV0cyBpdCBpbiBib2FyZCBkZWNpc2lvbiAxNDkwNywgbm90IHJlYWQuIgpib2FyZC0yMDI2LTA5LEvDnFBTTSBhbmQgS8OcUFNUIGluIHRoZSAxOSBPY3QgMjAyNiBwYWNrYWdlLHBhcnRseSBmb3VuZCwiQm90aCB0ZXJtcyBhcmUgaW4gdGhlIERVWSAoZGV2aWF0aW9uIGZyb20gZXhwZWN0ZWQgcHJvZHVjdGlvbiBvciBjb25zdW1wdGlvbiwgQXJ0LiAxMTApLiBUaGUgT2N0b2JlciBhbWVuZG1lbnQgY2hhbmdlcyBob3cgS8OcUFNUIGlzIHdvcmtlZCBvdXQgZm9yIGFnZ3JlZ2F0b3IgcG9ydGZvbGlvIHBsYW50cyBhbmQgbGVhdmVzIHRvbGVyYW5jZSBjb2VmZmljaWVudHMgdG8gdGhlIGJvYXJkOyB0aGUgY29lZmZpY2llbnQgdmFsdWVzIGFyZSBpbiBkZWNpc2lvbiAxNDkwNywgbm90IHJlYWQuIgpsaXNhbnNzaXotMjAyNi0xMCxTQ0FEQSByZXF1aXJlbWVudCBpbiB0aGUgdW5saWNlbnNlZCBnZW5lcmF0aW9uIGFtZW5kbWVudCxub3QgaW4gdGV4dCwiVGhlIHdvcmQgU0NBREEgYXBwZWFycyBpbiBub25lIG9mIHRoZSBlaWdodCByZWd1bGF0aW9uIHRleHRzLiBUaGV5IHByb3ZpZGUgcmVtb3RlIGNvbnRyb2wgYnkgdGhlIGRpc3RyaWJ1dGlvbiBjb21wYW55IG9yIGluZHVzdHJpYWwgem9uZSwgcmVtb3RlIGNvbnRyb2wgbWVjaGFuaXNtcyBieSBhZ2dyZWdhdG9ycyAoRFVZIEFydC4gNzUoNCkoZSkpLCB1bnBhaWQgb3V0cHV0IG9uIG1pc3NlZCBpbnN0cnVjdGlvbnMsIGFuZCBzYW5jdGlvbnMgb2YgQXJ0LiAxNiBvZiBMYXcgNjQ0NiBmb3IgaW5kdXN0cmlhbCB6b25lcyB0aGF0IGZhaWwgdG8gY2Fycnkgb3V0IGluc3RydWN0aW9ucy4gUGVuYWx0eSBjbGF1c2VzIG9mIHRoZSB1bmxpY2Vuc2VkIGNvbm5lY3Rpb24gYWdyZWVtZW50IHdhaXQgdW50aWwgMzAgQXByIDIwMjcuIgpkZXBvbGFtYS0yMDI2LTEwLCJVbml0cyAoTVdlIG9yIE1XaCkgZm9yIHN0b3JhZ2UgZ3VhcmFudGVlcywgY2FwaXRhbCBhbmQgY2VydGlmaWNhdGVzIixub3QgaW4gdGV4dCxUaGUgTGljZW5jZSBhbmQgU3RvcmFnZSBhbWVuZG1lbnRzIHNheSBwb3dlciAoZ8O8w6cpIGluc3RlYWQgb2YgY2FwYWNpdHkgYW5kIG5hbWUgbm8gdW5pdC4KbGF3LTYwOTQsbWV2enVhdC5nb3YudHIgKGxhdyB0ZXh0KSxibG9ja2VkLCJUaGUgZmV0Y2ggdG9vbCByZWZ1c2VzIG1ldnp1YXQuZ292LnRyLCBzbyB0aGUgZGF0ZSBjYW1lIGZyb20gYW4gYW1lbmRtZW50IG5vdGUgaW4gYW5vdGhlciB0ZXh0LiIKbGF3LTYwOTQsTGF3IDYwOTQgaGVhZGVyIG9uIGEgcmVwcm9kdWN0aW9uLG5vdCBmb3VuZCxHYXpldHRlIGRhdGUgb2YgTGF3IDYwOTQgbm90IHJlYWQ7IG9ubHkgdGhlIGFkb3B0aW9uIGRhdGUgaXMgc2hvd24uCnRldGFzLTIwMTgsTWlsbGl5ZXQgcGFnZSBvbiB0aGUgVEVUQcWeIGFuZCBFw5xBxZ4gbWVyZ2VyLGZhaWxlZCxQYWdlIGNvdWxkIG5vdCBiZSBvcGVuZWQ7IHRoZSBtZXJnZXIgc3RheXMgYSBoYW5kYm9vayBpdGVtIChkcmFmdCkuCmxhdy00MjgzLExhdyAzMDk2IGFuZCBMYXcgNDI4MyAoYnVpbGQtb3BlcmF0ZSBtb2RlbCkgUERGcyxmYWlsZWQsIk5vdCBvcGVuZWQ7IHRoZSBCT1QsIEJPIGFuZCB0cmFuc2ZlciBvZiBvcGVyYXRpbmcgcmlnaHRzIGxhd3MgYXJlIG5vdCBpbiB0aGUgdGFibGUuIgpyZXNtaWdhemV0ZSxyZXNtaWdhemV0ZS5nb3YudHIgaXNzdWVzLGJsb2NrZWQsIk1vc3QgaXNzdWVzIHJlZnVzZWQgYnkgdGhlIGZldGNoIHRvb2w7IEFsb21hbGl5ZSAvYW1wLyBwYWdlcywgd2hpY2ggcmVwcm9kdWNlIHRoZSBnYXpldHRlIHRleHQsIHdlcmUgdXNlZCBpbnN0ZWFkLiIKZnJlZS0yMDIxLGVyZGVtLWVyZGVtIHBhZ2Ugb24gdGhlIDIwMjEgZnJlZSBjb25zdW1lciBsaW1pdCxkaXNjcmVwYW5jeSxUaGUgcGFnZSBnaXZlcyB0aGUgZWZmZWN0aXZlIHllYXIgYXMgMjAyMDsgdGhlIGRlY2lzaW9uIG9mIDE3IERlYyAyMDIwIGFwcGxpZXMgZnJvbSAyMDIxLiBLZXB0IHRoZSBkZWNpc2lvbiBkYXRlLgpsYXctNTM0NixTY2hlZHVsZSBJIHByaWNlcyBvZiBMYXcgNTM0Nixub3QgZm91bmQsIlRoZSBjb25zb2xpZGF0ZWQgdGV4dCBvbiB0aGUgcGFnZSBkb2VzIG5vdCByZXByb2R1Y2UgdGhlIHNjaGVkdWxlcywgc28gbm8gcHJpY2UgaXMgcXVvdGVkIGZvciBpdC4iCmxhdy02NDQ2LFJlcGVhbCBhcnRpY2xlIG9mIExhdyA2NDQ2LG5vdCBmb3VuZCwiTm90IG9uIHRoZSBwYWdlOyB0aGUgbGluayB0byBMYXcgNDYyOCBpcyBzaG93biBhcyBzdWNjZXNzaW9uLCBub3QgYXMgcmVwZWFsLiIKcmVnLXllay0yMDI2LEdhemV0dGUgdGV4dCBvZiB0aGUgRGVjIDIwMjUgWUVLIGFtZW5kbWVudCxub3QgcmVhZCxPbmx5IGEgbmV3cyBpdGVtOyBtYXJrZWQgZHJhZnQuCmR1eS0yMDI1LTEyLENvZWZmaWNpZW50IHZhbHVlcyBvZiB0aGUgRGVjIDIwMjUgaW1iYWxhbmNlIGNoYW5nZSxub3QgcmVhZCwiU3RydWN0dXJlIGNvbmZpcm1lZCBpbiB0aGUgY29uc29saWRhdGVkIERVWTsgdGhlIG51bWJlcnMgKDAuMDYgYW5kIDAuMDMpIGNvbWUgZnJvbSB0aGUgaGFuZGJvb2sgYW5kIGRlY2lzaW9uIDE0MDMwLCBub3QgcmVhZC4iCmR1eS0yMDI1LTAxLEhhbmRib29rIGNsYWltIHRoYXQgdGhlIEphbiAyMDI1IGFtZW5kbWVudCBsZXRzIHRoZSBib2FyZCBzZXQgayBhbmQgbCxub3QgY29uZmlybWVkLE5vdCBmb3VuZCBpbiB0aGUgY29uc29saWRhdGVkIERVWTsgayBhbmQgbCBhbHJlYWR5IGFwcGVhciBpbiB0ZW1wb3JhcnkgQXJ0LiAyMSAoMjAxMSkuIFRoZSBlbnRyeSBub3cgZGVzY3JpYmVzIHdoYXQgdGhlIHRleHQgc2hvd3MuCnJlZy1saXNhbnNzaXotMjAxOSwiVW5saWNlbnNlZCBnZW5lcmF0aW9uIGFtZW5kbWVudHMgb2YgMjAyNCwgTm92IDIwMjUgYW5kIEFwciAyMDI2IixkYXRlcyBjb25maXJtZWQsIlRoZSBjb25zb2xpZGF0ZWQgdGV4dCBzdXBwbGllZCBieSB0aGUgdXNlciBsaXN0cyAxNCBNYXkgMjAyNCAoMzI1NDYpLCAxNyBEZWMgMjAyNCwgMjUgTm92IDIwMjUgKDMzMDg4KSwgMiBBcHIgMjAyNiAoMzMyMTIpIGFuZCAxOSBPY3QgMjAyNjsgd2hhdCB0aGV5IGNoYW5nZWQgd2FzIG5vdCByZWFkLiIKcmVnLWxpc2Fuc3Npei0yMDIzLEFtZW5kbWVudCB0YWJsZSBvZiB0aGUgVW5saWNlbnNlZCBHZW5lcmF0aW9uIFJlZ3VsYXRpb24sZGlzY3JlcGFuY3ksIlRoZSAyIE1hciAyMDIzIGFtZW5kbWVudCAoUkcgMzIxMjApIGlzIG1hcmtlZCB0aHJvdWdob3V0IHRoZSBjb25zb2xpZGF0ZWQgdGV4dCBidXQgbWlzc2luZyBmcm9tIGl0cyBhbWVuZG1lbnQgdGFibGUsIHdoaWNoIGFsc28gbGFja3MgdGhlIE9jdCAyMDIyIGFtZW5kbWVudCBmb3VuZCBlbHNld2hlcmUuIgp0ZWRiaXJsZXIsR2F6ZXR0ZSBkYXRlIG9mIHRoZSBEaXN0cmlidXRpb24gYW5kIFN1cHBseSBMaWNlbmNlIE1lYXN1cmVzIFJlZ3VsYXRpb24sbm90IGZvdW5kLFRoZSB0ZXh0IHN1cHBsaWVkIGJ5IHRoZSB1c2VyIGhhcyBubyBnYXpldHRlIGhlYWRlciBvciBhbWVuZG1lbnQgdGFibGU7IGl0IHJlc3RzIG9uIEFydC4gMTYgb2YgTGF3IDY0NDYuIE5vdCBwbGFjZWQgb24gdGhlIHRpbWVsaW5lLgpyZWctc2ViZWtlLTIwMTQsIkdyaWQgUmVndWxhdGlvbiBhbWVuZG1lbnRzIG9mIERlYyAyMDI0LCBKYW4gMjAyNSBhbmQgRGVjIDIwMjUiLGRhdGVzIGNvbmZpcm1lZCwiVGhlIGNvbnNvbGlkYXRlZCBHcmlkIFJlZ3VsYXRpb24gc3VwcGxpZWQgYnkgdGhlIHVzZXIgbGlzdHMgYW1lbmRtZW50cyBvZiAxNyBEZWMgMjAyNCAoMzI3NTUpLCAyMSBKYW4gMjAyNSAoMzI3ODkpIGFuZCAyOSBEZWMgMjAyNSAoMzMxMjIpOyB3aGF0IHRoZXkgY2hhbmdlZCB3YXMgbm90IHJlYWQuIgpzdHJhdGVneS0yMDA0LE1pbmlzdHJ5IGNvcHkgb2YgdGhlIDIwMDQgc3RyYXRlZ3kgcGFwZXIgKGVuZXJqaS5nb3YudHIpLG5vdCBvcGVuZWQsIlRoZSBmZXRjaCB0b29sIHJlZnVzZWQgdGhlIGFkZHJlc3M7IHRoZSBjb250ZW50IG9uIHRoZSBjYXJkIGlzIGFzIHN1bW1hcmlzZWQgYnkgVEVQQVYsIGFuZCBhIENvbXBldGl0aW9uIEF1dGhvcml0eSByZXBvcnQgcXVvdGVzIHRoZSA3LjggR1doIGZyZWV6ZSBhbmQgdGhlIDIwMTEgdGFyZ2V0LiIKcHJpdi0yMDEzLE51bWJlciBvZiBkaXN0cmlidXRpb24gcmVnaW9ucyBhbmQgYnV5ZXJzLGRpc2NyZXBhbmN5LCJBIG5ld3MgYW5hbHlzaXMgbGlzdHMgMjEgcmVnaW9ucywgMjAgb2YgdGhlbSBwcml2YXRpc2VkIGFuZCBLYXlzZXJpIG5vdDsgdGhlIGZpbmFuY2UgbWluaXN0cnkgcmVwb3J0IGNvdW50cyAyMCBjb21wYW5pZXMgd2l0aCAxOCBzb2xkIHRocm91Z2ggdGhlIHByaXZhdGlzYXRpb24gcHJvZ3JhbW1lIGFuZCAyIGhhbmRsZWQgdW5kZXIgTGF3IDMwOTYuIE5vIGV4YWN0IGNvdW50IG9mIGRpc3RpbmN0IGJ1eWVycyB3YXMgZm91bmQ7IHRoZSBjYXJkIHNheXMgYWJvdXQgdGVuIGxhcmdlIGdyb3Vwcy4iCmhpc3RvcnktMTk5NCxEYXRlIG9mIHRoZSBURUsgc3BsaXQsZGlzY3JlcGFuY3ksQSBsYXctZmlybSBzZWN0b3IgcmVwb3J0IGRhdGVzIHRoZSBURUHFniBhbmQgVEVEQcWeIHNwbGl0IHRvIDE5OTQ7IGVhcmxpZXIgbm90ZXMgc2FpZCAxOTkzLiBUaGUgY2FyZCB1c2VzIDE5OTQuIExhd3MgMzA5NiAoMTk4NCkgYW5kIDM5OTYgKDE5OTQpIHdlcmUgbm90IHJlYWQuCmZyZWUtbGltaXQtMjAyNSxGcmVlIGNvbnN1bWVyIGxpbWl0IGZvciAyMDI1LGRpc2NyZXBhbmN5LCJBIGxhdy1maXJtIHBhZ2Ugc2F5cyAxLDEwMCBrV2ggZm9yIDIwMjU7IGEgbmV3cyBpdGVtIHNheXMgNzUwIGtXaC4gVGhlIHRpbWVsaW5lIGNhcmQgbmFtZXMgb25seSB0aGUgc3RlcHMgdGhhdCB3ZXJlIGNvbmZpcm1lZCAoMyw2MDAgaW4gMjAxNiwgMSwyMDAgaW4gMjAyMSwgNTAwIGluIDIwMjYpLiIKY2FwYWNpdHktc2VyaWVzLCJJbnN0YWxsZWQgY2FwYWNpdHkgYnkgdGVjaG5vbG9neSBmb3IgMjAwNSwgMjAxMSwgMjAxOSBhbmQgMjAyMyIsbGVmdCBvdXQsIlBhcnRpYWwgZmlndXJlcyB3ZXJlIGZvdW5kICgyMDA1IGFuZCAyMDExIGJ5IHNvdXJjZSwgZW5kLTIwMjMgYW5kIE1hciAyMDI2IHRvdGFscykgYnV0IG5vIGNvbnNpc3RlbnQgc2VyaWVzLCBhbmQgbm9uZSBmb3IgdW5saWNlbnNlZCBjYXBhY2l0eS4gTGVmdCBvdXQgdW50aWwgdGhleSBjYW4gYmUgbWF0Y2hlZCB3aXRoIHRoZSBkYXRhIG9uIHRoaXMgc2l0ZS4iCnVubGljZW5zZWQtc2F0dXJhdGlvbixDbG9zdXJlIG9mIHVubGljZW5zZWQgYXBwbGljYXRpb25zIGZvciBncmlkIHNhdHVyYXRpb24gaW4gMjAyMyB0byAyMDI1LG5vdCBmb3VuZCxObyBzb3VyY2UgZm91bmQgZm9yIHRoZSBjbG9zdXJlczsgdGhlIGNhcmQgZm9yIDIwMjYgZGVzY3JpYmVzIG9ubHkgdGhlIHRyYW5zZm9ybWVyIGNlbnRyZSB0YWJsZXMgYW5kIHRoZSBwcmVzcyByZXBvcnQgb2YgdGhlaXIgc2l6ZS4KZXBpYXMtcmVhc29uLFJlYXNvbiBmb3Igc2VwYXJhdGluZyBtYXJrZXQgb3BlcmF0aW9uIGZyb20gVEXEsEHFniBpbiAyMDE1LG5vdCBmb3VuZCwiVGhlIGNhcmQgc2F5cyB3aGF0IG1vdmVkIHRvIEVQxLBBxZ4gYW5kIHdoYXQgVEXEsEHFniBrZXB0LCB3aXRob3V0IGEgcmVhc29uLiIK"><i class="bi bi-download"></i> Research log (CSV)</a>
+</div>
+</div>
+</section>
+<section id="still-to-read" class="level2">
+<h2 class="anchored" data-anchor-id="still-to-read">Still to read</h2>
+<ul>
+<li>Board decisions 14907 to 14913 of the 19 October 2026 package (deviation coefficients, unlicensed connection agreement, offer price reporting, imbalance value, storage licence wording, reactive power agreement); the eight regulation amendments were read, so only the decisions rest on press reports</li>
+<li>Board decision 14030 (11 December 2025) with the imbalance coefficient values, and the December 2024 DUY amendment (known only through the consolidated text)</li>
+<li>Amendments to the Unlicensed Generation Regulation of 2024, November 2025 and April 2026</li>
+<li>The December 2025 YEK Regulation amendment and the 2024 Licence and Grid Regulation amendments</li>
+<li>Laws 3096 and 4283 (build-operate models), the Energy Efficiency Law and the text of the Natural Gas Market Law (4646)</li>
+<li>The 2004 strategy paper itself (the Ministry copy), the 2011 Unlicensed Generation Regulation and the original 2005 wording of the renewable support price</li>
+<li>Why market operation was separated from TEİAŞ in 2015, and the date TEİAŞ’s transmission licence was issued: no source found</li>
+<li>Installed capacity by year and unlicensed capacity by year: left out until they can be matched with the data on this site</li>
+<li>The TETAŞ and EÜAŞ merger, the 2019 Transparency and market operation changes and the Transparency Platform regulation</li>
+<li>The Presidential decision on the support deadline (number), and the gazette text of the free consumer limit decisions</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/trpowerlab\.com");
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            describeNewWindow(link);
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 TR Power Lab · Analysis and charts under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Independent, not affiliated with EPİAŞ, TEİAŞ or EPDK.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Data belong to EPİAŞ Şeffaflık Platformu and the other sources listed in the <a href="../methodology.html#reuse">methodology</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

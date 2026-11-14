@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Price volatility – TR Power Lab</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-3463ae9b2174cc7775b88b49ea23799c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-4863b07d89b4f8933d6745f90135ffcc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script>
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+</script>
+<script type="module">import "https://cdn.plot.ly/plotly-4.1.1.min"</script>
+
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">TR Power Lab</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data">    
+        <li>
+    <a class="dropdown-item" href="../../data/turkiye/index.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data/turkiye/prices.html">
+ <span class="dropdown-text">Prices</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data/turkiye/generation.html">
+ <span class="dropdown-text">Generation and demand</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data/turkiye/volatility.html">
+ <span class="dropdown-text">Volatility</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data/turkiye/gas.html">
+ <span class="dropdown-text">Natural gas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data/turkiye/balancing.html">
+ <span class="dropdown-text">Balancing instructions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data/neighbouring-markets/index.html">
+ <span class="dropdown-text">Neighbouring markets</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-regulation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Regulation</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-regulation">    
+        <li>
+    <a class="dropdown-item" href="../../regulation/index.html">
+ <span class="dropdown-text">Market timeline</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../regulation/institutions.html">
+ <span class="dropdown-text">Institutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../regulation/method.html">
+ <span class="dropdown-text">Method and sources</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../reports/index.html"> 
+<span class="menu-text">Reports</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tools/index.html"> 
+<span class="menu-text">Tools</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../learn/index.html"> 
+<span class="menu-text">Learn</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../methodology.html"> 
+<span class="menu-text">Methodology</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#daily-price-spread" id="toc-daily-price-spread" class="nav-link active" data-scroll-target="#daily-price-spread">Daily price spread</a></li>
+  <li><a href="#the-cost-of-being-out-of-balance" id="toc-the-cost-of-being-out-of-balance" class="nav-link" data-scroll-target="#the-cost-of-being-out-of-balance">The cost of being out of balance</a></li>
+  <li><a href="#intraday-versus-day-ahead" id="toc-intraday-versus-day-ahead" class="nav-link" data-scroll-target="#intraday-versus-day-ahead">Intraday versus day-ahead</a></li>
+  <li><a href="#hours-at-zero" id="toc-hours-at-zero" class="nav-link" data-scroll-target="#hours-at-zero">Hours at zero</a></li>
+  <li><a href="#yearly-summary" id="toc-yearly-summary" class="nav-link" data-scroll-target="#yearly-summary">Yearly summary</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Price volatility</h1>
+<p class="subtitle lead">How much prices move within the day and between markets</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="cell-stamp" class="cell" data-execution_count="2">
+<div id="stamp" class="cell-output cell-output-display" data-execution_count="2">
+<p class="text-muted small">Data through 13 November 2026. Updated automatically each morning from EPİAŞ (last check 14 November 2026, 13:56, Istanbul time).</p>
+</div>
+</div>
+<div id="cell-tiles" class="cell" data-execution_count="3">
+<div id="tiles" class="cell-output cell-output-display" data-execution_count="3">
+<div class="tile-grid"><div class="tile"><p class="eyebrow">Daily PTF spread, last 30 days</p><h3 class="anchored">52.1 EUR/MWh</h3><p>median of daily max − min · 48.2 a year earlier</p></div><div class="tile"><p class="eyebrow">Balancing gap, last 12 months</p><h3 class="anchored">+12.9 / −15.4 EUR/MWh</h3><p>SMF − PTF when the system was short / long</p></div><div class="tile"><p class="eyebrow">Zero-price hours in 2026</p><h3 class="anchored">413 hours</h3><p>42 in the same period of 2025</p></div></div>
+</div>
+</div>
+<section id="daily-price-spread" class="level2">
+<h2 class="anchored" data-anchor-id="daily-price-spread">Daily price spread</h2>
+<p>The daily spread is the gap between the most and the least expensive hour of the day-ahead price. It is a first estimate of what a battery could earn from buying in the cheapest hour and selling in the most expensive one, before efficiency losses, fees and the limits of the battery. The second line, the standard deviation, measures how far hourly prices move around the day’s average. Both are monthly averages of daily values. Euros (the default) make years comparable; lira values rise with inflation. The percentage view divides by the month’s average PTF, so it shows spread relative to the price level: a spread of 100% means the gap between the cheapest and the dearest hour equals the average price.</p>
+<div id="cell-spread-chart" class="cell" data-execution_count="4">
+<div id="spread-chart" class="cell-output cell-output-display">
+<div style="height:420px; width:100%;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.1.1.min.js" integrity="sha256-O24V1F27f8pb0glCkelh3cVHLNiHAJ5gCaVtq2aNch8=" crossorigin="anonymous"></script>                <div id="2efdc8f0-3ada-4f30-bb49-b7ca274d4b26" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("2efdc8f0-3ada-4f30-bb49-b7ca274d4b26")) {                    Plotly.newPlot(                        "2efdc8f0-3ada-4f30-bb49-b7ca274d4b26",                        [{"hovertemplate":"%{y:,.1f} EUR\u002fMWh\u003cextra\u003eDaily spread (max \u2212 min)\u003c\u002fextra\u003e","line":{"color":"#169CAB","width":2},"meta":{"light":"#0E9AA7","dark":"#169CAB","kind":"line"},"mode":"lines","name":"Daily spread (max \u2212 min)","x":["2011-11-01T00:00:00.000000","2011-12-01T00:00:00.000000","2012-01-01T00:00:00.000000","2012-02-01T00:00:00.000000","2012-03-01T00:00:00.000000","2012-04-01T00:00:00.000000","2012-05-01T00:00:00.000000","2012-06-01T00:00:00.000000","2012-07-01T00:00:00.000000","2012-08-01T00:00:00.000000","2012-09-01T00:00:00.000000","2012-10-01T00:00:00.000000","2012-11-01T00:00:00.000000","2012-12-01T00:00:00.000000","2013-01-01T00:00:00.000000","2013-02-01T00:00:00.000000","2013-03-01T00:00:00.000000","2013-04-01T00:00:00.000000","2013-05-01T00:00:00.000000","2013-06-01T00:00:00.000000","2013-07-01T00:00:00.000000","2013-08-01T00:00:00.000000","2013-09-01T00:00:00.000000","2013-10-01T00:00:00.000000","2013-11-01T00:00:00.000000","2013-12-01T00:00:00.000000","2014-01-01T00:00:00.000000","2014-02-01T00:00:00.000000","2014-03-01T00:00:00.000000","2014-04-01T00:00:00.000000","2014-05-01T00:00:00.000000","2014-06-01T00:00:00.000000","2014-07-01T00:00:00.000000","2014-08-01T00:00:00.000000","2014-09-01T00:00:00.000000","2014-10-01T00:00:00.000000","2014-11-01T00:00:00.000000","2014-12-01T00:00:00.000000","2015-01-01T00:00:00.000000","2015-02-01T00:00:00.000000","2015-03-01T00:00:00.000000","2015-04-01T00:00:00.000000","2015-05-01T00:00:00.000000","2015-06-01T00:00:00.000000","2015-07-01T00:00:00.000000","2015-08-01T00:00:00.000000","2015-09-01T00:00:00.000000","2015-10-01T00:00:00.000000","2015-11-01T00:00:00.000000","2015-12-01T00:00:00.000000","2016-01-01T00:00:00.000000","2016-02-01T00:00:00.000000","2016-03-01T00:00:00.000000","2016-04-01T00:00:00.000000","2016-05-01T00:00:00.000000","2016-06-01T00:00:00.000000","2016-07-01T00:00:00.000000","2016-08-01T00:00:00.000000","2016-09-01T00:00:00.000000","2016-10-01T00:00:00.000000","2016-11-01T00:00:00.000000","2016-12-01T00:00:00.000000","2017-01-01T00:00:00.000000","2017-02-01T00:00:00.000000","2017-03-01T00:00:00.000000","2017-04-01T00:00:00.000000","2017-05-01T00:00:00.000000","2017-06-01T00:00:00.000000","2017-07-01T00:00:00.000000","2017-08-01T00:00:00.000000","2017-09-01T00:00:00.000000","2017-10-01T00:00:00.000000","2017-11-01T00:00:00.000000","2017-12-01T00:00:00.000000","2018-01-01T00:00:00.000000","2018-02-01T00:00:00.000000","2018-03-01T00:00:00.000000","2018-04-01T00:00:00.000000","2018-05-01T00:00:00.000000","2018-06-01T00:00:00.000000","2018-07-01T00:00:00.000000","2018-08-01T00:00:00.000000","2018-09-01T00:00:00.000000","2018-10-01T00:00:00.000000","2018-11-01T00:00:00.000000","2018-12-01T00:00:00.000000","2019-01-01T00:00:00.000000","2019-02-01T00:00:00.000000","2019-03-01T00:00:00.000000","2019-04-01T00:00:00.000000","2019-05-01T00:00:00.000000","2019-06-01T00:00:00.000000","2019-07-01T00:00:00.000000","2019-08-01T00:00:00.000000","2019-09-01T00:00:00.000000","2019-10-01T00:00:00.000000","2019-11-01T00:00:00.000000","2019-12-01T00:00:00.000000","2020-01-01T00:00:00.000000","2020-02-01T00:00:00.000000","2020-03-01T00:00:00.000000","2020-04-01T00:00:00.000000","2020-05-01T00:00:00.000000","2020-06-01T00:00:00.000000","2020-07-01T00:00:00.000000","2020-08-01T00:00:00.000000","2020-09-01T00:00:00.000000","2020-10-01T00:00:00.000000","2020-11-01T00:00:00.000000","2020-12-01T00:00:00.000000","2021-01-01T00:00:00.000000","2021-02-01T00:00:00.000000","2021-03-01T00:00:00.000000","2021-04-01T00:00:00.000000","2021-05-01T00:00:00.000000","2021-06-01T00:00:00.000000","2021-07-01T00:00:00.000000","2021-08-01T00:00:00.000000","2021-09-01T00:00:00.000000","2021-10-01T00:00:00.000000","2021-11-01T00:00:00.000000","2021-12-01T00:00:00.000000","2022-01-01T00:00:00.000000","2022-02-01T00:00:00.000000","2022-03-01T00:00:00.000000","2022-04-01T00:00:00.000000","2022-05-01T00:00:00.000000","2022-06-01T00:00:00.000000","2022-07-01T00:00:00.000000","2022-08-01T00:00:00.000000","2022-09-01T00:00:00.000000","2022-10-01T00:00:00.000000","2022-11-01T00:00:00.000000","2022-12-01T00:00:00.000000","2023-01-01T00:00:00.000000","2023-02-01T00:00:00.000000","2023-03-01T00:00:00.000000","2023-04-01T00:00:00.000000","2023-05-01T00:00:00.000000","2023-06-01T00:00:00.000000","2023-07-01T00:00:00.000000","2023-08-01T00:00:00.000000","2023-09-01T00:00:00.000000","2023-10-01T00:00:00.000000","2023-11-01T00:00:00.000000","2023-12-01T00:00:00.000000","2024-01-01T00:00:00.000000","2024-02-01T00:00:00.000000","2024-03-01T00:00:00.000000","2024-04-01T00:00:00.000000","2024-05-01T00:00:00.000000","2024-06-01T00:00:00.000000","2024-07-01T00:00:00.000000","2024-08-01T00:00:00.000000","2024-09-01T00:00:00.000000","2024-10-01T00:00:00.000000","2024-11-01T00:00:00.000000","2024-12-01T00:00:00.000000","2025-01-01T00:00:00.000000","2025-02-01T00:00:00.000000","2025-03-01T00:00:00.000000","2025-04-01T00:00:00.000000","2025-05-01T00:00:00.000000","2025-06-01T00:00:00.000000","2025-07-01T00:00:00.000000","2025-08-01T00:00:00.000000","2025-09-01T00:00:00.000000","2025-10-01T00:00:00.000000","2025-11-01T00:00:00.000000","2025-12-01T00:00:00.000000","2026-01-01T00:00:00.000000","2026-02-01T00:00:00.000000","2026-03-01T00:00:00.000000","2026-04-01T00:00:00.000000","2026-05-01T00:00:00.000000","2026-06-01T00:00:00.000000","2026-07-01T00:00:00.000000","2026-08-01T00:00:00.000000","2026-09-01T00:00:00.000000","2026-10-01T00:00:00.000000"],"y":{"dtype":"f8","bdata":"AAAAAAAA+H9MpgpGJSU+QE0VjErqxEJATRWMSuqIVUDl0CLb+f40QEGC4seYC0JAObTIdr6fPEBL6gQ0EWZGQHBfB84ZwUpA\u002fkP67eu4SkBXW7G\u002f7P5MQGTMXUvId0RAnu+nxkuHSUD4wmSqYOxJQF8pyxDHUkhA3pOHhVrDQ0BJnYAmwr5IQJeQD3o2+0FAFYxK6gT8RkA9LNSa5jVJQD2bVZ+rdURAjSjtDb4oSECoV8oyxKlBQBueXinLoD5AEHo2qz63QEBpAG+BBCU9QKCJsOHpFT1AZRniWBenN0Bd3EYDeOsxQJT2Bl+YHDFA3GgAb4EUPED67evAOcM6QB3J5T+k3z1AmEwVjErKPkAEVg4tsq08QDbNO07R0TpAf9k9eVi4P0DD9ShcjxpDQLivA+eM8EFAlPYGX5jEQkCKsOHpleJCQNnO91Pj9UNA+FPjpZuMQ0BCYOXQIqs4QNv5fmq8zEVALNSa5h1XSUCkcD0K15NIQKMBvAUSZEFAJCh+jLnLQEDl0CLb+dZGQHsUrkfhykVAZRniWBc\u002fR0DmriXkg65GQGPuWkI+QEdAu7iNBvDeSkDKVMGopKZNQLu4jQbwtk5AvVKWIY5tS0D99nXgnGFIQCqpE9BEkEFAV1uxv+zmQUAFNBE2PD1KQIcW2c73cztAofgx5q5FN0C8dJMYBJY+QEhQ\u002fBhzRzxAyeU\u002fpN\u002fuO0CPU3Qkl785QB3J5T+kfzhAgnNGlPbWN0Ch1jTvOBU+QDlFR3L5vzRAT0ATYcPjNUDByqFFthM1QFInoImwsTBABhIUP8Y8NECP5PIf0i83QAskKH6MGS1AH4XrUbgeM0DM7snDQn0zQB04Z0RpzyxACfmgZ7PaNUBt5\u002fup8QI1QFuxv+yefDpApU5AE2FjNkCQMXctIZ88QFFrmnecSkVAppvEILC6QUD0\u002fdR46UZAQERpb\u002fCF6UFAtFn1udoSRUBKDAIrh75BQPjCZKpg5DFAJLn8h\u002fQ7JkDFILByaNEmQFioNc07TjNAzhlR2hscNEAdyeU\u002fpF83QGUZ4lgXBzBACRueXikrNEALRiV1Apo9QJjdk4eFykBAJuSDns0KQECIY13cRsMwQKhXyjLEcS1ABoGVQ4vMJkBiEFg5tDgxQKhXyjLEoTFADXGsi9soLEAep+hILj8qQCgPC7WmOSJAduCcEaWdJ0AdyeU\u002fpF8lQAaBlUOLLCpA5IOezaqfM0CqglFJnYAwQBUdyeU\u002fdDlAat5xio50OECTqYJRSb04QF5LyAc9a0ZAq8\u002fVVuxvRkDHuriNBqhAQMIXJlMFQzxAGCZTBaMCOkA730+Nl64wQL8OnDOiNFVAz\u002fdT46VTV0AijnVxG0lSQOxRuB6Fe1tAUrgehesdVUBPHhZqTbtcQA5Pr5RlaGRAT0ATYcM\u002fZUAJ+aBns1RgQLdif9k9UVdAkxgEVg61VkCMuWsJ+XBUQFUwKqkT5FJACyQofowFUUCPU3Qkl9dLQPT91HjpNkNAVcGopE5gQkC28\u002f3UeCFFQEGC4seYi0VAkDF3LSFnSEDQ1VbsL+tGQDPEsS5uQ0hA1XjpJjGYRkBuowG8BSpEQLpJDAIrz0xAsHJoke2cRkBHcvkP6QdHQISezarPVUNAeVioNc0TQUC8dJMYBP5DQFpkO99PZUpAuycPC7WGQ0C+MJkqGA1DQCxlGeJYp0FAWmQ730+1QEAm5IOezbpIQIcW2c73W0lApN++DpzjTEDTTWIQWIlMQO0NvjCZCkBAMQisHFpMQUDjx5i7lrhGQLmNBvAWyEhAfGEyVTAKRkBSSZ2AJuI6QMDsnjwsJD1AZapgVFLnRkAm5IOezapIQD55WKg19VBAt2J\u002f2T05S0A3iUFg5XRQQDPEsS5uC1BAsp3vp8ZDSkB6pSxDHINKQCuHFtnO90tA"},"type":"scatter"},{"hovertemplate":"%{y:,.1f} EUR\u002fMWh\u003cextra\u003eHourly standard deviation\u003c\u002fextra\u003e","line":{"color":"#5A9AD6","width":2},"meta":{"light":"#2E6A9E","dark":"#5A9AD6","kind":"line"},"mode":"lines","name":"Hourly standard deviation","x":["2011-11-01T00:00:00.000000","2011-12-01T00:00:00.000000","2012-01-01T00:00:00.000000","2012-02-01T00:00:00.000000","2012-03-01T00:00:00.000000","2012-04-01T00:00:00.000000","2012-05-01T00:00:00.000000","2012-06-01T00:00:00.000000","2012-07-01T00:00:00.000000","2012-08-01T00:00:00.000000","2012-09-01T00:00:00.000000","2012-10-01T00:00:00.000000","2012-11-01T00:00:00.000000","2012-12-01T00:00:00.000000","2013-01-01T00:00:00.000000","2013-02-01T00:00:00.000000","2013-03-01T00:00:00.000000","2013-04-01T00:00:00.000000","2013-05-01T00:00:00.000000","2013-06-01T00:00:00.000000","2013-07-01T00:00:00.000000","2013-08-01T00:00:00.000000","2013-09-01T00:00:00.000000","2013-10-01T00:00:00.000000","2013-11-01T00:00:00.000000","2013-12-01T00:00:00.000000","2014-01-01T00:00:00.000000","2014-02-01T00:00:00.000000","2014-03-01T00:00:00.000000","2014-04-01T00:00:00.000000","2014-05-01T00:00:00.000000","2014-06-01T00:00:00.000000","2014-07-01T00:00:00.000000","2014-08-01T00:00:00.000000","2014-09-01T00:00:00.000000","2014-10-01T00:00:00.000000","2014-11-01T00:00:00.000000","2014-12-01T00:00:00.000000","2015-01-01T00:00:00.000000","2015-02-01T00:00:00.000000","2015-03-01T00:00:00.000000","2015-04-01T00:00:00.000000","2015-05-01T00:00:00.000000","2015-06-01T00:00:00.000000","2015-07-01T00:00:00.000000","2015-08-01T00:00:00.000000","2015-09-01T00:00:00.000000","2015-10-01T00:00:00.000000","2015-11-01T00:00:00.000000","2015-12-01T00:00:00.000000","2016-01-01T00:00:00.000000","2016-02-01T00:00:00.000000","2016-03-01T00:00:00.000000","2016-04-01T00:00:00.000000","2016-05-01T00:00:00.000000","2016-06-01T00:00:00.000000","2016-07-01T00:00:00.000000","2016-08-01T00:00:00.000000","2016-09-01T00:00:00.000000","2016-10-01T00:00:00.000000","2016-11-01T00:00:00.000000","2016-12-01T00:00:00.000000","2017-01-01T00:00:00.000000","2017-02-01T00:00:00.000000","2017-03-01T00:00:00.000000","2017-04-01T00:00:00.000000","2017-05-01T00:00:00.000000","2017-06-01T00:00:00.000000","2017-07-01T00:00:00.000000","2017-08-01T00:00:00.000000","2017-09-01T00:00:00.000000","2017-10-01T00:00:00.000000","2017-11-01T00:00:00.000000","2017-12-01T00:00:00.000000","2018-01-01T00:00:00.000000","2018-02-01T00:00:00.000000","2018-03-01T00:00:00.000000","2018-04-01T00:00:00.000000","2018-05-01T00:00:00.000000","2018-06-01T00:00:00.000000","2018-07-01T00:00:00.000000","2018-08-01T00:00:00.000000","2018-09-01T00:00:00.000000","2018-10-01T00:00:00.000000","2018-11-01T00:00:00.000000","2018-12-01T00:00:00.000000","2019-01-01T00:00:00.000000","2019-02-01T00:00:00.000000","2019-03-01T00:00:00.000000","2019-04-01T00:00:00.000000","2019-05-01T00:00:00.000000","2019-06-01T00:00:00.000000","2019-07-01T00:00:00.000000","2019-08-01T00:00:00.000000","2019-09-01T00:00:00.000000","2019-10-01T00:00:00.000000","2019-11-01T00:00:00.000000","2019-12-01T00:00:00.000000","2020-01-01T00:00:00.000000","2020-02-01T00:00:00.000000","2020-03-01T00:00:00.000000","2020-04-01T00:00:00.000000","2020-05-01T00:00:00.000000","2020-06-01T00:00:00.000000","2020-07-01T00:00:00.000000","2020-08-01T00:00:00.000000","2020-09-01T00:00:00.000000","2020-10-01T00:00:00.000000","2020-11-01T00:00:00.000000","2020-12-01T00:00:00.000000","2021-01-01T00:00:00.000000","2021-02-01T00:00:00.000000","2021-03-01T00:00:00.000000","2021-04-01T00:00:00.000000","2021-05-01T00:00:00.000000","2021-06-01T00:00:00.000000","2021-07-01T00:00:00.000000","2021-08-01T00:00:00.000000","2021-09-01T00:00:00.000000","2021-10-01T00:00:00.000000","2021-11-01T00:00:00.000000","2021-12-01T00:00:00.000000","2022-01-01T00:00:00.000000","2022-02-01T00:00:00.000000","2022-03-01T00:00:00.000000","2022-04-01T00:00:00.000000","2022-05-01T00:00:00.000000","2022-06-01T00:00:00.000000","2022-07-01T00:00:00.000000","2022-08-01T00:00:00.000000","2022-09-01T00:00:00.000000","2022-10-01T00:00:00.000000","2022-11-01T00:00:00.000000","2022-12-01T00:00:00.000000","2023-01-01T00:00:00.000000","2023-02-01T00:00:00.000000","2023-03-01T00:00:00.000000","2023-04-01T00:00:00.000000","2023-05-01T00:00:00.000000","2023-06-01T00:00:00.000000","2023-07-01T00:00:00.000000","2023-08-01T00:00:00.000000","2023-09-01T00:00:00.000000","2023-10-01T00:00:00.000000","2023-11-01T00:00:00.000000","2023-12-01T00:00:00.000000","2024-01-01T00:00:00.000000","2024-02-01T00:00:00.000000","2024-03-01T00:00:00.000000","2024-04-01T00:00:00.000000","2024-05-01T00:00:00.000000","2024-06-01T00:00:00.000000","2024-07-01T00:00:00.000000","2024-08-01T00:00:00.000000","2024-09-01T00:00:00.000000","2024-10-01T00:00:00.000000","2024-11-01T00:00:00.000000","2024-12-01T00:00:00.000000","2025-01-01T00:00:00.000000","2025-02-01T00:00:00.000000","2025-03-01T00:00:00.000000","2025-04-01T00:00:00.000000","2025-05-01T00:00:00.000000","2025-06-01T00:00:00.000000","2025-07-01T00:00:00.000000","2025-08-01T00:00:00.000000","2025-09-01T00:00:00.000000","2025-10-01T00:00:00.000000","2025-11-01T00:00:00.000000","2025-12-01T00:00:00.000000","2026-01-01T00:00:00.000000","2026-02-01T00:00:00.000000","2026-03-01T00:00:00.000000","2026-04-01T00:00:00.000000","2026-05-01T00:00:00.000000","2026-06-01T00:00:00.000000","2026-07-01T00:00:00.000000","2026-08-01T00:00:00.000000","2026-09-01T00:00:00.000000","2026-10-01T00:00:00.000000"],"y":{"dtype":"f8","bdata":"AAAAAAAA+H\u002f2KFyPwjUiQNV46SYx6CdAd76fGi8tO0B9PzVeukkbQHbgnBGlPSZAYhBYObQoIUAi\u002ffZ14JwsQKrx0k1isCtAE2HD0ytlKUBYyjLEsQ4xQO7rwDkjailA8tJNYhBoMUBvgQTFjyEwQAskKH6M+S9AylTBqKROKEDf4AuTqaIvQKyL22gAzyVARIts5\u002fvJK0C3Yn\u002fZPRktQCKOdXEbrSdAy6FFtvO9LEAPC7WmeScnQHPXEvJBbyNAzojS3uALJUBfB84ZUVoiQC6QoPgxhiNAjZduEoOAHUCJQWDl0GIVQDj4wmSq4BVAVcGopE5AI0DNzMzMzGwhQLwFEhQ\u002fRiNAkst\u002fSL89JUA0orQ3+EIiQMWPMXctASJAwTkjSnsjJ0DJdr6fGi8qQNCzWfW5WidAdk8eFmqNJ0D+ZffkYYEnQMgHPZtVvyhAYHZPHhYqJ0B5WKg1zTsbQE3zjlN0pCdA4umVsgyxLEAB3gIJij8sQGgibHh65SRAtaZ5xylaJEDA7J48LPQrQDm0yHa+PylACYofY+4aLEDTvOMUHSkqQE9AE2HDMypAqMZLN4lhMEBVwaikTiAxQEhQ\u002fBhzJzFAE\u002fJBz2a1K0Bg5dAi25krQN6Th4Va8yRAvsEXJlPFJkBbsb\u002fsnnwuQG6jAbwFMiJAfh04Z0SpHUB3vp8aL10gQDPEsS5u4x9AguLHmLv2IEB0RpT2Bp8bQECk374OXB9AqmBUUicgHkDQ1VbsL1shQIqw4emVchxAEqW9wRfmHUC+MJkqGJUYQG8Sg8DKYRNAwOyePCzUFkBjf9k9edgaQHzysFBr2hFAp+hILv8hFUC6awn5oOcWQN4CCYofYw9A3bWEfNBzGUC1FfvL7kkXQO84RUdy+R1A3pOHhVoTFUD6fmq8dHMiQCsYldQJSCtA\u002f7J78rCwJEAldQKaCFskQM6I0t7g6ydACD2bVZ+LKUD+1HjpJjEmQI9TdCSX\u002fxFAT6+UZYjjCUBYObTIdj4JQJCg+DHm7hVAvjCZKhjVFkAhH\u002fRsVn0cQBb7y+7JgxJAbxKDwMqhGEBZF7fRAB4jQG1Wfa624iRA7MA5I0q7JED99nXgnJEUQBb7y+7JAxBAjgbwFkhQB0ClLEMc66ITQE8eFmpNsxVAm1Wfq60YEUCsi9toAO8PQNBE2PD0SghAjSjtDb6wDUCZu5aQD\u002foHQFYOLbKd7wxAEFg5tMh2FEClvcEXJtMUQNxGA3gLJCNAGy\u002fdJAZhIEA\u002fV1uxvwwhQHlYqDXNGy5ADi2yne9nLkC28\u002f3UeOkmQJvmHafoyCJApgpGJXViIUAAAAAAAIAUQJoIG55e+ThATKYKRiWlPEDPZtXnasszQFInoImwQT9AcF8HzhlBPEB0tRX7y55BQEmdgCbCJkpA9pfdk4dNTED7y+7Jw9JFQMP1KFyPwj5Aj1N0JJcfPUD4U+Olm7Q3QOjZrPpcPThAyAc9m1UPNEB1kxgEVs4vQH9qvHST2CZA8IXJVMEIJ0C8BRIUPwYoQGDl0CLbGSlAvjCZKhg1LkDBqKROQLMsQFuxv+yeXC9ANxrAWyChKkAMk6mCUQkoQHZxGw3g3TJAowG8BRL0K0Df4AuTqaItQIzbaABvQSdAgSbChqeXJUA51sVtNCAnQMP1KFyPYi1AnKIjufzHKECfPCzUmoYoQPVKWYY4diZAfoy5awmZJECGWtO84xQwQOkmMQis7DBAhJ7Nqs91M0CutmJ\u002f2c0yQAIrhxbZDiNA93XgnBElJUBn1edqK1YrQE8eFmpNcy1AB84ZUdrbKUCKjuTyH5IhQKUsQxzroiNAZ9XnaisWLUD99nXgnFEvQDnWxW00QDRA6Nms+ly9MECppE5AE0E1QNJvXwfOaTJAf\u002fs6cM4ILkCNKO0NvpAuQAXFjzF37S9A"},"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"margin":{"b":0,"l":0,"r":0,"t":30}}},"font":{"family":"\"IBM Plex Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif","size":13,"color":"#E3EBEF"},"margin":{"l":8,"r":8,"t":40,"b":16},"hoverlabel":{"font":{"family":"\"IBM Plex Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif","size":12}},"legend":{"font":{"color":"#94A5AF"},"orientation":"h","yanchor":"top","y":-0.12,"x":0,"xanchor":"left","title":{}},"height":420,"title":{},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","hovermode":"x unified","meta":{"chart":true},"xaxis":{"tickfont":{"color":"#94A5AF"},"showgrid":false,"linecolor":"#33434C","tickcolor":"#33434C","ticks":"outside","zeroline":false,"rangeselector":{"buttons":[{"count":3,"label":"3Y","step":"year","stepmode":"backward"},{"count":5,"label":"5Y","step":"year","stepmode":"backward"},{"label":"All","step":"all"}],"x":1,"xanchor":"right","y":1.03,"yanchor":"bottom","font":{"color":"#E3EBEF","size":12},"bgcolor":"rgba(0,0,0,0)","activecolor":"#1E2A31","bordercolor":"#33434C","borderwidth":1},"hoverformat":"%b %Y"},"yaxis":{"tickfont":{"color":"#94A5AF"},"title":{"font":{"color":"#94A5AF","size":12},"text":"EUR\u002fMWh"},"showgrid":true,"linecolor":"rgba(0,0,0,0)","tickcolor":"#33434C","ticks":"","zeroline":false,"gridcolor":"#1E2A31","gridwidth":1,"separatethousands":true},"updatemenus":[{"active":0,"buttons":[{"args":[{"y":[[null,30.1451,37.5384,86.1393,20.996,36.0906,28.624,44.7974,53.5086,53.4447,57.9916,40.9358,51.057,51.8467,48.6467,39.5262,49.4903,35.9626,45.9689,50.4211,40.9193,48.3183,35.3263,30.6281,33.4316,29.1446,29.0856,23.6527,17.9198,17.1117,28.0801,26.7626,29.8736,30.7902,28.6785,26.8196,31.7201,38.2075,35.8793,37.5359,37.7702,39.921,39.0985,24.6685,43.5995,50.6806,49.155,34.7818,33.5916,45.6795,43.585,46.4929,45.3634,46.5019,53.7417,59.3019,61.4292,54.8559,48.7626,35.1271,35.8041,52.4784,27.453,23.2722,30.586,28.2791,27.9331,25.7484,24.4986,23.8397,30.0829,20.7499,21.8897,21.077,16.6941,20.2374,23.1868,14.5499,19.12,19.4893,14.4051,21.8543,21.0115,26.4868,22.3882,28.6216,42.5829,35.4585,32.554,35.8244,42.1473,35.4885,17.8921,11.1171,11.409,19.3056,20.1098,23.3736,16.0277,20.1686,29.6016,33.5822,32.0844,16.7628,14.7222,11.3995,17.2215,17.6319,14.0798,13.1234,9.1126,11.8079,10.6868,13.087,19.6237,16.5024,25.4541,24.4553,24.7394,44.8378,44.8744,33.3127,28.2618,26.0103,16.682,84.8224,93.307,73.1423,109.93,84.4675,114.9266,163.2624,169.9926,130.6469,93.2694,90.829,81.7652,75.5637,68.0867,55.6843,38.429,36.7524,42.2615,43.0906,48.8057,45.8374,48.5268,45.189,40.3283,57.6185,45.226,46.0618,38.6704,34.1547,39.9845,52.7915,39.0524,38.1023,35.3074,33.4165,49.4594,50.7185,57.7782,57.073,32.0828,34.5965,45.4421,49.5632,44.0796,26.8834,29.1413,45.8072,49.3344,67.8314,54.4472,65.8265,64.1786,52.5295,53.0243,55.936],[null,9.105,11.9535,27.1765,6.822,11.1204,8.5795,14.3064,13.8445,12.6976,17.0574,12.7073,17.4065,16.1311,15.9874,12.1536,15.8177,10.9043,13.8945,14.5493,11.8381,14.371,11.5771,9.7173,10.5232,9.1764,9.7621,7.3755,5.3465,5.4694,9.6256,8.7125,9.6372,10.6206,9.1308,9.0023,11.5693,13.092,11.6772,11.7762,11.7527,12.3737,11.5822,6.8084,11.8212,14.3458,14.1241,10.4482,10.1761,13.9769,12.6245,14.0526,13.0803,13.1011,16.381,17.1262,17.1541,13.8543,13.8005,10.4753,11.3854,15.2434,9.0977,7.4153,8.182,7.9721,8.4819,6.9053,7.8399,7.5314,8.6781,7.1119,7.4747,6.1456,4.8455,5.7072,6.7114,4.4633,5.2832,5.7262,3.9234,6.3631,5.8222,7.4936,5.2689,9.2255,13.6407,10.3451,10.1778,11.9607,12.7727,11.096,4.4996,3.2361,3.1555,5.4833,5.7081,7.1224,4.6287,6.158,9.5586,10.4428,10.3658,5.1422,4.0037,2.9142,4.9091,5.4251,4.2741,3.9917,3.0366,3.7113,2.9971,3.617,5.116,5.2062,9.5704,8.1895,8.5249,15.0543,15.203,11.456,9.3924,8.6923,5.125,24.9741,28.6451,19.7946,31.2566,28.2543,35.2406,52.3028,56.6057,43.6466,30.76,29.1234,23.7055,24.2397,20.0599,15.903,11.423,11.5171,12.0122,12.5505,15.1037,14.3501,15.6809,13.3147,12.0182,18.8667,13.9767,14.8177,11.6278,10.7962,11.5629,14.6925,12.3906,12.2629,11.2309,10.2989,16.0816,16.9245,19.4602,18.8041,9.529,10.5724,13.6683,14.7252,12.9294,8.7854,9.8182,14.5433,15.6594,20.2508,16.7397,21.2542,18.4133,15.0172,15.2827,15.9638]],"hovertemplate":["%{y:,.1f} EUR\u002fMWh\u003cextra\u003eDaily spread (max \u2212 min)\u003c\u002fextra\u003e","%{y:,.1f} EUR\u002fMWh\u003cextra\u003eHourly standard deviation\u003c\u002fextra\u003e"]},{"yaxis.title.text":"EUR\u002fMWh","yaxis.ticksuffix":"","yaxis.autorange":true}],"label":"EUR\u002fMWh","method":"update"},{"args":[{"y":[[95.4013,73.9039,89.0429,199.4003,49.2845,84.573,65.9894,101.9603,119.1503,118.0135,133.495,95.4039,116.8933,120.9261,113.8452,93.6207,116.1458,83.9993,108.6374,125.7043,103.3261,125.2948,94.9377,82.9471,91.2073,81.7819,87.8481,71.65,54.8623,50.3353,80.8168,76.9647,85.759,88.5565,81.7183,76.9013,88.3543,107.7948,98.1681,104.5961,105.8165,113.7277,115.4206,74.3777,129.1126,159.1774,165.8177,114.6013,103.8823,144.6432,141.7942,151.7724,145.4758,149.4923,178.0829,194.3643,200.5226,182.1806,161.8567,118.8413,126.782,192.8432,107.7732,90.7096,119.7742,110.558,110.1255,101.5197,100.1932,98.7819,124.3193,89.5629,99.5167,96.1171,76.5568,94.6089,110.7571,72.13,100.1629,105.21,79.8503,146.1794,155.202,176.8745,136.4703,172.8326,260.729,211.7936,200.5171,231.4587,285.1768,232.7893,114.1684,69.0294,71.7967,123.2423,128.2987,151.5619,105.5213,132.8507,206.4539,248.0557,242.1671,128.4787,114.9123,96.8242,152.1587,162.8113,131.8287,123.3906,82.1074,101.4261,96.6813,127.7643,198.0048,170.7137,258.7777,244.0997,247.508,481.6819,529.4757,508.5194,432.7839,401.57,264.2442,1355.0797,1519.12,1313.3677,1946.0455,1542.9735,2083.5527,2979.3561,3219.0567,2572.5523,1879.2729,1834.5314,1655.191,1598.2347,1457.3942,1404.0543,1116.1855,1080.0952,1217.3547,1263.2494,1502.3027,1452.6597,1588.0529,1497.5524,1395.9929,1996.328,1571.9777,1608.3483,1376.579,1257.8542,1509.2367,1969.9839,1431.3953,1393.6745,1295.0845,1254.2918,1967.0913,2167.2583,2517.9074,2573.0783,1502.7223,1636.9742,2198.1843,2408.2194,2148.0603,1339.4313,1470.9416,2361.77,2517.219,3534.95,2882.8326,3500.7787,3437.4603,2900.1087,2964.874,3093.7858],[27.7276,22.318,28.3638,62.9253,16.0036,26.0668,19.7796,32.5695,30.8544,28.0466,39.284,29.6095,39.8408,37.6333,37.4165,28.787,37.127,25.4679,32.8346,36.2796,29.8776,37.312,31.1139,26.317,28.7099,25.7544,29.4489,22.3362,16.3561,16.0928,27.7142,25.0668,27.6607,30.5463,26.0132,25.8209,32.2228,36.909,31.9745,32.8019,32.9237,35.2508,34.2154,20.4996,35.012,44.9938,47.6407,34.454,31.4888,44.2662,41.0632,45.8966,41.9439,42.1024,54.2525,56.1447,55.8955,46.0029,45.8233,35.4488,40.3621,56.0368,35.6733,28.9052,32.044,31.1648,33.4295,27.2386,32.0647,31.216,35.8647,30.6869,33.9843,28.0189,22.2206,26.6784,32.0313,22.1345,27.6576,30.9153,21.7285,42.38,42.9071,50.0042,32.1025,55.7047,83.6106,61.7848,62.6942,77.3205,86.4302,72.7646,28.7314,20.0449,19.8598,35.0412,36.4168,46.2677,30.4826,40.5657,66.6163,77.143,78.2785,39.408,31.2422,24.732,43.3906,50.1155,40.1064,37.5403,27.3607,31.8629,27.1188,35.2885,51.6035,53.878,97.3033,81.7668,85.2434,161.4769,178.434,173.7444,143.8015,134.0766,81.1848,399.2709,466.338,355.3963,553.556,516.0946,638.8362,954.4768,1071.7787,859.5677,620.148,588.3768,479.6855,512.8292,429.3395,402.3577,331.5859,338.3491,346.0179,367.9636,465.0836,454.8456,513.1627,441.265,416.2312,653.7647,485.7754,517.2934,413.8071,397.4732,436.2817,548.2472,454.0329,448.4782,411.9508,386.6736,640.4994,723.3529,847.8106,847.5768,446.2911,500.1801,661.4053,715.6507,630.1791,437.7426,495.5109,749.8875,799.0472,1054.6903,886.2203,1130.3294,986.2425,829.1617,854.5808,882.8934]],"hovertemplate":["%{y:,.0f} TL\u002fMWh\u003cextra\u003eDaily spread (max \u2212 min)\u003c\u002fextra\u003e","%{y:,.0f} TL\u002fMWh\u003cextra\u003eHourly standard deviation\u003c\u002fextra\u003e"]},{"yaxis.title.text":"TL\u002fMWh","yaxis.ticksuffix":"","yaxis.autorange":true}],"label":"TL\u002fMWh","method":"update"},{"args":[{"y":[[63.2453,49.3463,60.0709,101.8325,40.3485,75.1402,46.7567,70.7205,70.7472,73.4951,86.7229,62.8596,80.5358,79.1873,73.253,69.2726,90.9381,58.1412,78.7911,85.2766,65.6922,82.5801,60.7033,57.7277,60.5822,42.5751,53.8196,41.7621,39.2926,31.3408,52.0806,50.5193,48.7344,49.8434,49.8824,49.3895,48.8433,62.6016,56.7842,74.658,84.9548,111.8033,106.3812,59.6629,97.2147,102.924,103.19,83.2688,77.705,88.3903,94.7963,145.8161,133.3137,126.1781,151.5566,137.1673,148.4708,112.8215,115.8197,84.5815,85.6278,88.0404,59.4372,52.5687,82.4384,76.178,72.2783,68.3451,57.2351,56.9909,69.6431,54.5669,56.9796,61.6859,41.8653,53.8255,69.8498,37.2637,55.8212,56.6809,38.3654,48.9042,47.4227,55.7469,46.861,67.0188,116.8966,82.3947,78.3145,123.6751,145.37,105.1814,37.4871,23.141,24.1009,42.2628,43.0718,52.0256,33.5401,44.5189,84.237,136.9263,119.1625,44.1042,38.7746,32.4152,49.3696,51.0855,44.611,42.0633,27.5791,35.3542,31.0463,40.9305,54.9109,42.463,49.9216,43.7953,47.5192,71.9007,63.7188,50.4163,36.7393,28.5917,15.815,74.0256,86.1653,56.1236,83.508,50.3163,54.1099,85.8599,93.6231,69.0727,54.7655,65.4557,77.8467,90.2539,76.4123,86.461,56.4471,47.9828,60.6602,56.1485,72.6836,70.0077,81.736,76.4964,63.7408,113.1682,76.7824,76.7624,53.1737,48.8649,62.9957,84.3419,58.1127,56.9727,51.6217,50.6114,90.0754,88.3634,102.431,116.8399,50.6793,55.6938,80.5484,87.9072,77.1546,45.0526,50.8111,113.6453,155.3528,383.7929,487.8715,282.2841,127.3316,99.7351,108.1114,105.7536],[18.3817,14.9019,19.135,32.1356,13.1019,23.1595,14.0148,22.5905,18.3203,17.4666,25.5202,19.5091,27.449,24.6438,24.0754,21.3003,29.0691,17.6279,23.8138,24.6117,18.9954,24.5918,19.8943,18.3155,19.0699,13.4076,18.0417,13.0189,11.7143,10.02,17.8598,16.4538,15.7188,17.1928,15.879,16.5833,17.8131,21.4348,18.4953,23.4131,26.4328,34.6543,31.5357,16.444,26.3621,29.093,29.6473,25.0341,23.5539,27.0507,27.4527,44.0954,38.4373,35.5363,46.1713,39.6226,41.3861,28.4889,32.7898,25.2295,27.2603,25.583,19.6739,16.7514,22.0553,21.4736,21.9407,18.3376,18.3169,18.0096,20.0912,18.6962,19.4581,17.9819,12.1514,15.1781,20.2008,11.4351,15.4137,16.6553,10.4398,14.1782,13.1105,15.7602,11.0233,21.6004,37.4864,24.0363,24.486,41.3146,44.0581,32.8773,9.4339,6.7197,6.6666,12.0165,12.2257,15.882,9.689,13.5938,27.1807,42.5828,38.5183,13.528,10.542,8.2799,14.0786,15.7248,13.5721,12.7973,9.1902,11.1065,8.7084,11.305,14.3107,13.4015,18.7711,14.6702,16.3659,24.1037,21.4733,17.2256,12.2074,9.5462,4.8589,21.8115,26.4509,15.187,23.754,16.8298,16.5906,27.5064,31.1716,23.0793,18.0723,20.9932,22.5605,28.96,22.5106,24.777,16.7688,15.031,17.2419,16.3551,22.5014,21.9203,26.4121,22.5402,19.005,37.0607,23.7274,24.6891,15.9843,15.441,18.2104,23.4724,18.4331,18.3335,16.4203,15.6025,29.3292,29.4925,34.4898,38.4873,15.0512,17.0173,24.236,26.1234,22.6349,14.7237,17.1166,36.0836,49.314,114.5087,149.9781,91.1437,36.5327,28.515,31.1615,30.1796]],"hovertemplate":["%{y:,.0f}%\u003cextra\u003eDaily spread (max \u2212 min)\u003c\u002fextra\u003e","%{y:,.0f}%\u003cextra\u003eHourly standard deviation\u003c\u002fextra\u003e"]},{"yaxis.title.text":"% of the month's average PTF","yaxis.ticksuffix":"%","yaxis.autorange":true}],"label":"% of average PTF","method":"update"}],"direction":"right","type":"buttons","x":0,"xanchor":"left","y":1.03,"yanchor":"bottom","font":{"color":"#7C8B94","size":12},"bgcolor":"rgba(0,0,0,0)","bordercolor":"#7C8B94","borderwidth":1}]},                        {"displaylogo": false, "responsive": true, "typesetMath": false, "displayModeBar": false, "modeBarButtonsToRemove": ["lasso2d", "select2d", "autoScale2d"]}                    ).then(function(){
+                            
+var gd = document.getElementById('2efdc8f0-3ada-4f30-bb49-b7ca274d4b26');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div>
+</div>
+</div>
+</section>
+<section id="the-cost-of-being-out-of-balance" class="level2">
+<h2 class="anchored" data-anchor-id="the-cost-of-being-out-of-balance">The cost of being out of balance</h2>
+<p>When the system is short, the operator buys extra energy in the balancing market and SMF usually rises above PTF. When it is long, SMF usually falls below PTF. The gap is what a market participant risks by being out of balance in that direction: imbalance prices are built from PTF and SMF. Bars show the monthly average gap, split by system direction, in euros, lira or as a percentage of the month’s average PTF. The percentage is the best way to compare years: a gap of 300 TL/MWh is a large share of a 150 TL/MWh average price and a small share of a 2,000 TL/MWh one.</p>
+<div id="cell-gap-chart" class="cell" data-execution_count="5">
+<div id="gap-chart" class="cell-output cell-output-display">
+<div style="height:420px; width:100%;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.1.1.min.js" integrity="sha256-O24V1F27f8pb0glCkelh3cVHLNiHAJ5gCaVtq2aNch8=" crossorigin="anonymous"></script>                <div id="0f3d46d9-15ee-4ad8-8db0-708859b5ea76" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("0f3d46d9-15ee-4ad8-8db0-708859b5ea76")) {                    Plotly.newPlot(                        "0f3d46d9-15ee-4ad8-8db0-708859b5ea76",                        [{"hovertemplate":"%{y:,.1f} EUR\u002fMWh\u003cextra\u003eSystem short: SMF above PTF\u003c\u002fextra\u003e","marker":{"color":"#DA5B5A","line":{"color":"#0E161B","width":1}},"meta":{"light":"#D24A4A","dark":"#DA5B5A","kind":"bar"},"name":"System short: SMF above PTF","x":["2014-04-01T00:00:00.000000","2014-05-01T00:00:00.000000","2014-06-01T00:00:00.000000","2014-07-01T00:00:00.000000","2014-08-01T00:00:00.000000","2014-09-01T00:00:00.000000","2014-10-01T00:00:00.000000","2014-11-01T00:00:00.000000","2014-12-01T00:00:00.000000","2015-01-01T00:00:00.000000","2015-02-01T00:00:00.000000","2015-03-01T00:00:00.000000","2015-04-01T00:00:00.000000","2015-05-01T00:00:00.000000","2015-06-01T00:00:00.000000","2015-07-01T00:00:00.000000","2015-08-01T00:00:00.000000","2015-09-01T00:00:00.000000","2015-10-01T00:00:00.000000","2015-11-01T00:00:00.000000","2015-12-01T00:00:00.000000","2016-01-01T00:00:00.000000","2016-02-01T00:00:00.000000","2016-03-01T00:00:00.000000","2016-04-01T00:00:00.000000","2016-05-01T00:00:00.000000","2016-06-01T00:00:00.000000","2016-07-01T00:00:00.000000","2016-08-01T00:00:00.000000","2016-09-01T00:00:00.000000","2016-10-01T00:00:00.000000","2016-11-01T00:00:00.000000","2016-12-01T00:00:00.000000","2017-01-01T00:00:00.000000","2017-02-01T00:00:00.000000","2017-03-01T00:00:00.000000","2017-04-01T00:00:00.000000","2017-05-01T00:00:00.000000","2017-06-01T00:00:00.000000","2017-07-01T00:00:00.000000","2017-08-01T00:00:00.000000","2017-09-01T00:00:00.000000","2017-10-01T00:00:00.000000","2017-11-01T00:00:00.000000","2017-12-01T00:00:00.000000","2018-01-01T00:00:00.000000","2018-02-01T00:00:00.000000","2018-03-01T00:00:00.000000","2018-04-01T00:00:00.000000","2018-05-01T00:00:00.000000","2018-06-01T00:00:00.000000","2018-07-01T00:00:00.000000","2018-08-01T00:00:00.000000","2018-09-01T00:00:00.000000","2018-10-01T00:00:00.000000","2018-11-01T00:00:00.000000","2018-12-01T00:00:00.000000","2019-01-01T00:00:00.000000","2019-02-01T00:00:00.000000","2019-03-01T00:00:00.000000","2019-04-01T00:00:00.000000","2019-05-01T00:00:00.000000","2019-06-01T00:00:00.000000","2019-07-01T00:00:00.000000","2019-08-01T00:00:00.000000","2019-09-01T00:00:00.000000","2019-10-01T00:00:00.000000","2019-11-01T00:00:00.000000","2019-12-01T00:00:00.000000","2020-01-01T00:00:00.000000","2020-02-01T00:00:00.000000","2020-03-01T00:00:00.000000","2020-04-01T00:00:00.000000","2020-05-01T00:00:00.000000","2020-06-01T00:00:00.000000","2020-07-01T00:00:00.000000","2020-08-01T00:00:00.000000","2020-09-01T00:00:00.000000","2020-10-01T00:00:00.000000","2020-11-01T00:00:00.000000","2020-12-01T00:00:00.000000","2021-01-01T00:00:00.000000","2021-02-01T00:00:00.000000","2021-03-01T00:00:00.000000","2021-04-01T00:00:00.000000","2021-05-01T00:00:00.000000","2021-06-01T00:00:00.000000","2021-07-01T00:00:00.000000","2021-08-01T00:00:00.000000","2021-09-01T00:00:00.000000","2021-10-01T00:00:00.000000","2021-11-01T00:00:00.000000","2021-12-01T00:00:00.000000","2022-01-01T00:00:00.000000","2022-02-01T00:00:00.000000","2022-03-01T00:00:00.000000","2022-04-01T00:00:00.000000","2022-05-01T00:00:00.000000","2022-06-01T00:00:00.000000","2022-07-01T00:00:00.000000","2022-08-01T00:00:00.000000","2022-09-01T00:00:00.000000","2022-10-01T00:00:00.000000","2022-11-01T00:00:00.000000","2022-12-01T00:00:00.000000","2023-01-01T00:00:00.000000","2023-02-01T00:00:00.000000","2023-03-01T00:00:00.000000","2023-04-01T00:00:00.000000","2023-05-01T00:00:00.000000","2023-06-01T00:00:00.000000","2023-07-01T00:00:00.000000","2023-08-01T00:00:00.000000","2023-09-01T00:00:00.000000","2023-10-01T00:00:00.000000","2023-11-01T00:00:00.000000","2023-12-01T00:00:00.000000","2024-01-01T00:00:00.000000","2024-02-01T00:00:00.000000","2024-03-01T00:00:00.000000","2024-04-01T00:00:00.000000","2024-05-01T00:00:00.000000","2024-06-01T00:00:00.000000","2024-07-01T00:00:00.000000","2024-08-01T00:00:00.000000","2024-09-01T00:00:00.000000","2024-10-01T00:00:00.000000","2024-11-01T00:00:00.000000","2024-12-01T00:00:00.000000","2025-01-01T00:00:00.000000","2025-02-01T00:00:00.000000","2025-03-01T00:00:00.000000","2025-04-01T00:00:00.000000","2025-05-01T00:00:00.000000","2025-06-01T00:00:00.000000","2025-07-01T00:00:00.000000","2025-08-01T00:00:00.000000","2025-09-01T00:00:00.000000","2025-10-01T00:00:00.000000","2025-11-01T00:00:00.000000","2025-12-01T00:00:00.000000","2026-01-01T00:00:00.000000","2026-02-01T00:00:00.000000","2026-03-01T00:00:00.000000","2026-04-01T00:00:00.000000","2026-05-01T00:00:00.000000","2026-06-01T00:00:00.000000","2026-07-01T00:00:00.000000","2026-08-01T00:00:00.000000","2026-09-01T00:00:00.000000","2026-10-01T00:00:00.000000"],"y":{"dtype":"f8","bdata":"+6SRJjfIIEAQYNheeX0jQGly8ucJOihAdLGzcSuuHEAfqYJ0q2AaQKgYDL6oRSBAWJUTbVMKLEA1lmumsl0gQLKZuLfBAxlADQsJTTrrH0ANkEeFgN0hQGwv57t+CyVAViBq0e+cNEAP9kwk9i0mQHGsSMrdAyRA5EIm7q6TIEA3wJqhQrAXQCydQsfzcCRA81PYl6ScJkCf3kUjgWIjQGp1m8uytxxAhaKbB+DkKUA5meBdbgMwQCcZXEhpvDNACYoYyXT6KkD89aN+5WUjQNnYLldlvyFAFn77uxFWJEDPG3sqA80TQNU1yDLUFhZA2GxIAxJnE0Bw6qwBBPMSQLD\u002fMgeK0B9ANn9fXiE9GEAoCUi5TiAQQNSom2BX1ApA6WYlvJlaEEBAQL5BdF0RQA1dvw+mvBVAijwGcV1qD0Dgjla7dagGQC8yoEi9RwJAgTvEMDRO\u002fD+IkZmwxfAKQAL4BuNkeAFAyLlNJPrP+z9TzPaXhWP9P18pwgAejAdARUZZ1ljI9T8eJPVMBMnzP7vwKBxAavk\u002fqQ5KJ8uE8T9tFeXth+b8P04fOLGtPAFAzJYuQXWP\u002fD\u002fU7yONMVEDQMGEhSaUnAtAgn\u002fhP3w7BUB1tMFddR4MQBdXJpae6BVANnapsL4+IUAR7kfXMygfQM9zkO1BdB1AF4hRCZ8hDECwkoc7nFkAQOk7hLkTIwBA3TeeWu3U\u002fD9UJjKXXVoHQIAvu7eEqBBAw07ISijQCUB+Z9u1NDYNQPY5nRStSiBAyjdkVUpyIUDiRVqKJR4gQMka0DhYlQ1At9DS91MtEEDm3E+7SeYFQFB3GhyVjhBAqS6fKPh8D0BgMKWL820JQJq41aoWqAhAknSsHY9PB0CiQSxaGc0JQLspx8qNXxJAr04z6g4kDkA9acIsK+gOQOd0sujlCQJA4eKVT9Sk9z8DKg\u002fe4o7wP9pE0cBuSP8\u002fDN134QYLCkDRM8zl6HIaQGLCLyOThApAbLIbk1xRCkDTDS\u002fwYBcKQPi8Ik\u002fIE\u002f4\u002f2IqM9Hm6LkC87YWFIjUwQGCW+\u002fnpOixAXMFQSyzTKUBsEgdS9jUjQKZJA\u002fNdXCdA79VOu66yLEBhtCcueXkuQLi8k\u002fGX1i9AXxqu0IqgIUBAZLwVUIQjQDxRIc2u4ipAl6uxHwH9K0AYkTgW4HsiQIM5cSNpKCtAOKYX5c4tH0BDwxGhtTkKQB1LOP\u002fnHA9AeKfjCBaODkD8PoCh9mQZQC2WGOzaHBNAQeOgIdYvIkB7\u002f0L1Tl4hQLbmWOYqlBdAT2+LJTDOJ0C8bWGXrNsiQIlkJx3upxxAbJ3Qy5urE0Auu4IxCxUVQOD4zZEe8R5AFJKIt+Q\u002fIECxy1dgVNMfQHzRmFdgmRZAlpzcj\u002fH1EEAJo4XcXOQYQM7\u002fqe9CaSRAuKJ8cYu8IUBW4yzF\u002ftMhQBaq2+A8WyRA4SRHX0IREkAAJ+A0tEASQBUgDrwYkBVAlRy7laHOFEDm\u002f9wRXDIaQB0mXnBC7RJAKVti8PSAFEBmXBeWqUcqQDgrGio\u002fDzJAinjfzq4pOUAxhUOLfd48QOKV39+TMzxAaOLCbPenIkCgY6\u002fM++ghQEhoQeV6yyFAi8a6Z25pH0A="},"type":"bar"},{"hovertemplate":"%{y:,.1f} EUR\u002fMWh\u003cextra\u003eSystem long: SMF below PTF\u003c\u002fextra\u003e","marker":{"color":"#4A92E6","line":{"color":"#0E161B","width":1}},"meta":{"light":"#3987E5","dark":"#4A92E6","kind":"bar"},"name":"System long: SMF below PTF","x":["2014-04-01T00:00:00.000000","2014-05-01T00:00:00.000000","2014-06-01T00:00:00.000000","2014-07-01T00:00:00.000000","2014-08-01T00:00:00.000000","2014-09-01T00:00:00.000000","2014-10-01T00:00:00.000000","2014-11-01T00:00:00.000000","2014-12-01T00:00:00.000000","2015-01-01T00:00:00.000000","2015-02-01T00:00:00.000000","2015-03-01T00:00:00.000000","2015-04-01T00:00:00.000000","2015-05-01T00:00:00.000000","2015-06-01T00:00:00.000000","2015-07-01T00:00:00.000000","2015-08-01T00:00:00.000000","2015-09-01T00:00:00.000000","2015-10-01T00:00:00.000000","2015-11-01T00:00:00.000000","2015-12-01T00:00:00.000000","2016-01-01T00:00:00.000000","2016-02-01T00:00:00.000000","2016-03-01T00:00:00.000000","2016-04-01T00:00:00.000000","2016-05-01T00:00:00.000000","2016-06-01T00:00:00.000000","2016-07-01T00:00:00.000000","2016-08-01T00:00:00.000000","2016-09-01T00:00:00.000000","2016-10-01T00:00:00.000000","2016-11-01T00:00:00.000000","2016-12-01T00:00:00.000000","2017-01-01T00:00:00.000000","2017-02-01T00:00:00.000000","2017-03-01T00:00:00.000000","2017-04-01T00:00:00.000000","2017-05-01T00:00:00.000000","2017-06-01T00:00:00.000000","2017-07-01T00:00:00.000000","2017-08-01T00:00:00.000000","2017-09-01T00:00:00.000000","2017-10-01T00:00:00.000000","2017-11-01T00:00:00.000000","2017-12-01T00:00:00.000000","2018-01-01T00:00:00.000000","2018-02-01T00:00:00.000000","2018-03-01T00:00:00.000000","2018-04-01T00:00:00.000000","2018-05-01T00:00:00.000000","2018-06-01T00:00:00.000000","2018-07-01T00:00:00.000000","2018-08-01T00:00:00.000000","2018-09-01T00:00:00.000000","2018-10-01T00:00:00.000000","2018-11-01T00:00:00.000000","2018-12-01T00:00:00.000000","2019-01-01T00:00:00.000000","2019-02-01T00:00:00.000000","2019-03-01T00:00:00.000000","2019-04-01T00:00:00.000000","2019-05-01T00:00:00.000000","2019-06-01T00:00:00.000000","2019-07-01T00:00:00.000000","2019-08-01T00:00:00.000000","2019-09-01T00:00:00.000000","2019-10-01T00:00:00.000000","2019-11-01T00:00:00.000000","2019-12-01T00:00:00.000000","2020-01-01T00:00:00.000000","2020-02-01T00:00:00.000000","2020-03-01T00:00:00.000000","2020-04-01T00:00:00.000000","2020-05-01T00:00:00.000000","2020-06-01T00:00:00.000000","2020-07-01T00:00:00.000000","2020-08-01T00:00:00.000000","2020-09-01T00:00:00.000000","2020-10-01T00:00:00.000000","2020-11-01T00:00:00.000000","2020-12-01T00:00:00.000000","2021-01-01T00:00:00.000000","2021-02-01T00:00:00.000000","2021-03-01T00:00:00.000000","2021-04-01T00:00:00.000000","2021-05-01T00:00:00.000000","2021-06-01T00:00:00.000000","2021-07-01T00:00:00.000000","2021-08-01T00:00:00.000000","2021-09-01T00:00:00.000000","2021-10-01T00:00:00.000000","2021-11-01T00:00:00.000000","2021-12-01T00:00:00.000000","2022-01-01T00:00:00.000000","2022-02-01T00:00:00.000000","2022-03-01T00:00:00.000000","2022-04-01T00:00:00.000000","2022-05-01T00:00:00.000000","2022-06-01T00:00:00.000000","2022-07-01T00:00:00.000000","2022-08-01T00:00:00.000000","2022-09-01T00:00:00.000000","2022-10-01T00:00:00.000000","2022-11-01T00:00:00.000000","2022-12-01T00:00:00.000000","2023-01-01T00:00:00.000000","2023-02-01T00:00:00.000000","2023-03-01T00:00:00.000000","2023-04-01T00:00:00.000000","2023-05-01T00:00:00.000000","2023-06-01T00:00:00.000000","2023-07-01T00:00:00.000000","2023-08-01T00:00:00.000000","2023-09-01T00:00:00.000000","2023-10-01T00:00:00.000000","2023-11-01T00:00:00.000000","2023-12-01T00:00:00.000000","2024-01-01T00:00:00.000000","2024-02-01T00:00:00.000000","2024-03-01T00:00:00.000000","2024-04-01T00:00:00.000000","2024-05-01T00:00:00.000000","2024-06-01T00:00:00.000000","2024-07-01T00:00:00.000000","2024-08-01T00:00:00.000000","2024-09-01T00:00:00.000000","2024-10-01T00:00:00.000000","2024-11-01T00:00:00.000000","2024-12-01T00:00:00.000000","2025-01-01T00:00:00.000000","2025-02-01T00:00:00.000000","2025-03-01T00:00:00.000000","2025-04-01T00:00:00.000000","2025-05-01T00:00:00.000000","2025-06-01T00:00:00.000000","2025-07-01T00:00:00.000000","2025-08-01T00:00:00.000000","2025-09-01T00:00:00.000000","2025-10-01T00:00:00.000000","2025-11-01T00:00:00.000000","2025-12-01T00:00:00.000000","2026-01-01T00:00:00.000000","2026-02-01T00:00:00.000000","2026-03-01T00:00:00.000000","2026-04-01T00:00:00.000000","2026-05-01T00:00:00.000000","2026-06-01T00:00:00.000000","2026-07-01T00:00:00.000000","2026-08-01T00:00:00.000000","2026-09-01T00:00:00.000000","2026-10-01T00:00:00.000000"],"y":{"dtype":"f8","bdata":"J2Xzjcg\u002fJMBxp+VGHV8owIaLoGjAXiXAKxuU2vdlLcDiYi3IW3QpwHRMSw0vnSbApSQBC+wvKcAGK9iQwokzwJ1e7KkTaDDAgB5Z0KbULMCFVXMDILklwFSqFn91ayLAw4Z1KLlvFcAFDcMBwwEcwCA0N7\u002fYfRPATp7P9ihcFcD+nKOw00IbwBd8Hm1JzyvA7xTGLnqFKsDrhvldfvklwH538nru0C3ArkfsNfQAKcAMyJ3lTokZwLq8n8IrkSPAE5gYamyRJ8CxJJK2MR0wwBZBwvlI4zDARS77HcyOLsBDlLtnm2EtwCRKMedu9CnAVSYa2gTxKcB2vSEVUywowGC9nlHTCi3An1loJiwNJ8Bc4hTOGqUqwPPC7DycOiLAjlkeKFdqJMBV6wKIYwcmwCWXJbYCsSDA038X889nKMD\u002faJ0AC2AnwHYUFwtr8SXAQ3RoE8MDI8Bs\u002fYjKAk4mwKMlCpPpsSDAJvtXQC7eH8CI1BdykKsdwIM0WO5s1hTAVQPS6eJ8E8ApyCTXIukRwIabTOVYXBHAf85AsVw4EcBNYh++PRohwN9ECnutUiPAQsCx4ueSJMATs8LKyxkgwOcTl889ySLApCTm1uYcIcAvaMxQ7i8nwCfvyb1\u002fkhbAcddbu2aPHsBgNpaiYVQhwFOoE64vhibApczSR3F6IsBZJ8cm49kYwI006n82mR\u002fAD8FjGKb2FsC1qTcnpV0cwCCfwm\u002f\u002fjyHA7\u002fFtwS1SHcDSlOCoKLYbwFo0jX2y1STAG5Knm+PmIMACwhXVJrkmwAjJ+ETLNxvA+ZEd\u002fav8IsAe8ineiCEdwPfxerfiXB7AB75X8L2BGsD8GrMUsbcZwIVxNQkTgR7AOeS7MtF1FsAv6fK6KjgVwGALjtgmHBzAlRT771XXGcBQ0D6SYgAgwCgxdNsJRBrA38KF3yTBKcAoeCQzAZQtwN2pa2XZ1iXAnEInJj\u002fEKMA7B7fJDL8swCtZaqHPPTHAMrbvCUyjNMBS\u002fXqgwPNBwGP85fwGMD7AffAoG\u002fGkQMClg0TKvyQ4wJ\u002f0O4D9VD3AcV8pfzI8QMCjr8l8VhxDwPPq6dHjakjAVuue64mmTMAGsk\u002fVAKZEwKx69MYLVUbA3UBT5T13RcBK2NA1vnJBwPk8iezN4T3AUaByIJP6OsDQve9KsVo1wJcFQOeAPDXA89VSQpbeNcD7HvngPBI4wFAKgIjHljHAMQ+7+RxRM8B1pk8uw6AywJ0jzjqcIzjA0gTLrMKpMcA+dRcaMeQywK01mkYc\u002fDHAyZQZF0Q9McAkzhAFotwywBamoO68fy3AMLvgoOVBMcC59N5\u002fz1M0wGZaJmcnyTPAcQg2L8uYO8Cnwb1Qk\u002fw3wFtZNfdgVzfAOZEdkiTrN8DuSsZ8sF82wAO4ryJJFzXAHV7K14f5NcAhSfCTYPUywGGJqw6xni3AOLEFeytkMsCrf4yj3ggzwEGZSEqyTDDADjIahxiSMsBEZoILnrsywM5VQlNpMTTAYrhaOu\u002fpMcDz9woPYjs0wFYRM19A4i3A03fHJ5cdIMCOslsNnBAawGyCNlEHziXAZBGVPQq6NMB\u002f4T4mIZ4xwHWIOvFbfDTA6ktkst7dMsA="},"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"margin":{"b":0,"l":0,"r":0,"t":30}}},"font":{"family":"\"IBM Plex Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif","size":13,"color":"#E3EBEF"},"margin":{"l":8,"r":8,"t":40,"b":16},"hoverlabel":{"font":{"family":"\"IBM Plex Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif","size":12}},"legend":{"font":{"color":"#94A5AF"},"orientation":"h","yanchor":"top","y":-0.12,"x":0,"xanchor":"left","title":{}},"height":420,"title":{},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","hovermode":"x unified","meta":{"chart":true},"xaxis":{"tickfont":{"color":"#94A5AF"},"showgrid":false,"linecolor":"#33434C","tickcolor":"#33434C","ticks":"outside","zeroline":false,"rangeselector":{"buttons":[{"count":3,"label":"3Y","step":"year","stepmode":"backward"},{"count":5,"label":"5Y","step":"year","stepmode":"backward"},{"label":"All","step":"all"}],"x":1,"xanchor":"right","y":1.03,"yanchor":"bottom","font":{"color":"#E3EBEF","size":12},"bgcolor":"rgba(0,0,0,0)","activecolor":"#1E2A31","bordercolor":"#33434C","borderwidth":1},"hoverformat":"%b %Y"},"yaxis":{"tickfont":{"color":"#94A5AF"},"title":{"font":{"color":"#94A5AF","size":12},"text":"SMF \u2212 PTF, EUR\u002fMWh"},"showgrid":true,"linecolor":"rgba(0,0,0,0)","tickcolor":"#33434C","ticks":"","zeroline":false,"gridcolor":"#1E2A31","gridwidth":1,"separatethousands":true},"barmode":"relative","bargap":0.15,"updatemenus":[{"active":0,"buttons":[{"args":[{"y":[[8.391,9.7451,12.1134,7.1701,6.5944,8.1361,14.0202,8.183,6.2537,7.9797,8.9326,10.5225,20.613,11.0898,10.0076,8.2884,5.9221,10.2206,11.3059,9.6924,7.1794,12.947,16.0134,19.736,13.4892,9.699,8.8738,10.1681,4.9502,5.5223,4.8507,4.7373,7.9537,6.0597,4.0316,3.3537,4.0885,4.3413,5.4342,3.9269,2.8323,2.285,1.7691,3.3676,2.1838,1.7383,1.8368,2.9434,1.3614,1.2366,1.5884,1.0949,1.8063,2.1546,1.785,2.4146,3.4515,2.654,3.5149,5.4772,8.6225,7.7893,7.3635,3.5164,2.0438,2.0171,1.802,2.9191,4.1646,3.2266,3.6515,8.1459,8.7232,8.0589,3.6979,4.0443,2.7374,4.1392,3.936,3.1787,3.0821,2.9138,3.2251,4.5933,3.7676,3.8634,2.2548,1.4777,1.0349,1.9552,3.2554,6.6122,3.3147,3.2897,3.2614,1.8798,15.3642,16.2076,14.1151,12.9124,9.6054,11.6804,14.349,15.2373,15.9191,8.8136,9.7584,13.4427,13.9941,9.2419,13.5789,7.7947,3.2782,3.8891,3.8194,6.3486,4.7782,9.0934,8.6842,5.8947,11.9027,9.4291,7.164,4.9176,5.2706,7.7355,8.1248,7.9564,5.6498,4.2402,6.223,10.2056,8.8683,8.9141,10.1782,4.5169,4.5632,5.3907,5.2018,6.5492,4.7317,5.1259,13.14,18.0596,25.1628,28.8691,28.2015,9.3281,8.955,8.8974,7.853],[-10.1246,-12.1858,-10.6851,-14.6992,-12.7273,-11.307,-12.5936,-19.5381,-16.4066,-14.4153,-10.8616,-9.2099,-5.3591,-7.0017,-4.8729,-5.34,-6.8153,-13.9049,-13.2607,-10.9873,-14.9081,-12.5019,-6.3841,-9.7835,-11.784,-16.114,-16.8878,-15.2789,-14.6906,-12.9774,-12.9707,-12.0866,-14.5211,-11.5257,-13.3225,-9.1145,-10.2077,-11.0144,-8.3457,-12.2028,-11.6876,-10.9715,-9.5073,-11.1524,-8.3475,-7.967,-7.4175,-5.2094,-4.872,-4.4777,-4.3402,-4.305,-8.5513,-9.6615,-10.2869,-8.0504,-9.393,-8.5564,-11.5936,-5.6431,-7.64,-8.6648,-11.2621,-9.2391,-6.2128,-7.8996,-5.7409,-7.0915,-8.7812,-7.3303,-6.9279,-10.4174,-8.451,-11.3616,-6.8045,-9.4935,-7.2827,-7.5907,-6.6267,-6.4294,-7.626,-5.6151,-5.3049,-7.0275,-6.4603,-8.0008,-6.5664,-12.8772,-14.7891,-10.9196,-12.3833,-14.3731,-17.2414,-20.6379,-35.9043,-30.1876,-33.2886,-24.1436,-29.332,-32.4703,-38.2214,-48.8351,-57.3011,-41.2969,-44.6644,-42.9316,-34.8964,-29.882,-26.9788,-21.3543,-21.2363,-21.8695,-24.0712,-17.589,-19.3168,-18.628,-24.1391,-17.6631,-18.8914,-17.9848,-17.2393,-18.8618,-14.7495,-17.2574,-20.3274,-19.7858,-27.5969,-23.9866,-23.3413,-23.9185,-22.3738,-21.091,-21.9747,-18.9585,-14.8099,-18.3913,-19.0346,-16.2996,-18.5707,-18.7329,-20.193,-17.9138,-20.232,-14.9419,-8.0578,-6.5162,-10.9024,-20.7267,-17.6177,-20.4858,-18.8667]],"hovertemplate":["%{y:,.1f} EUR\u002fMWh\u003cextra\u003eSystem short: SMF above PTF\u003c\u002fextra\u003e","%{y:,.1f} EUR\u002fMWh\u003cextra\u003eSystem long: SMF below PTF\u003c\u002fextra\u003e"]},{"yaxis.title.text":"SMF \u2212 PTF, EUR\u002fMWh","yaxis.ticksuffix":"","yaxis.autorange":true}],"label":"EUR\u002fMWh","method":"update"},{"args":[{"y":[[24.6838,28.0581,34.8433,20.5926,18.9683,23.1485,40.2049,22.7947,17.6195,21.6788,24.905,29.5182,58.9012,32.6713,30.2646,24.6322,18.6324,34.4326,37.3062,29.9821,22.7766,42.137,52.1858,63.2832,43.3532,32.0842,29.06,33.2284,16.4333,18.3244,16.4132,16.7958,29.2461,24.1166,15.7953,13.1345,15.9795,17.1016,21.4271,16.0679,11.7418,9.4494,7.6234,15.3131,9.9427,7.9772,8.5843,14.0833,6.7718,6.4471,8.5834,6.0687,12.0052,15.9212,11.9691,14.7577,20.8025,16.2504,20.9921,33.7086,55.4208,52.7337,48.3099,22.4045,12.7491,12.7032,11.4888,18.6237,26.949,21.2133,24.05,56.7779,64.7446,60.7142,28.3367,31.5716,23.3328,36.5842,36.4727,29.9541,28.9817,26.2555,27.6059,41.5057,36.6854,39.0686,23.3663,15.0307,10.3285,19.584,34.6128,78.3097,50.47,50.285,50.3615,30.1965,245.0007,267.3222,253.778,229.2426,175.3718,211.9678,261.243,287.7321,313.5592,177.7661,197.2505,272.0113,295.6528,197.8007,338.9799,227.0375,96.3377,112.0612,112.0452,195.2414,151.2892,297.7699,287.6054,204.1922,412.4771,327.8189,250.4272,175.0477,194.1052,291.7183,303.4266,291.0239,206.5802,155.5192,233.6385,405.4629,377.298,388.9328,460.2908,211.9203,215.6453,260.2902,252.8263,319.1317,235.6727,258.6948,677.2621,921.077,1308.9122,1527.7681,1498.7888,499.5171,494.7162,497.6813,434.4909],[-29.7833,-35.0854,-30.7349,-42.2162,-36.609,-32.1704,-36.114,-54.4257,-46.2249,-39.1627,-30.2831,-25.8361,-15.3135,-20.6276,-14.7365,-15.8698,-21.4424,-46.8446,-43.7563,-33.9877,-47.2958,-40.6882,-20.805,-31.3708,-37.873,-53.305,-55.3043,-49.93,-48.7688,-43.0624,-43.8892,-42.852,-53.3952,-45.8705,-52.1964,-35.6963,-39.896,-43.3893,-32.9071,-49.9302,-48.4537,-45.3711,-40.9692,-50.7124,-38.0058,-36.5616,-34.666,-24.9253,-24.2336,-23.3451,-23.4529,-23.8611,-56.8347,-71.3916,-68.9768,-49.2019,-56.6135,-52.3901,-69.2413,-34.7296,-49.1058,-58.6612,-73.8871,-58.8663,-38.7558,-49.7492,-36.6017,-45.2427,-56.8236,-48.1922,-45.6298,-72.6108,-62.7238,-85.5965,-52.1419,-74.1111,-62.075,-67.0896,-61.4056,-60.5868,-71.7101,-50.595,-45.4073,-63.5012,-62.9042,-80.9083,-68.0465,-130.9795,-147.6,-109.3759,-131.6651,-170.2238,-262.5176,-315.4595,-554.4204,-484.9163,-530.8266,-398.2159,-527.3666,-576.465,-697.8322,-886.2248,-1043.2447,-779.8285,-879.7555,-865.9134,-705.374,-604.6576,-569.9782,-457.0347,-530.1371,-636.9931,-707.3953,-506.8101,-566.6787,-572.875,-764.3049,-578.3898,-625.6493,-622.9936,-597.4122,-655.768,-515.5885,-614.2993,-748.6222,-746.1562,-1030.6256,-877.3693,-853.4587,-877.2719,-840.0079,-837.9332,-934.9105,-827.1865,-669.7532,-862.8764,-899.5318,-787.0239,-902.6046,-912.8252,-1005.7576,-904.071,-1042.799,-762.0695,-419.1479,-344.8418,-579.4163,-1109.9147,-973.279,-1145.8812,-1043.8612]],"hovertemplate":["%{y:,.0f} TL\u002fMWh\u003cextra\u003eSystem short: SMF above PTF\u003c\u002fextra\u003e","%{y:,.0f} TL\u002fMWh\u003cextra\u003eSystem long: SMF below PTF\u003c\u002fextra\u003e"]},{"yaxis.title.text":"SMF \u2212 PTF, TL\u002fMWh","yaxis.ticksuffix":"","yaxis.autorange":true}],"label":"TL\u002fMWh","method":"update"},{"args":[{"y":[[15.3691,18.0814,22.871,11.7022,10.6762,14.1303,25.8214,12.6012,10.2325,12.5398,17.7765,23.6987,57.9045,30.1126,24.2771,18.5467,12.0477,21.4278,27.1065,22.4269,13.9186,28.1706,50.1378,57.9926,36.592,27.3051,20.5083,24.603,10.1769,13.1124,11.6816,11.3438,13.352,13.3004,9.1538,9.0402,11.0104,11.2242,14.4251,9.1788,6.7743,5.2935,4.6446,8.7677,6.381,4.3624,4.8838,8.8817,3.4984,3.593,4.6242,2.9158,4.0163,4.8648,3.7724,5.0675,8.0665,7.2858,8.1666,13.1653,29.6129,26.8812,21.8279,7.3565,4.2739,4.2642,3.9398,6.2523,9.2506,6.7427,8.0593,23.1664,35.7389,29.8755,9.7274,10.6531,7.8115,11.8702,11.4441,10.1365,9.8797,8.819,9.6226,13.3283,11.7525,10.8346,5.8121,2.8996,1.8531,3.7599,5.1667,9.424,5.0038,4.2687,3.5857,1.8073,13.384,15.1627,10.8446,9.8372,5.7189,5.5048,7.5286,8.3684,8.419,5.1804,7.0379,12.7932,16.6958,10.3708,20.8742,11.4816,4.2798,5.584,4.9801,9.4461,7.291,15.326,14.6912,9.3234,23.3826,16.0121,11.9523,6.7616,7.5406,12.1764,12.9908,11.8152,8.4449,6.199,9.4274,18.5666,15.3832,15.8222,20.9012,7.147,7.3368,9.5379,9.2289,11.4627,7.927,8.9362,32.589,56.8452,142.1099,258.5493,120.8543,18.5033,17.0134,18.1475,14.852],[-18.5443,-22.61,-20.1743,-23.9903,-20.6051,-19.6374,-23.194,-30.0872,-26.845,-22.6532,-21.6153,-20.7425,-15.0544,-19.0121,-11.8211,-11.9491,-13.8646,-29.1519,-31.7931,-25.4231,-28.9021,-27.202,-19.9885,-28.7481,-31.9665,-45.365,-39.0295,-36.9691,-30.2017,-30.8141,-31.2367,-28.942,-24.377,-25.2977,-30.2493,-24.5691,-27.4896,-28.4775,-22.1537,-28.5225,-27.9547,-25.4167,-24.9608,-29.036,-24.3913,-19.9938,-19.7224,-15.7193,-12.5195,-13.0103,-12.635,-11.4645,-19.014,-21.814,-21.7399,-16.8949,-21.9528,-23.4889,-26.9372,-13.5641,-26.2387,-29.9028,-33.3845,-19.3287,-12.9923,-16.6999,-12.5516,-15.1887,-19.5054,-15.318,-15.2908,-29.6266,-34.6234,-42.1192,-17.8993,-25.0071,-20.7817,-21.768,-19.2673,-20.5027,-24.4457,-16.9944,-15.8277,-20.3915,-20.1519,-22.4376,-16.9257,-25.2677,-26.4817,-20.9991,-19.6537,-20.4853,-26.0269,-26.7796,-39.4746,-29.0222,-28.9981,-22.587,-22.5357,-24.7371,-22.7563,-23.0153,-30.0645,-22.6805,-23.6213,-25.2343,-25.1676,-28.4382,-32.1873,-23.9627,-32.6456,-32.2137,-31.4257,-25.2541,-25.1875,-27.7165,-36.834,-29.7693,-31.9588,-28.4458,-33.8662,-32.0306,-24.6077,-23.7288,-29.0823,-31.1446,-44.1247,-35.62,-34.8889,-34.9678,-33.8948,-38.3699,-38.1181,-33.6508,-30.4126,-29.1005,-30.6042,-28.839,-32.9478,-32.7871,-33.8292,-31.2296,-50.1781,-47.0319,-45.5073,-58.3587,-46.721,-41.1138,-33.4712,-41.7835,-35.6819]],"hovertemplate":["%{y:,.0f}%\u003cextra\u003eSystem short: SMF above PTF\u003c\u002fextra\u003e","%{y:,.0f}%\u003cextra\u003eSystem long: SMF below PTF\u003c\u002fextra\u003e"]},{"yaxis.title.text":"SMF \u2212 PTF, % of the month's average PTF","yaxis.ticksuffix":"%","yaxis.autorange":true}],"label":"% of average PTF","method":"update"}],"direction":"right","type":"buttons","x":0,"xanchor":"left","y":1.03,"yanchor":"bottom","font":{"color":"#7C8B94","size":12},"bgcolor":"rgba(0,0,0,0)","bordercolor":"#7C8B94","borderwidth":1}]},                        {"displaylogo": false, "responsive": true, "typesetMath": false, "displayModeBar": false, "modeBarButtonsToRemove": ["lasso2d", "select2d", "autoScale2d"]}                    ).then(function(){
+                            
+var gd = document.getElementById('0f3d46d9-15ee-4ad8-8db0-708859b5ea76');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div>
+</div>
+</div>
+<div id="cell-gap-note" class="cell" data-execution_count="6">
+<div id="gap-note" class="cell-output cell-output-display cell-output-markdown" data-execution_count="6">
+<p>The highest short-side gap in percentage terms is May 2026: SMF was 1,528 TL/MWh above PTF while the month’s average PTF was only 591 TL/MWh, so the gap equals 259% of the average price. The lira gap itself was also well above the 290 TL/MWh median of the previous twelve months: this suggests that balancing prices did not fall with the low day-ahead prices. Percentages exaggerate gaps in months with a low average PTF, so read them next to the lira and euro views.</p>
+</div>
+</div>
+</section>
+<section id="intraday-versus-day-ahead" class="level2">
+<h2 class="anchored" data-anchor-id="intraday-versus-day-ahead">Intraday versus day-ahead</h2>
+<p>The intraday market (GİP) trades the same hours after the day-ahead auction. Its average price (AOF) minus PTF shows whether buying later was cheaper or dearer on average. A gap close to zero means the two markets agree; persistent gaps point to forecasts that changed after the auction, for example for wind and solar.</p>
+<div id="cell-aof-chart" class="cell" data-execution_count="7">
+<div id="aof-chart" class="cell-output cell-output-display">
+<div style="height:380px; width:100%;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.1.1.min.js" integrity="sha256-O24V1F27f8pb0glCkelh3cVHLNiHAJ5gCaVtq2aNch8=" crossorigin="anonymous"></script>                <div id="e09778c2-a6a3-460d-8be1-e3b139cec6a3" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("e09778c2-a6a3-460d-8be1-e3b139cec6a3")) {                    Plotly.newPlot(                        "e09778c2-a6a3-460d-8be1-e3b139cec6a3",                        [{"hovertemplate":"%{y:,.2f} EUR\u002fMWh\u003cextra\u003eAOF \u2212 PTF\u003c\u002fextra\u003e","marker":{"color":"#D9701F","line":{"color":"#0E161B","width":1}},"meta":{"light":"#E8833A","dark":"#D9701F","kind":"bar"},"name":"AOF \u2212 PTF","x":["2015-07-01T00:00:00.000000","2015-08-01T00:00:00.000000","2015-09-01T00:00:00.000000","2015-10-01T00:00:00.000000","2015-11-01T00:00:00.000000","2015-12-01T00:00:00.000000","2016-01-01T00:00:00.000000","2016-02-01T00:00:00.000000","2016-03-01T00:00:00.000000","2016-04-01T00:00:00.000000","2016-05-01T00:00:00.000000","2016-06-01T00:00:00.000000","2016-07-01T00:00:00.000000","2016-08-01T00:00:00.000000","2016-09-01T00:00:00.000000","2016-10-01T00:00:00.000000","2016-11-01T00:00:00.000000","2016-12-01T00:00:00.000000","2017-01-01T00:00:00.000000","2017-02-01T00:00:00.000000","2017-03-01T00:00:00.000000","2017-04-01T00:00:00.000000","2017-05-01T00:00:00.000000","2017-06-01T00:00:00.000000","2017-07-01T00:00:00.000000","2017-08-01T00:00:00.000000","2017-09-01T00:00:00.000000","2017-10-01T00:00:00.000000","2017-11-01T00:00:00.000000","2017-12-01T00:00:00.000000","2018-01-01T00:00:00.000000","2018-02-01T00:00:00.000000","2018-03-01T00:00:00.000000","2018-04-01T00:00:00.000000","2018-05-01T00:00:00.000000","2018-06-01T00:00:00.000000","2018-07-01T00:00:00.000000","2018-08-01T00:00:00.000000","2018-09-01T00:00:00.000000","2018-10-01T00:00:00.000000","2018-11-01T00:00:00.000000","2018-12-01T00:00:00.000000","2019-01-01T00:00:00.000000","2019-02-01T00:00:00.000000","2019-03-01T00:00:00.000000","2019-04-01T00:00:00.000000","2019-05-01T00:00:00.000000","2019-06-01T00:00:00.000000","2019-07-01T00:00:00.000000","2019-08-01T00:00:00.000000","2019-09-01T00:00:00.000000","2019-10-01T00:00:00.000000","2019-11-01T00:00:00.000000","2019-12-01T00:00:00.000000","2020-01-01T00:00:00.000000","2020-02-01T00:00:00.000000","2020-03-01T00:00:00.000000","2020-04-01T00:00:00.000000","2020-05-01T00:00:00.000000","2020-06-01T00:00:00.000000","2020-07-01T00:00:00.000000","2020-08-01T00:00:00.000000","2020-09-01T00:00:00.000000","2020-10-01T00:00:00.000000","2020-11-01T00:00:00.000000","2020-12-01T00:00:00.000000","2021-01-01T00:00:00.000000","2021-02-01T00:00:00.000000","2021-03-01T00:00:00.000000","2021-04-01T00:00:00.000000","2021-05-01T00:00:00.000000","2021-06-01T00:00:00.000000","2021-07-01T00:00:00.000000","2021-08-01T00:00:00.000000","2021-09-01T00:00:00.000000","2021-10-01T00:00:00.000000","2021-11-01T00:00:00.000000","2021-12-01T00:00:00.000000","2022-01-01T00:00:00.000000","2022-02-01T00:00:00.000000","2022-03-01T00:00:00.000000","2022-04-01T00:00:00.000000","2022-05-01T00:00:00.000000","2022-06-01T00:00:00.000000","2022-07-01T00:00:00.000000","2022-08-01T00:00:00.000000","2022-09-01T00:00:00.000000","2022-10-01T00:00:00.000000","2022-11-01T00:00:00.000000","2022-12-01T00:00:00.000000","2023-01-01T00:00:00.000000","2023-02-01T00:00:00.000000","2023-03-01T00:00:00.000000","2023-04-01T00:00:00.000000","2023-05-01T00:00:00.000000","2023-06-01T00:00:00.000000","2023-07-01T00:00:00.000000","2023-08-01T00:00:00.000000","2023-09-01T00:00:00.000000","2023-10-01T00:00:00.000000","2023-11-01T00:00:00.000000","2023-12-01T00:00:00.000000","2024-01-01T00:00:00.000000","2024-02-01T00:00:00.000000","2024-03-01T00:00:00.000000","2024-04-01T00:00:00.000000","2024-05-01T00:00:00.000000","2024-06-01T00:00:00.000000","2024-07-01T00:00:00.000000","2024-08-01T00:00:00.000000","2024-09-01T00:00:00.000000","2024-10-01T00:00:00.000000","2024-11-01T00:00:00.000000","2024-12-01T00:00:00.000000","2025-01-01T00:00:00.000000","2025-02-01T00:00:00.000000","2025-03-01T00:00:00.000000","2025-04-01T00:00:00.000000","2025-05-01T00:00:00.000000","2025-06-01T00:00:00.000000","2025-07-01T00:00:00.000000","2025-08-01T00:00:00.000000","2025-09-01T00:00:00.000000","2025-10-01T00:00:00.000000","2025-11-01T00:00:00.000000","2025-12-01T00:00:00.000000","2026-01-01T00:00:00.000000","2026-02-01T00:00:00.000000","2026-03-01T00:00:00.000000","2026-04-01T00:00:00.000000","2026-05-01T00:00:00.000000","2026-06-01T00:00:00.000000","2026-07-01T00:00:00.000000","2026-08-01T00:00:00.000000","2026-09-01T00:00:00.000000","2026-10-01T00:00:00.000000"],"y":{"dtype":"f8","bdata":"hBVKXqQd6j8FNwGWyXyNvwp\u002fPuXMWt+\u002fBt\u002fOgMr6v7\u002fxw7JDv\u002fbLP2wj200MiJk\u002fXUS\u002f1tbokr\u002fzJB9Fxyrrv\u002fIWLQXwkey\u002fp8mSi3x22r+gowZkUrLgv4Qvv0Urs\u002fY\u002fTsiwPoaV8D\u002fvRxM6FD3HvwRV\u002fD3Rk+G\u002fvXE568w71r84LHkxtJjAv7JmIGn0yNi\u002fThCRosD35r9nEbCP5ezkv3aYVcybtuK\u002f8XkSfn8B379AHED8cqfWv6kEsM\u002fg3cY\u002fCh\u002ff2jU20b89sEMB4JLgv8UOE7Lz7uC\u002fdrSfTB7mz7+JnyrgqGTZv0kTCWcvGcS\u002fEX6XNu0h0r8qoxQ8Z9vav9M2hG5JgLu\u002f69c2OfbawL9\u002faZUQYdrTv4\u002fMGo2YkLa\u002fpY549I7NpL8Yvia\u002fmDC2v8XOeJB\u002f67i\u002fWfekv8V5zL\u002f0JXXy\u002f1uevzRaNS21dNG\u002fOTEgzHZQ079brVBTbx\u002fwvxIUCNanlgHA04UNByppAMD4A72aU6f6v6Z3F4VnVf6\u002feWbFC0T7DMC5ope5Fz73v9pXwyY59Ni\u002fm4XKso+Vz78cEmnuL7m2Pz41yl6ZFMG\u002fekUQcMz95L9S6cIVRqvkv1BYpPQo4Nu\u002fiQhcoIPzuL8Jf8dd1n\u002fKvzvtTh9pIsw\u002f5RZB7eC6wz+rhX8nFqalP94nysggUtE\u002frkwKoD2Evz+coJJJtEPFv71rciuBt7I\u002fT4gVg9aky79eKHJ38zGOvwQzB1bMbMO\u002f6EO0TjgSxb+rHJEv4nS8P6aTVXfIML4\u002fobOi0e0fkb\u002fCzKMdoXPjv\u002f5CMgWMZei\u002fX2yySzl80r9\u002fAd7VnL++v0NAzfYks9W\u002fEwlR2iZ+xL+p\u002fO07TYrov7ZZhAteOsm\u002f1BW8triy9r8WnZS+y+7qv5gZbZBGbvy\u002fAq7znm7g77\u002fe1nOznf7uv\u002foaj+0zOAfA\u002fwYId1U5B8Cojpkdyvvovybx1ijINfG\u002fu\u002f\u002fCcehb+b9wisYIE+n3v8jPZAqhDe6\u002fOEY25jU57r+PZZ1b4en0vy6BHhs+3ui\u002fdzRlqeuJ4L9H8\u002fhRmgz5vwi08N4wqf2\u002fBxSA29H09b+yFMfwRxDuv7iyFibFrvu\u002fh\u002fPC7ugP878Z2kHoMDX+vyheY1gPh\u002fK\u002fzM6H7It3zD9A5ri0XSrzv0EIoLIDTYE\u002fuSxkZkHbs78HCbzZv+zqv0+eMdJNA++\u002fQ\u002fjY0VQ\u002f0L\u002fy9XBp1V7RP4BdUTwDFfu\u002fll06Cgid779GsJyEOzTIv3tYadJOWee\u002fSYzbKq+SyL\u002fhAzQj6aHpv\u002fL+E+T1LfE\u002fXl1hxj5ozD99HrDXZPy7v4Oa6szEhNK\u002fQGENo1386L8zNYpL34jpv9ilP0kbzeq\u002fyVvTlzzuz7+a84fXJE71v8I589ExdvW\u002fqN5dRvSF1T\u002fgeUmFoubbP1Ul\u002fd4HwfY\u002fXbmewPwm4r+dqx0vwiPcv9AA5SBEKte\u002fbVXMLF1ZAsA="},"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"margin":{"b":0,"l":0,"r":0,"t":30}}},"font":{"family":"\"IBM Plex Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif","size":13,"color":"#E3EBEF"},"margin":{"l":8,"r":8,"t":40,"b":16},"hoverlabel":{"font":{"family":"\"IBM Plex Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif","size":12}},"legend":{"font":{"color":"#94A5AF"},"orientation":"h","yanchor":"top","y":-0.12,"x":0,"xanchor":"left","title":{}},"height":380,"title":{},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","hovermode":"x unified","meta":{"chart":true},"xaxis":{"tickfont":{"color":"#94A5AF"},"showgrid":false,"linecolor":"#33434C","tickcolor":"#33434C","ticks":"outside","zeroline":false,"rangeselector":{"font":{"color":"#E3EBEF","size":12},"bgcolor":"rgba(0,0,0,0)","activecolor":"#1E2A31","bordercolor":"#33434C","borderwidth":1},"hoverformat":"%b %Y"},"yaxis":{"tickfont":{"color":"#94A5AF"},"title":{"font":{"color":"#94A5AF","size":12},"text":"AOF \u2212 PTF, EUR\u002fMWh"},"showgrid":true,"linecolor":"rgba(0,0,0,0)","tickcolor":"#33434C","ticks":"","zeroline":false,"gridcolor":"#1E2A31","gridwidth":1,"separatethousands":true},"showlegend":false,"bargap":0.15,"updatemenus":[{"active":0,"buttons":[{"args":[{"y":[[0.8161,-0.0144,-0.4899,-0.1249,0.2185,0.0249,-0.0185,-0.849,-0.8928,-0.4135,-0.5218,1.4187,1.0365,-0.1816,-0.5493,-0.3474,-0.1297,-0.3873,-0.7177,-0.6539,-0.5848,-0.4845,-0.354,0.1786,-0.2689,-0.5179,-0.5292,-0.2492,-0.3968,-0.157,-0.2833,-0.4196,-0.1074,-0.1317,-0.3102,-0.0881,-0.0406,-0.0867,-0.0973,-0.2225,-0.0296,-0.2727,-0.3018,-1.0077,-2.1986,-2.0513,-1.6659,-1.8959,-3.6227,-1.4527,-0.3899,-0.2468,0.0888,-0.1334,-0.656,-0.6459,-0.4356,-0.0975,-0.207,0.2198,0.1541,0.0423,0.2706,0.1231,-0.1661,0.0731,-0.216,-0.0147,-0.1518,-0.1646,0.1112,0.1179,-0.0167,-0.6079,-0.7624,-0.2888,-0.1201,-0.3391,-0.1601,-0.7669,-0.1971,-1.4186,-0.8416,-1.7769,-0.9961,-0.9686,-2.9024,-2.903,-0.7807,-1.0756,-1.5849,-1.4944,-0.9392,-0.9445,-1.3071,-0.7771,-0.5168,-1.5656,-1.8538,-1.3723,-0.9395,-1.7302,-1.1914,-1.888,-1.158,0.2224,-1.1978,0.0084,-0.0776,-0.8414,-0.9692,-0.2539,0.2714,-1.6926,-0.9879,-0.1891,-0.7297,-0.192,-0.801,1.0737,0.2219,-0.1093,-0.2894,-0.7808,-0.798,-0.8375,-0.2495,-1.3316,-1.3414,0.3363,0.436,1.4221,-0.5673,-0.4397,-0.362,-2.2936]],"hovertemplate":["%{y:,.2f} EUR\u002fMWh\u003cextra\u003eAOF \u2212 PTF\u003c\u002fextra\u003e"]},{"yaxis.title.text":"AOF \u2212 PTF, EUR\u002fMWh","yaxis.ticksuffix":"","yaxis.autorange":true}],"label":"EUR\u002fMWh","method":"update"},{"args":[{"y":[[2.4254,-0.0453,-1.6505,-0.4122,0.6758,0.0791,-0.0601,-2.7667,-2.8628,-1.3289,-1.726,4.6461,3.3872,-0.6027,-1.8227,-1.1755,-0.4597,-1.424,-2.8565,-2.562,-2.2903,-1.8935,-1.3944,0.7044,-1.1004,-2.1472,-2.1883,-1.0739,-1.8042,-0.7149,-1.3002,-1.9612,-0.514,-0.655,-1.6173,-0.4763,-0.2252,-0.5761,-0.7193,-1.4917,-0.1812,-1.6439,-1.8478,-6.0182,-13.5308,-13.1849,-11.2779,-12.4381,-23.0816,-9.0618,-2.4555,-1.5732,0.5663,-0.8635,-4.3127,-4.2542,-3.0359,-0.7234,-1.5597,1.6843,1.2033,0.3604,2.392,1.1408,-1.5655,0.6875,-1.946,-0.1262,-1.3713,-1.6029,1.1241,1.2221,-0.1701,-6.0667,-7.6365,-3.071,-1.4225,-5.1625,-2.4472,-11.8419,-3.166,-22.6218,-13.8819,-31.9477,-17.6852,-17.684,-52.6715,-52.853,-14.743,-21.1867,-31.9676,-30.2069,-19.0038,-19.954,-27.9752,-19.4,-15.0539,-46.0085,-53.4157,-40.2569,-28.8925,-54.7815,-39.0126,-62.5268,-40.1122,7.707,-41.6453,0.2953,-2.761,-30.9873,-36.5485,-9.4808,9.9276,-61.8898,-36.2344,-7.0994,-28.9887,-8.1676,-34.9494,48.5571,10.4125,-5.1662,-13.9714,-37.9501,-38.8833,-41.7154,-12.5896,-68.6324,-68.4121,17.4936,23.0708,75.58,-30.3767,-24.29,-20.2461,-126.9029]],"hovertemplate":["%{y:,.1f} TL\u002fMWh\u003cextra\u003eAOF \u2212 PTF\u003c\u002fextra\u003e"]},{"yaxis.title.text":"AOF \u2212 PTF, TL\u002fMWh","yaxis.ticksuffix":"","yaxis.autorange":true}],"label":"TL\u002fMWh","method":"update"},{"args":[{"y":[[1.8262,-0.0293,-1.0271,-0.2995,0.5055,0.0483,-0.0402,-2.6581,-2.6235,-1.1217,-1.4689,3.2789,2.5079,-0.3732,-1.3043,-0.8366,-0.3105,-0.6501,-1.5754,-1.4848,-1.5764,-1.3047,-0.9152,0.4742,-0.6286,-1.2388,-1.2259,-0.6543,-1.033,-0.4588,-0.711,-1.1158,-0.3242,-0.3384,-0.9013,-0.2566,-0.1082,-0.1927,-0.2198,-0.4702,-0.0622,-0.6374,-0.8285,-2.3413,-5.2846,-7.0451,-5.749,-5.6199,-7.5788,-3.0378,-0.8243,-0.5395,0.1901,-0.2964,-1.3708,-1.4256,-1.2387,-0.3993,-0.7675,0.5782,0.406,0.1207,0.7761,0.358,-0.5298,0.2344,-0.6536,-0.044,-0.4404,-0.5135,0.3117,0.304,-0.0328,-1.0885,-1.4661,-0.4584,-0.1712,-0.5118,-0.2077,-0.8431,-0.1895,-1.2358,-0.7874,-1.3652,-0.7589,-0.5767,-1.3679,-1.5231,-0.4288,-0.5689,-0.9316,-1.0778,-0.8938,-1.1268,-1.4668,-1.1946,-0.7613,-2.0439,-2.6617,-1.7893,-1.3979,-2.6401,-2.008,-3.1939,-1.8315,0.4369,-2.0341,0.0141,-0.1067,-1.2038,-1.5255,-0.4059,0.403,-2.53,-1.4443,-0.2865,-1.3274,-0.333,-1.4218,2.2049,0.3512,-0.1758,-0.512,-1.3853,-1.3966,-1.4031,-0.4349,-3.3025,-4.2221,1.8993,3.9043,6.0944,-1.1252,-0.8353,-0.7383,-4.3379]],"hovertemplate":["%{y:,.2f}%\u003cextra\u003eAOF \u2212 PTF\u003c\u002fextra\u003e"]},{"yaxis.title.text":"AOF \u2212 PTF, % of the month's average PTF","yaxis.ticksuffix":"%","yaxis.autorange":true}],"label":"% of average PTF","method":"update"}],"direction":"right","type":"buttons","x":0,"xanchor":"left","y":1.03,"yanchor":"bottom","font":{"color":"#7C8B94","size":12},"bgcolor":"rgba(0,0,0,0)","bordercolor":"#7C8B94","borderwidth":1}]},                        {"displaylogo": false, "responsive": true, "typesetMath": false, "displayModeBar": false, "modeBarButtonsToRemove": ["lasso2d", "select2d", "autoScale2d"]}                    ).then(function(){
+                            
+var gd = document.getElementById('e09778c2-a6a3-460d-8be1-e3b139cec6a3');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div>
+</div>
+</div>
+</section>
+<section id="hours-at-zero" class="level2">
+<h2 class="anchored" data-anchor-id="hours-at-zero">Hours at zero</h2>
+<p>PTF falls to zero when supply that cannot or will not reduce output, such as run-of-river hydro, wind, solar and must-run plants, exceeds demand. Zero-price hours are a sign of surplus and of the value of storage and flexible demand.</p>
+<div id="cell-zero-chart" class="cell" data-execution_count="8">
+<div id="zero-chart" class="cell-output cell-output-display">
+<div style="height:360px; width:100%;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.1.1.min.js" integrity="sha256-O24V1F27f8pb0glCkelh3cVHLNiHAJ5gCaVtq2aNch8=" crossorigin="anonymous"></script>                <div id="542d6689-0ca2-4b33-b82f-5b918ece2f9a" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("542d6689-0ca2-4b33-b82f-5b918ece2f9a")) {                    Plotly.newPlot(                        "542d6689-0ca2-4b33-b82f-5b918ece2f9a",                        [{"hovertemplate":"%{y:,.0f} hours\u003cextra\u003eHours with PTF = 0\u003c\u002fextra\u003e","marker":{"color":"#5A9AD6","line":{"color":"#0E161B","width":1}},"meta":{"light":"#2E6A9E","dark":"#5A9AD6","kind":"bar"},"name":"Hours with PTF = 0","x":["2011-11-01T00:00:00.000000","2011-12-01T00:00:00.000000","2012-01-01T00:00:00.000000","2012-02-01T00:00:00.000000","2012-03-01T00:00:00.000000","2012-04-01T00:00:00.000000","2012-05-01T00:00:00.000000","2012-06-01T00:00:00.000000","2012-07-01T00:00:00.000000","2012-08-01T00:00:00.000000","2012-09-01T00:00:00.000000","2012-10-01T00:00:00.000000","2012-11-01T00:00:00.000000","2012-12-01T00:00:00.000000","2013-01-01T00:00:00.000000","2013-02-01T00:00:00.000000","2013-03-01T00:00:00.000000","2013-04-01T00:00:00.000000","2013-05-01T00:00:00.000000","2013-06-01T00:00:00.000000","2013-07-01T00:00:00.000000","2013-08-01T00:00:00.000000","2013-09-01T00:00:00.000000","2013-10-01T00:00:00.000000","2013-11-01T00:00:00.000000","2013-12-01T00:00:00.000000","2014-01-01T00:00:00.000000","2014-02-01T00:00:00.000000","2014-03-01T00:00:00.000000","2014-04-01T00:00:00.000000","2014-05-01T00:00:00.000000","2014-06-01T00:00:00.000000","2014-07-01T00:00:00.000000","2014-08-01T00:00:00.000000","2014-09-01T00:00:00.000000","2014-10-01T00:00:00.000000","2014-11-01T00:00:00.000000","2014-12-01T00:00:00.000000","2015-01-01T00:00:00.000000","2015-02-01T00:00:00.000000","2015-03-01T00:00:00.000000","2015-04-01T00:00:00.000000","2015-05-01T00:00:00.000000","2015-06-01T00:00:00.000000","2015-07-01T00:00:00.000000","2015-08-01T00:00:00.000000","2015-09-01T00:00:00.000000","2015-10-01T00:00:00.000000","2015-11-01T00:00:00.000000","2015-12-01T00:00:00.000000","2016-01-01T00:00:00.000000","2016-02-01T00:00:00.000000","2016-03-01T00:00:00.000000","2016-04-01T00:00:00.000000","2016-05-01T00:00:00.000000","2016-06-01T00:00:00.000000","2016-07-01T00:00:00.000000","2016-08-01T00:00:00.000000","2016-09-01T00:00:00.000000","2016-10-01T00:00:00.000000","2016-11-01T00:00:00.000000","2016-12-01T00:00:00.000000","2017-01-01T00:00:00.000000","2017-02-01T00:00:00.000000","2017-03-01T00:00:00.000000","2017-04-01T00:00:00.000000","2017-05-01T00:00:00.000000","2017-06-01T00:00:00.000000","2017-07-01T00:00:00.000000","2017-08-01T00:00:00.000000","2017-09-01T00:00:00.000000","2017-10-01T00:00:00.000000","2017-11-01T00:00:00.000000","2017-12-01T00:00:00.000000","2018-01-01T00:00:00.000000","2018-02-01T00:00:00.000000","2018-03-01T00:00:00.000000","2018-04-01T00:00:00.000000","2018-05-01T00:00:00.000000","2018-06-01T00:00:00.000000","2018-07-01T00:00:00.000000","2018-08-01T00:00:00.000000","2018-09-01T00:00:00.000000","2018-10-01T00:00:00.000000","2018-11-01T00:00:00.000000","2018-12-01T00:00:00.000000","2019-01-01T00:00:00.000000","2019-02-01T00:00:00.000000","2019-03-01T00:00:00.000000","2019-04-01T00:00:00.000000","2019-05-01T00:00:00.000000","2019-06-01T00:00:00.000000","2019-07-01T00:00:00.000000","2019-08-01T00:00:00.000000","2019-09-01T00:00:00.000000","2019-10-01T00:00:00.000000","2019-11-01T00:00:00.000000","2019-12-01T00:00:00.000000","2020-01-01T00:00:00.000000","2020-02-01T00:00:00.000000","2020-03-01T00:00:00.000000","2020-04-01T00:00:00.000000","2020-05-01T00:00:00.000000","2020-06-01T00:00:00.000000","2020-07-01T00:00:00.000000","2020-08-01T00:00:00.000000","2020-09-01T00:00:00.000000","2020-10-01T00:00:00.000000","2020-11-01T00:00:00.000000","2020-12-01T00:00:00.000000","2021-01-01T00:00:00.000000","2021-02-01T00:00:00.000000","2021-03-01T00:00:00.000000","2021-04-01T00:00:00.000000","2021-05-01T00:00:00.000000","2021-06-01T00:00:00.000000","2021-07-01T00:00:00.000000","2021-08-01T00:00:00.000000","2021-09-01T00:00:00.000000","2021-10-01T00:00:00.000000","2021-11-01T00:00:00.000000","2021-12-01T00:00:00.000000","2022-01-01T00:00:00.000000","2022-02-01T00:00:00.000000","2022-03-01T00:00:00.000000","2022-04-01T00:00:00.000000","2022-05-01T00:00:00.000000","2022-06-01T00:00:00.000000","2022-07-01T00:00:00.000000","2022-08-01T00:00:00.000000","2022-09-01T00:00:00.000000","2022-10-01T00:00:00.000000","2022-11-01T00:00:00.000000","2022-12-01T00:00:00.000000","2023-01-01T00:00:00.000000","2023-02-01T00:00:00.000000","2023-03-01T00:00:00.000000","2023-04-01T00:00:00.000000","2023-05-01T00:00:00.000000","2023-06-01T00:00:00.000000","2023-07-01T00:00:00.000000","2023-08-01T00:00:00.000000","2023-09-01T00:00:00.000000","2023-10-01T00:00:00.000000","2023-11-01T00:00:00.000000","2023-12-01T00:00:00.000000","2024-01-01T00:00:00.000000","2024-02-01T00:00:00.000000","2024-03-01T00:00:00.000000","2024-04-01T00:00:00.000000","2024-05-01T00:00:00.000000","2024-06-01T00:00:00.000000","2024-07-01T00:00:00.000000","2024-08-01T00:00:00.000000","2024-09-01T00:00:00.000000","2024-10-01T00:00:00.000000","2024-11-01T00:00:00.000000","2024-12-01T00:00:00.000000","2025-01-01T00:00:00.000000","2025-02-01T00:00:00.000000","2025-03-01T00:00:00.000000","2025-04-01T00:00:00.000000","2025-05-01T00:00:00.000000","2025-06-01T00:00:00.000000","2025-07-01T00:00:00.000000","2025-08-01T00:00:00.000000","2025-09-01T00:00:00.000000","2025-10-01T00:00:00.000000","2025-11-01T00:00:00.000000","2025-12-01T00:00:00.000000","2026-01-01T00:00:00.000000","2026-02-01T00:00:00.000000","2026-03-01T00:00:00.000000","2026-04-01T00:00:00.000000","2026-05-01T00:00:00.000000","2026-06-01T00:00:00.000000","2026-07-01T00:00:00.000000","2026-08-01T00:00:00.000000","2026-09-01T00:00:00.000000","2026-10-01T00:00:00.000000"],"y":{"dtype":"f8","bdata":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACpAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAABAAAAAAAAAFEAAAAAAAAAAAAAAAAAAADVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABRAAAAAAAAAQEAAAAAAAADwPwAAAAAAAAAAAAAAAAAAAAAAAAAAAADwPwAAAAAAgEZAAAAAAAAAAEAAAAAAAAAUQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8D8AAAAAAAAUQAAAAAAAACxAAAAAAAAANUAAAAAAAAAmQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxAAAAAAAAANEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAPA\u002fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcQAAAAAAAAPA\u002fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANEAAAAAAAAA2QAAAAAAAwFdAAAAAAADAakAAAAAAAABEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAAAAAAADJA"},"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"margin":{"b":0,"l":0,"r":0,"t":30}}},"font":{"family":"\"IBM Plex Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif","size":13,"color":"#E3EBEF"},"margin":{"l":8,"r":8,"t":16,"b":16},"hoverlabel":{"font":{"family":"\"IBM Plex Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif","size":12}},"legend":{"font":{"color":"#94A5AF"},"orientation":"h","yanchor":"top","y":-0.12,"x":0,"xanchor":"left","title":{}},"height":360,"title":{},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","hovermode":"x unified","meta":{"chart":true},"xaxis":{"tickfont":{"color":"#94A5AF"},"showgrid":false,"linecolor":"#33434C","tickcolor":"#33434C","ticks":"outside","zeroline":false,"hoverformat":"%b %Y"},"yaxis":{"tickfont":{"color":"#94A5AF"},"title":{"font":{"color":"#94A5AF","size":12},"text":"Hours per month"},"showgrid":true,"linecolor":"rgba(0,0,0,0)","tickcolor":"#33434C","ticks":"","zeroline":false,"gridcolor":"#1E2A31","gridwidth":1,"separatethousands":true},"showlegend":false,"bargap":0.15},                        {"displaylogo": false, "responsive": true, "typesetMath": false, "displayModeBar": false, "modeBarButtonsToRemove": ["lasso2d", "select2d", "autoScale2d"]}                    ).then(function(){
+                            
+var gd = document.getElementById('542d6689-0ca2-4b33-b82f-5b918ece2f9a');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div>
+</div>
+</div>
+</section>
+<section id="yearly-summary" class="level2">
+<h2 class="anchored" data-anchor-id="yearly-summary">Yearly summary</h2>
+<div id="cell-yearly" class="cell" data-execution_count="9">
+<div id="yearly" class="cell-output cell-output-display cell-output-markdown" data-execution_count="9">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 5%">
+<col style="width: 14%">
+<col style="width: 13%">
+<col style="width: 9%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Daily spread (EUR/MWh)</th>
+<th style="text-align: right;">Hourly std. dev. (EUR/MWh)</th>
+<th style="text-align: right;">SMF − PTF when short</th>
+<th style="text-align: right;">SMF − PTF when long</th>
+<th style="text-align: right;">AOF − PTF</th>
+<th style="text-align: right;">SMF − PTF when short (% of PTF)</th>
+<th style="text-align: right;">SMF − PTF when long (% of PTF)</th>
+<th style="text-align: right;">AOF − PTF (% of PTF)</th>
+<th style="text-align: right;">Zero-price hours</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2026 (to 13 Nov)</td>
+<td style="text-align: right;">53.8</td>
+<td style="text-align: right;">16.2</td>
+<td style="text-align: right;">14.0</td>
+<td style="text-align: right;">−14.9</td>
+<td style="text-align: right;">−0.45</td>
+<td style="text-align: right;">35.3%</td>
+<td style="text-align: right;">−37.8%</td>
+<td style="text-align: right;">−1.2%</td>
+<td style="text-align: right;">413</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2025</td>
+<td style="text-align: right;">43.0</td>
+<td style="text-align: right;">13.6</td>
+<td style="text-align: right;">6.1</td>
+<td style="text-align: right;">−18.6</td>
+<td style="text-align: right;">−0.38</td>
+<td style="text-align: right;">10.3%</td>
+<td style="text-align: right;">−31.4%</td>
+<td style="text-align: right;">−0.6%</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2024</td>
+<td style="text-align: right;">43.8</td>
+<td style="text-align: right;">13.5</td>
+<td style="text-align: right;">7.0</td>
+<td style="text-align: right;">−18.3</td>
+<td style="text-align: right;">−0.73</td>
+<td style="text-align: right;">11.1%</td>
+<td style="text-align: right;">−29.3%</td>
+<td style="text-align: right;">−1.1%</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023</td>
+<td style="text-align: right;">59.8</td>
+<td style="text-align: right;">18.3</td>
+<td style="text-align: right;">7.6</td>
+<td style="text-align: right;">−22.5</td>
+<td style="text-align: right;">−1.25</td>
+<td style="text-align: right;">8.3%</td>
+<td style="text-align: right;">−25.5%</td>
+<td style="text-align: right;">−1.5%</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2022</td>
+<td style="text-align: right;">91.6</td>
+<td style="text-align: right;">28.8</td>
+<td style="text-align: right;">10.8</td>
+<td style="text-align: right;">−31.8</td>
+<td style="text-align: right;">−1.23</td>
+<td style="text-align: right;">7.6%</td>
+<td style="text-align: right;">−22.4%</td>
+<td style="text-align: right;">−0.9%</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2021</td>
+<td style="text-align: right;">23.3</td>
+<td style="text-align: right;">7.7</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">−8.7</td>
+<td style="text-align: right;">−0.21</td>
+<td style="text-align: right;">5.9%</td>
+<td style="text-align: right;">−18.8%</td>
+<td style="text-align: right;">−0.4%</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2020</td>
+<td style="text-align: right;">19.7</td>
+<td style="text-align: right;">6.0</td>
+<td style="text-align: right;">4.1</td>
+<td style="text-align: right;">−6.8</td>
+<td style="text-align: right;">−0.11</td>
+<td style="text-align: right;">11.5%</td>
+<td style="text-align: right;">−19.2%</td>
+<td style="text-align: right;">−0.2%</td>
+<td style="text-align: right;">34</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2019</td>
+<td style="text-align: right;">27.2</td>
+<td style="text-align: right;">8.3</td>
+<td style="text-align: right;">3.8</td>
+<td style="text-align: right;">−7.0</td>
+<td style="text-align: right;">−1.24</td>
+<td style="text-align: right;">9.4%</td>
+<td style="text-align: right;">−17.2%</td>
+<td style="text-align: right;">−3.0%</td>
+<td style="text-align: right;">52</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2018</td>
+<td style="text-align: right;">20.7</td>
+<td style="text-align: right;">5.9</td>
+<td style="text-align: right;">1.7</td>
+<td style="text-align: right;">−5.9</td>
+<td style="text-align: right;">−0.17</td>
+<td style="text-align: right;">4.2%</td>
+<td style="text-align: right;">−14.8%</td>
+<td style="text-align: right;">−0.4%</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2017</td>
+<td style="text-align: right;">25.5</td>
+<td style="text-align: right;">7.7</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">−9.6</td>
+<td style="text-align: right;">−0.39</td>
+<td style="text-align: right;">7.8%</td>
+<td style="text-align: right;">−24.0%</td>
+<td style="text-align: right;">−1.0%</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2016</td>
+<td style="text-align: right;">48.6</td>
+<td style="text-align: right;">14.0</td>
+<td style="text-align: right;">8.5</td>
+<td style="text-align: right;">−11.3</td>
+<td style="text-align: right;">−0.12</td>
+<td style="text-align: right;">20.0%</td>
+<td style="text-align: right;">−26.8%</td>
+<td style="text-align: right;">−0.3%</td>
+<td style="text-align: right;">91</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2015</td>
+<td style="text-align: right;">39.4</td>
+<td style="text-align: right;">11.7</td>
+<td style="text-align: right;">8.7</td>
+<td style="text-align: right;">−8.5</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">18.9%</td>
+<td style="text-align: right;">−18.6%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2014</td>
+<td style="text-align: right;">27.4</td>
+<td style="text-align: right;">9.1</td>
+<td style="text-align: right;">8.1</td>
+<td style="text-align: right;">−12.2</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">14.0%</td>
+<td style="text-align: right;">−21.2%</td>
+<td style="text-align: right;">–%</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2013</td>
+<td style="text-align: right;">40.7</td>
+<td style="text-align: right;">12.6</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–%</td>
+<td style="text-align: right;">–%</td>
+<td style="text-align: right;">–%</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2012</td>
+<td style="text-align: right;">46.7</td>
+<td style="text-align: right;">14.1</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–%</td>
+<td style="text-align: right;">–%</td>
+<td style="text-align: right;">–%</td>
+<td style="text-align: right;">15</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Gaps in euros are converted from lira at the exchange rate implied by EPİAŞ’s own lira and euro prices for each day; percentages divide the average gap by the average PTF of the same period. Yearly figures are averages of daily values; zero-price hours are totals.</p>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<ul>
+<li><strong>Source:</strong> EPİAŞ Şeffaflık Platformu hourly PTF, SMF, system direction and intraday weighted average price, through <a href="https://github.com/Tideseed/eptr2">eptr2</a>. Data to 13 November 2026.</li>
+<li><strong>Price caps</strong> limit how high prices and spreads can go; the cap is set by regulatory decision and has been raised more than once since 2022 (see <a href="../../data/turkiye/prices.html">Prices</a>).</li>
+<li><strong>Coming next:</strong> the spread of individual intraday trades around each contract’s volume-weighted median, a measure of how much a perfectly informed trader could have earned.</li>
+<li>See the <a href="../../methodology.html">methodology</a> for definitions.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/trpowerlab\.com");
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            describeNewWindow(link);
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 TR Power Lab · Analysis and charts under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Independent, not affiliated with EPİAŞ, TEİAŞ or EPDK.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Data belong to EPİAŞ Şeffaflık Platformu and the other sources listed in the <a href="../../methodology.html#reuse">methodology</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
