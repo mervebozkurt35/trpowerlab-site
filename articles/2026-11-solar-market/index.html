@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Merve Bozkurt">
+<meta name="dcterms.date" content="2026-11-20">
+<meta name="description" content="Solar’s capture rate fell from 97% in 2021 to 69% in 2026, while the feed-in tariff now sits above its market value. What the 10-year rule means for Turkish solar, and why flexibility decides what comes next.">
+
+<title>Why Is the Turkish Solar Market Alarming? – TR Power Lab</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-3463ae9b2174cc7775b88b49ea23799c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-81c23937bc5b7539855677ab478cab35.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">TR Power Lab</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data">    
+        <li>
+    <a class="dropdown-item" href="../../data/turkiye/index.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data/turkiye/prices.html">
+ <span class="dropdown-text">Prices</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data/turkiye/generation.html">
+ <span class="dropdown-text">Generation and demand</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data/turkiye/volatility.html">
+ <span class="dropdown-text">Volatility</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data/turkiye/gas.html">
+ <span class="dropdown-text">Natural gas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data/turkiye/balancing.html">
+ <span class="dropdown-text">Balancing instructions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data/neighbouring-markets/index.html">
+ <span class="dropdown-text">Neighbouring markets</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-regulation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Regulation</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-regulation">    
+        <li>
+    <a class="dropdown-item" href="../../regulation/index.html">
+ <span class="dropdown-text">Market timeline</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../regulation/institutions.html">
+ <span class="dropdown-text">Institutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../regulation/tree.html">
+ <span class="dropdown-text">Legislation tree</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../regulation/method.html">
+ <span class="dropdown-text">Method and sources</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../articles/index.html"> 
+<span class="menu-text">Articles</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../methodology.html"> 
+<span class="menu-text">Methodology</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#why-solar-prices-behave-differently-now" id="toc-why-solar-prices-behave-differently-now" class="nav-link" data-scroll-target="#why-solar-prices-behave-differently-now">Why solar prices behave differently now</a></li>
+  <li><a href="#how-solar-investment-in-türkiye-evolved" id="toc-how-solar-investment-in-türkiye-evolved" class="nav-link" data-scroll-target="#how-solar-investment-in-türkiye-evolved">How solar investment in Türkiye evolved</a></li>
+  <li><a href="#feed-in-tariff-schemes" id="toc-feed-in-tariff-schemes" class="nav-link" data-scroll-target="#feed-in-tariff-schemes">Feed-in tariff schemes</a></li>
+  <li><a href="#the-10-year-rule" id="toc-the-10-year-rule" class="nav-link" data-scroll-target="#the-10-year-rule">The 10-year rule</a></li>
+  <li><a href="#capture-rate-and-cannibalisation" id="toc-capture-rate-and-cannibalisation" class="nav-link" data-scroll-target="#capture-rate-and-cannibalisation">Capture rate and cannibalisation</a></li>
+  <li><a href="#yekdem-vs-capture-price-vs-ptf" id="toc-yekdem-vs-capture-price-vs-ptf" class="nav-link" data-scroll-target="#yekdem-vs-capture-price-vs-ptf">YEKDEM vs capture price vs PTF</a></li>
+  <li><a href="#after-2030-why-flexibility-and-asset-management-matter" id="toc-after-2030-why-flexibility-and-asset-management-matter" class="nav-link" data-scroll-target="#after-2030-why-flexibility-and-asset-management-matter">After 2030: why flexibility and asset management matter</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#method-and-data" id="toc-method-and-data" class="nav-link" data-scroll-target="#method-and-data">Method and data</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Why Is the Turkish Solar Market Alarming?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">solar</div>
+    <div class="quarto-category">YEKDEM</div>
+    <div class="quarto-category">market analysis</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Solar’s capture rate fell from 97% in 2021 to 69% in 2026, while the feed-in tariff now sits above its market value. What the 10-year rule means for Turkish solar, and why flexibility decides what comes next.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Merve Bozkurt </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 20, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li><strong>Solar is cannibalising its own price.</strong> Its capture rate fell from 97% in 2021 to 80% in 2025 and 69% in January–September 2026. In May 2026 it was 17%, and 65% of solar output was produced at a PTF of zero.</li>
+<li><strong>Scheme doesn’t mean endless support for solar.</strong> Each plant gets the feed-in tariff for 10 years. An estimated 2.6 GW leaves support in 2027 and 6.7 GW by the end of 2030; after that, unlicensed surplus earns min(PTF, 0.9 × YEKDEM).</li>
+<li><strong>The support price has overtaken the market.</strong> The YEKDEM solar price was below solar’s market value in most months until 2024. It was above it in seven months of 2025 and in every month of 2026 from February, with the gap peaking at 2,546 TL/MWh in May 2026.</li>
+<li><strong>Flexibility decides what comes next.</strong> Once plants sell at the midday price, storage, aggregation and hour-by-hour self-consumption decide whether they stay viable and how much balancing costs the system.</li>
+</ul>
+</section>
+<section id="why-solar-prices-behave-differently-now" class="level2">
+<h2 class="anchored" data-anchor-id="why-solar-prices-behave-differently-now">Why solar prices behave differently now</h2>
+<p>In May 2026, an average MWh of Turkish solar was valued at 17% of the month’s average day-ahead price (PTF). Two thirds of all solar output that month (65%) was produced in hours when the PTF was zero.</p>
+<p>This is new for the Turkish power market. In 2021 solar output was valued at about the market average: at the hourly day-ahead price, an average MWh of solar would have sold for 97% of the average PTF; this ratio is its capture rate. Most plants were not actually paid this price, because they were paid a feed-in tariff under YEKDEM, Türkiye’s renewable support scheme, but it is what they would have earned without this support. By 2025 it was 80%, and from January to September 2026 it was 69%. The more solar the system has, the lower the price in the hours solar produces. This is called <strong>cannibalisation</strong>.</p>
+<p>Most Turkish solar does not feel this yet, because its feed-in tariff does not depend on the hourly market. That protection lasts 10 years from each plant’s commissioning. The first big group of plants loses it in 2027, and from then on each year more capacity is exposed to the midday price. This article looks at how the feed-in tariff works, how far the midday price has fallen, and why flexibility will decide what happens next.</p>
+</section>
+<section id="how-solar-investment-in-türkiye-evolved" class="level2">
+<h2 class="anchored" data-anchor-id="how-solar-investment-in-türkiye-evolved">How solar investment in Türkiye evolved</h2>
+<p>Solar capacity grew from 40 MW in 2014 to <a href="https://www.donanimhaber.com/turkiye-2025-te-guneste-4-7-gw-lik-yeni-kurulum-gerceklestirdi--200714">24.8 GW at the end of 2025</a>, most of it unlicensed. Its share of electricity generation rose from under 0.01% in 2014 (<a href="https://www.donanimhaber.com/turkiye-gunes-enerjisinde-641-kat-buyudu-25-gw-a-ulasildi--203595">17 GWh</a>) to 10.5% in 2025 (37.3 TWh)<sup>[<a href="#ref-4">4</a>]</sup>. From January to mid-November 2026 it produced 38.9 TWh, 12.2% of all generation.</p>
+<p>A <strong>licensed</strong> plant holds a generation licence from EPDK and is built to sell electricity to the market. An <strong>unlicensed</strong> plant is exempt from the licence and from setting up a company<sup>[<a href="#ref-5">5</a>]</sup>. It is meant to cover the owner’s own consumption, its size is capped (today at the contract power of the consumption point it serves), and only the surplus goes to the grid. The exemption exists so that homes, factories and farms can generate their own electricity without the cost and time of licensing.</p>
+<p>The build-out came in four waves:</p>
+<ol type="1">
+<li><strong>Small unlicensed plants on a USD-fixed price (2014–2020).</strong> Plants of 0.5–1 MW, often grouped next to each other, sold their output at a fixed 13.3 US cents/kWh for 10 years. Capacity reached 3.4 GW in 2017 and 6.7 GW in 2020.</li>
+<li><strong>Self-consumption unlicensed plants (from 2019).</strong> The rules began tying unlicensed generation to a consumer, at first with panels on the consumer’s own roof or site. Changes in 2022 let the plant sit outside the consumer’s distribution region, and then anywhere in the country<sup>[<a href="#ref-1">1</a>]</sup>. This mattered because land in cities was scarce and expensive for high-consumption factories and buildings, and installations sped up. Ember counts 94% of solar growth from July 2022 to end-2024 as self-consumption plants<sup>[<a href="#ref-6">6</a>]</sup>. In 2025 alone, <a href="https://www.donanimhaber.com/turkiye-2025-te-guneste-4-7-gw-lik-yeni-kurulum-gerceklestirdi--200714">4,175 MW of the 4,696 MW added</a> was of this type. Investment incentives (tax reductions, VAT and customs exemptions) add to the case for building<sup>[<a href="#ref-2">2</a>]</sup>.</li>
+<li><strong>Licensed and hybrid plants.</strong> Licensed solar is a small share, but how small depends on the source. Official statistics put it at <a href="https://www.donanimhaber.com/turkiye-2025-te-guneste-4-7-gw-lik-yeni-kurulum-gerceklestirdi--200714">about 2.5 GW at the end of 2025</a>. EPDK’s licence register (November 2026) shows about 3.2 GW of standalone licensed solar, plus 2.1 GW of solar added to existing wind, hydro or other plants as hybrid capacity. Statistics probably count hybrid solar under the host plant’s source.</li>
+<li><strong>Storage-integrated plants.</strong> Since 2023, plants that pair solar or wind with storage get their own, higher YEKDEM price, but only for energy they produce and store themselves.</li>
+</ol>
+<p>The timeline below puts the build-out next to the support regimes that applied in each period.</p>
+<p><img src="images/solar_timeline.png" class="img-fluid" alt="Timeline of Türkiye's solar generation and support regimes, 2018–2030"></p>
+</section>
+<section id="feed-in-tariff-schemes" class="level2">
+<h2 class="anchored" data-anchor-id="feed-in-tariff-schemes">Feed-in tariff schemes</h2>
+<p>Türkiye has paid solar a feed-in tariff (FiT)<sup>[<a href="#ref-7">7</a>]</sup>, and the terms depend on the plant type and when it was built. Licensed plants got a USD-fixed price until mid-2021, then a TL price indexed quarterly, and since May 2023 a TL price indexed monthly with a USD floor and ceiling. Unlicensed plants are paid only for the surplus they feed to the grid. The table shows what each type gets during its 10 years of support and after.<sup>[<a href="#ref-3">3</a>]</sup></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Plant type</th>
+<th>Years 1–10 (support)</th>
+<th>After year 10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Licensed, commissioned until 30 Jun 2021</td>
+<td>13.3 US c/kWh, fixed in USD</td>
+<td>Market price, no cap</td>
+</tr>
+<tr class="even">
+<td>Licensed, commissioned 1 Jul 2021 – 31 Dec 2030</td>
+<td>YEKDEM price in TL, indexed (quarterly under 3453, monthly under 7189 since May 2023, with a USD floor and ceiling of 4.95 and 6.05 US c/kWh)</td>
+<td>Market price, no cap</td>
+</tr>
+<tr class="odd">
+<td>Unlicensed, capacity granted before 10 May 2019</td>
+<td>Surplus at 13.3 US c/kWh</td>
+<td>Surplus at min(PTF, 0.9 × YEKDEM)</td>
+</tr>
+<tr class="even">
+<td>Unlicensed, capacity granted from 10 May 2019</td>
+<td>Surplus at the retail energy tariff (EPDK)</td>
+<td>Surplus at min(PTF, 0.9 × YEKDEM)</td>
+</tr>
+</tbody>
+</table>
+<p>Under Decision 7189<sup>[<a href="#ref-8">8</a>]</sup> the price is updated every month:</p>
+<p><span class="math display">\[
+YEKDEM_{GD} = YEKDEM_{OGD} \times \left[0.25\,\frac{PPI_{A-2}}{PPI_{A-3}} + 0.15\,\frac{CPI_{A-2}}{CPI_{A-3}} + 0.30\,\frac{USD_{-1}}{USD_{-2}} + 0.30\,\frac{EUR_{-1}}{EUR_{-2}}\right]
+\]</span></p>
+<p>Here YEKDEM_GD is the new month’s price and YEKDEM_OGD the previous month’s. PPI and CPI are taken from two and three months earlier, and USD and EUR are the central bank’s monthly average rates of the previous two months. The new TL price is converted to US cents with the previous month’s average rate, clamped between the floor and the ceiling, and converted back.</p>
+<p>A worked example from EPİAŞ’s announcements<sup>[<a href="#ref-9">9</a>]</sup>: the solar price was 289.74 kuruş/kWh in October 2026 and 292.49 in November. Neither the floor nor the ceiling bound: at October’s average rate of <a href="https://bloomberght.com/dolar-ne-kadar-oldu-14-ekim-2026-dolar-kurunda-son-durum-ne-pkh2-3791309">about 49.4 TL/USD</a>, 292.49 kuruş/kWh is about 5.9 US c/kWh. So the price rose by the bracket in the formula, 1.0095, or 0.95% in a month. Since May 2023 the price has risen from 106.00 to 292.49 kuruş/kWh, a factor of 2.76.</p>
+<p>The switch to 7189 was a reset. Under 3453<sup>[<a href="#ref-10">10</a>]</sup> the quarterly price fell far behind the market during the 2022 price spike: in 2022 it averaged 60 kuruş/kWh (599 TL/MWh) while the PTF averaged 2,506 TL/MWh. In May 2023 the new base jumped to 106.00 kuruş/kWh, from 86.34 a month earlier.</p>
+</section>
+<section id="the-10-year-rule" class="level2">
+<h2 class="anchored" data-anchor-id="the-10-year-rule">The 10-year rule</h2>
+<p>Support lasts 10 years from commissioning, and about 2.6 GW of solar reaches that point in 2027 alone. After year 10, a licensed plant sells at the PTF like any other generator. For unlicensed plants, Presidential Decision 11415<sup>[<a href="#ref-11">11</a>]</sup> set the rule: surplus (production - consumption) fed to the grid is bought at the lower of 0.9 × the YEKDEM price for the same plant type and the hourly PTF. The region’s designated (incumbent) supply company is obliged to buy it, so the plant always has a buyer.</p>
+<p><span class="math display">\[
+P_t = \min\left(PTF_t,\; 0.9 \times YEKDEM\right)
+\]</span></p>
+<p>Here <em>t</em> is the hour and YEKDEM is the current monthly price for the same plant type. With the November 2026 solar price of 2,924.9 TL/MWh the cap is 2,632 TL/MWh: an hour with a PTF of 0 pays 0, and an hour with a PTF of 3,400 pays 2,632.</p>
+<p>In practice, the unlicensed plant past year 10 gets the market price in every hour it is below 90% of YEKDEM. In hours when the PTF is higher, its price is capped at 90% of YEKDEM (Pₜ = min(PTFₜ, 0.9 × YEKDEM)). In 2026 the solar-weighted PTF was below 90% of YEKDEM in every month from February to October (see the YEKDEM chart below). The plant keeps the downside of the market and gives up the upside.</p>
+<p>But how much capacity leaves support each year? There is no public list of solar plants by commissioning date, so the chart below is an estimate: capacity added in year <em>t</em> leaves support in year <em>t</em> + 10. Two sector figures support it. <a href="https://www.sozcu.com.tr/epdk-den-eski-ges-lere-nefes-dagitim-bedelinde-yuzde-68-indirim-p322625">EPDK said in May 2026</a> that about 800 plants with a combined 500–550 MW had completed their 10 years. Industry groups <a href="https://www.ekonomigazetesi.com/sektor-haberleri/gunes-yatirimcisinin-enerjisi-tukeniyor-50655">GÜNEŞDER</a> and GENSED<sup>[<a href="#ref-12">12</a>]</sup> put the old-regime group at about 7,000 MW. The estimate gives 249 MW by end-2025 and 6,667 MW by end-2030.</p>
+<p><img src="images/chart1_support_exit.png" class="img-fluid" alt="Bar and line chart: estimated solar capacity leaving YEKDEM support each year from 2024 to 2035, with about 2.6 GW in 2027 and a cumulative 6.7 GW by the end of 2030."></p>
+<p>The estimate has limits. Installed capacity is not the same as capacity in YEKDEM: licensed plants choose each year whether to join YEKDEM or sell at the market price, and self-consumption plants only lose support on their surplus. The 2024 additions also include existing plants registered late, so the 2034 bar is too high.</p>
+<p>The sector already says the first group is in trouble. In 2025 <a href="https://www.ekonomigazetesi.com/sektor-haberleri/gunes-yatirimcisinin-enerjisi-tukeniyor-50655">GÜNEŞDER said</a> that many of the roughly 7,000 MW of plants nearing year 10 could not cover even their operating costs after support. How exposed a plant is depends on whether it sells all its output or mostly covers a consumer’s own load; the data here do not split the two.</p>
+</section>
+<section id="capture-rate-and-cannibalisation" class="level2">
+<h2 class="anchored" data-anchor-id="capture-rate-and-cannibalisation">Capture rate and cannibalisation</h2>
+<p>Solar’s capture rate fell from 97% in 2021 to 80% in 2025 and 69% in January–September 2026. The fall is steepest in spring, when solar output is high and demand is mild.</p>
+<p><img src="images/chart2_capture_rate.png" class="img-fluid" alt="Line chart of solar's monthly capture rate from January 2021 to September 2026 with annual output-weighted averages: 97% in 2021, 80% in 2025, 69% in 2026, and a low of 17% in May 2026."></p>
+<p>The <strong>capture price</strong> is what an average MWh of solar would earn at the day-ahead price: the sum of hourly PTF × solar output, divided by solar output. The <strong>capture rate</strong> is the capture price divided by the average PTF of the same period. Because it is a ratio, inflation does not affect it.</p>
+<p>The capture price is descriptive only. Most solar plants are paid YEKDEM, not the PTF, so the capture price is not their revenue. It shows what the same output would have earned without support, which is the position of a licensed plant after year 10. An unlicensed plant past year 10 even earns less: it gets min(PTF, 0.9 × YEKDEM) each hour, so for it the capture price is an upper bound.</p>
+<p>Spring 2026 was the extreme so far due to record rainfall: hydropower output hit an all-time high, and with solar on top, the monthly PTF in May fell to its lowest level since the day-ahead market opened in 2011<sup>[<a href="#ref-13">13</a>]</sup>. The capture rate was 27% in April, 17% in May and 38% in June. The share of solar output produced at a PTF of zero was 36% in April, 65% in May and 12% in June. In 2025 that share was 1.7% for the whole year. The capture rate recovers in summer, but the July–August level has fallen every year since 2022: from 98% to 75% in 2026.</p>
+</section>
+<section id="yekdem-vs-capture-price-vs-ptf" class="level2">
+<h2 class="anchored" data-anchor-id="yekdem-vs-capture-price-vs-ptf">YEKDEM vs capture price vs PTF</h2>
+<p>In 2026 the YEKDEM solar price was above solar’s capture price in every month from February on; the gap peaked at 2,546 TL/MWh in May. That is a recent change. From July 2021 to 2024 the TL support price was below the capture price in most months, often far below; in 2025 it was above it in seven of twelve months. A 3453 plant would have earned more at the PTF than from YEKDEM. The 7189 price is paid directly only to licensed plants commissioned since mid-2021; older plants are on 13.3 US c/kWh and newer unlicensed plants on the retail tariff. It still matters for all of them, because it sets the 0.9 × YEKDEM cap once a plant passes year 10.</p>
+<p><img src="images/chart3_yekdem_vs_capture.png" class="img-fluid" alt="Line chart from July 2021 to November 2026 of the YEKDEM solar price, solar's capture price and the average PTF in TL/MWh. The area where YEKDEM is above the capture price is shaded; the gap peaks at 2,546 TL/MWh in May 2026."></p>
+<p>Two things turned the gap around. Decision 7189 reset the price in May 2023 and has indexed it monthly since, with a USD floor. At the same time, solar pushed its own capture price down. The support gap is now seasonal: large in spring, smaller in summer and winter. In January 2026 it was negative (the capture price was 338 TL/MWh above YEKDEM), and in November 2026 it was 220 TL/MWh (metered solar only, partial month).</p>
+<p>This is the gap a plant falls into when it leaves support, and it also sets what support costs. What YEKDEM pays above the market value of the energy is charged to suppliers per MWh they supply: <a href="https://www.bloomberght.com/2026-yili-yekdem-maliyetleri-belirlendi-3765028">EPDK set this YEKDEM unit cost at 201–618 TL/MWh for 2026</a>, and suppliers pass it on to consumers. The lower solar’s capture price, the more each supported MWh costs consumers.</p>
+</section>
+<section id="after-2030-why-flexibility-and-asset-management-matter" class="level2">
+<h2 class="anchored" data-anchor-id="after-2030-why-flexibility-and-asset-management-matter">After 2030: why flexibility and asset management matter</h2>
+<p>By the end of 2030 an estimated 6.7 GW of solar will have left support, and from mid-2031 the first licensed plants on the TL-indexed price follow. Each of them moves from a fixed support price to a price set hour by hour in a market that solar itself is pushing down at midday. Under the official capacity targets, Ember projects 52 TWh of solar in 2030<sup>[<a href="#ref-27">27</a>]</sup>, only about a third more than the 38.9 TWh solar produced from January to mid-November 2026. More solar at the same hours means lower capture rates, not higher.</p>
+<p>For these plants, the value of the output depends less on the panel and more on when and how the energy is sold:</p>
+<ul>
+<li><strong>Storage</strong> moves midday energy to the evening peak. Charging in the midday trough and discharging into the evening ramp flattens the duck curve. That lifts midday prices, so the capture rate rises for all solar, not only for the plant with the battery. The rules already reward it: storage-integrated plants have their own YEKDEM price, and Decision 11415 gives every post-support plant a reason to avoid selling at a zero PTF.</li>
+<li><strong>Aggregation</strong> lets many small plants sell as one portfolio, take on balancing responsibility together and sell forward instead of only at the day-ahead price. The legal basis is new: EPDK’s Aggregation Regulation<sup>[<a href="#ref-14">14</a>]</sup> took effect on 1 January 2025, and a December 2024 amendment to the Unlicensed Electricity Generation Regulation<sup>[<a href="#ref-15">15</a>]</sup> lets unlicensed plants past their 10-year guarantee join an aggregator’s portfolio. With 49 aggregator licences issued as of November 2026, this could become the main route for old plants to the market, if the rules work in practice.</li>
+<li><strong>Self-consumption and hybrid plants</strong> keep more value at home. Since May 2026 unlicensed netting is hourly<sup>[<a href="#ref-16">16</a>]</sup>, so a plant earns most when its output matches its consumer’s load hour by hour.</li>
+</ul>
+<p>The same choices matter for the system. Solar that is shifted or sold flexibly needs less balancing and lowers what support costs. Solar that is simply exposed to the midday price adds to the zero-price hours of spring 2026. Whether solar stays viable after 2030 depends on who manages these plants and how.</p>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p><span id="ref-1">[1]</span> The 2019 regulation<sup>[<a href="#ref-17">17</a>]</sup> required an unlicensed plant and its consumer to be in the same distribution region. From late 2020<sup>[<a href="#ref-18">18</a>]</sup> the plant could sit at a different metering point, but still in that region. In August 2022<sup>[<a href="#ref-19">19</a>]</sup> the plant was allowed outside the consumer’s distribution region, within one supply-company region. From October 2022<sup>[<a href="#ref-20">20</a>]</sup> plants could serve consumers across supply-company regions, with EPİAŞ doing the netting; new applications were taken from 1 January 2023<sup>[<a href="#ref-21">21</a>]</sup>, and netting across supply-company regions started on 1 July 2023<sup>[<a href="#ref-22">22</a>], [<a href="#ref-23">23</a>]</sup>.</p>
+<p><span id="ref-2">[2]</span> Unlicensed solar gets VAT and customs duty exemptions, plus a corporate tax reduction until a set share of the investment (the contribution rate) is recovered<sup>[<a href="#ref-24">24</a>]</sup>. Until mid-2025, unlicensed plants above 240 kW got at least the Region 4 incentives, rising to 40% in Region 5 and 50% in Region 6<sup>[<a href="#ref-25">25</a>]</sup>. Since 2024, panels count as eligible only if their cells are made in Türkiye<sup>[<a href="#ref-24">24</a>]</sup>. Under the <a href="https://www.paradergi.com.tr/finans/2025/06/16/yatirim-tesvik-sisteminde-yeni-donem">system introduced in June 2025</a>, self-consumption solar for manufacturers is a priority investment with a 30% contribution rate.</p>
+<p><span id="ref-3">[3]</span> Legal basis of the support table: Law 5346, Art. 6, Art. 6/A and Annex I rows d and e<sup>[<a href="#ref-7">7</a>]</sup>; Decisions 3453<sup>[<a href="#ref-10">10</a>]</sup>, 7189<sup>[<a href="#ref-8">8</a>]</sup> and 11415<sup>[<a href="#ref-11">11</a>]</sup>. Indexation: 3453 updated quarterly (26% PPI, 26% CPI, 24% USD, 24% EUR; ceiling 5.10 US c/kWh)<sup>[<a href="#ref-26">26</a>]</sup>; 7189 updates monthly (25% PPI, 15% CPI, 30% USD, 30% EUR; floor 4.95, ceiling 6.05 US c/kWh). Unlicensed surplus is bought by the incumbent supply company.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p><span id="ref-4">[4]</span> Ember, <a href="https://ember-energy.org/latest-insights/turkiye-electricity-review-2026/wind-and-solar/">Türkiye Electricity Review 2026: Wind and solar</a>, 2026.</p>
+<p><span id="ref-5">[5]</span> Elektrik Piyasası Kanunu (Law 6446), Art. 14, Official Gazette 30 Mar 2013, No.&nbsp;28603.</p>
+<p><span id="ref-6">[6]</span> Ember, <a href="https://ember-energy.org/tr/analizler/gunes-kapasitesi-25-yilda-iki-katina-cikarak-2025-hedefini-asti/">Güneş kapasitesi 2,5 yılda iki katına çıkarak 2025 hedefini aştı</a>, 28 Jan 2025.</p>
+<p><span id="ref-7">[7]</span> Yenilenebilir Enerji Kaynaklarının Elektrik Enerjisi Üretimi Amaçlı Kullanımına İlişkin Kanun (Law 5346), Art. 6, Art. 6/A and Annex I, Official Gazette 18 May 2005, No.&nbsp;25819.</p>
+<p><span id="ref-8">[8]</span> Presidential Decision No.&nbsp;7189, Official Gazette 1 May 2023, No.&nbsp;32177.</p>
+<p><span id="ref-9">[9]</span> EPİAŞ, <a href="https://www.epias.com.tr/?s=yek+belgeli&amp;search-category=elektrik&amp;category=&amp;from=&amp;to=">announcements on YEKDEM unit prices</a> (49 announcements), Sep 2021 – Nov 2026.</p>
+<p><span id="ref-10">[10]</span> Presidential Decision No.&nbsp;3453, Official Gazette 30 Jan 2021, No.&nbsp;31380.</p>
+<p><span id="ref-11">[11]</span> Presidential Decision No.&nbsp;11415, Official Gazette 13 Jun 2026, No.&nbsp;33279.</p>
+<p><span id="ref-12">[12]</span> GENSED, <a href="https://gensed.org/wp-content/uploads/2026/05/2025-052-ETKB-10.yilini-dolduran-lisanssizlar-ile-ilgili-onerimiz.pdf">letter to the Ministry of Energy and Natural Resources on unlicensed plants completing ten years</a>, 22 Sep 2025.</p>
+<p><span id="ref-13">[13]</span> Ember, <a href="https://ember-energy.org/latest-insights/renewables-save-750-million-in-electricity-subsidies-in-turkiye">Renewables save $750 million in electricity subsidies in Türkiye</a>, Jun 2026.</p>
+<p><span id="ref-14">[14]</span> Elektrik Piyasasında Toplayıcılık Faaliyeti Yönetmeliği, Official Gazette 17 Dec 2024, No.&nbsp;32755.</p>
+<p><span id="ref-15">[15]</span> Elektrik Piyasasında Lisanssız Elektrik Üretim Yönetmeliğinde Değişiklik Yapılmasına Dair Yönetmelik, Official Gazette 17 Dec 2024, No.&nbsp;32755.</p>
+<p><span id="ref-16">[16]</span> Elektrik Piyasasında Lisanssız Elektrik Üretim Yönetmeliğinde Değişiklik Yapılmasına Dair Yönetmelik, Official Gazette 2 Apr 2026, No.&nbsp;33212; netting procedures in EPDK Board Decision No.&nbsp;14531, 30 Apr 2026.</p>
+<p><span id="ref-17">[17]</span> Elektrik Piyasasında Lisanssız Elektrik Üretim Yönetmeliği, Official Gazette 12 May 2019, No.&nbsp;30772.</p>
+<p><span id="ref-18">[18]</span> Elektrik Piyasası Kanunu ile Bazı Kanunlarda Değişiklik Yapılmasına Dair Kanun (Law 7257), Official Gazette 2 Dec 2020, No.&nbsp;31322.</p>
+<p><span id="ref-19">[19]</span> Elektrik Piyasasında Lisanssız Elektrik Üretim Yönetmeliğinde Değişiklik Yapılmasına Dair Yönetmelik, Official Gazette 11 Aug 2022, No.&nbsp;31920.</p>
+<p><span id="ref-20">[20]</span> Elektrik Piyasasında Lisanssız Elektrik Üretim Yönetmeliğinde Değişiklik Yapılmasına Dair Yönetmelik, Official Gazette 1 Oct 2022, No.&nbsp;31970.</p>
+<p><span id="ref-21">[21]</span> ADM Elektrik, <a href="https://www.admelektrik.com.tr/storage/uretim-tesisleri-duyurular/January2023/G%C3%BCncel%20Mevzuat%20Bilgi%20Notu.pdf">Güncel Mevzuat Bilgi Notu</a>, Jan 2023.</p>
+<p><span id="ref-22">[22]</span> Elektrik Piyasasında Lisanssız Elektrik Üretim Yönetmeliğinde Değişiklik Yapılmasına Dair Yönetmelik, Official Gazette 2 Mar 2023, No.&nbsp;32120.</p>
+<p><span id="ref-23">[23]</span> EPDK Board Decision No.&nbsp;11917, 22 Jun 2023.</p>
+<p><span id="ref-24">[24]</span> KPMG, <a href="https://kpmgvergi.com/blog/tesvik-belgeli-gunes-enerji-satrali-ges-yatirimlarinda-ne-durumdayiz/1333">Teşvik belgeli güneş enerji santrali (GES) yatırımlarında ne durumdayız?</a>, 25 Nov 2024.</p>
+<p><span id="ref-25">[25]</span> KPMG, <a href="https://kpmgvergi.com/Content//Service/Pdf/YatirimTesvikSistemi423092024_052412082821.pdf">Yatırım Teşvik Sistemi: regional support rates</a>, 2024.</p>
+<p><span id="ref-26">[26]</span> Mondaq, <a href="https://webiis10.mondaq.com/turkey/renewables/1512122/new-tariff-in-yekdem-and-local-content-prices-durations-and-update-principles-in-turkey">New tariff in YEKDEM and local content prices, durations and update principles in Turkey</a>.</p>
+<p><span id="ref-27">[27]</span> Ember, <a href="https://ember-energy.org/tr/analizler/turkiye-elektrik-gorunumu-2025/hedefler/">Türkiye Elektrik Görünümü 2025: Hedefler</a>, Apr 2025.</p>
+</section>
+<section id="method-and-data" class="level2">
+<h2 class="anchored" data-anchor-id="method-and-data">Method and data</h2>
+<p><strong>Method.</strong> Solar = metered generation plus unlicensed generation as reported by EPİAŞ. EPİAŞ does not say whether its unlicensed series is total output or surplus; I take it as energy metered at the grid connection, which is total output for standalone plants and for self-consumption plants located away from their consumer, and surplus for rooftop plants on the consumer’s own site. For the capture rate this is the right quantity, because energy consumed behind the meter never reaches the market. Unlicensed data arrive about two months late, so October and November 2026 use metered solar only and are left out of the all-solar figures. Capture prices are hourly, aggregated to months weighted by output. Annual capture rates = output-weighted capture price over the hour-weighted average PTF. All prices are nominal TL. YEKDEM prices are EPİAŞ’s latest published values<sup>[<a href="#ref-9">9</a>]</sup>; the 3453 quarterly prices are applied to each month of their quarter.</p>
+<p><strong>Data.</strong> Prices and generation: EPİAŞ (EXIST). Year-end solar capacity: TEİAŞ and Ministry figures as reported in the news.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/trpowerlab\.com");
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            describeNewWindow(link);
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 TR Power Lab · Analysis and charts under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Independent, not affiliated with EPİAŞ, TEİAŞ or EPDK.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Data belong to EPİAŞ Şeffaflık Platformu and the other sources listed in the <a href="../../methodology.html#reuse">methodology</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
